@@ -49,6 +49,7 @@ async function install_deps_for_services() {
   for (let service of services) {
     await install_deps(runner, `src/services/${service}`);
   }
+  await install_deps(runner, "src/libs");
 }
 
 function getDirectories(path: string) {
@@ -117,6 +118,40 @@ yargs(process.argv.slice(2))
         filters: filters,
         verify: options.verify,
       });
+    }
+  )
+  .command(
+    "deleteTopics",
+    "Deletes topics from Bigmac which were created by development/ephemeral branches.",
+    {
+      stage: { type: "string", demandOption: true },
+      // verify: { type: "boolean", demandOption: false, default: true },
+    },
+    async (options) => {
+      await install_deps_for_services();
+      await runner.run_command_and_output(
+        `SLS Refresh Outputs`,
+        ["sls", "refresh-outputs", "--stage", "master"],
+        "."
+      );
+      await runner.run_command_and_output(
+        `Delete Topics`,
+        [
+          "sls",
+          "topics",
+          "invoke",
+          "--stage",
+          "master",
+          "--function",
+          "deleteTopics",
+          "--data",
+          JSON.stringify({
+            project: process.env.PROJECT,
+            stage: options.stage,
+          }),
+        ],
+        "."
+      );
     }
   )
   .command(

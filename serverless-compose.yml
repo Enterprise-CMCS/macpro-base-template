@@ -1,3 +1,10 @@
 services:
   alerts:
     path: src/services/alerts
+  topics:
+    path: src/services/topics
+  connector:
+    path: src/services/connector
+    params:
+      ecsFailureTopicArn: ${alerts.ECSFailureTopicArn}
+    dependsOn: topics
