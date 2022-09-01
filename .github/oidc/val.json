@@ -1,7 +1,7 @@
 [
   {
     "ParameterKey": "SubjectClaimFilters",
-    "ParameterValue": "repo:CMSgov/mmdl-connectors:ref:refs/heads/val"
+    "ParameterValue": "repo:CMSgov/mmdl-connectors:environment:val"
   },
   {
     "ParameterKey": "Path",
