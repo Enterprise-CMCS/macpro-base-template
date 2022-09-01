@@ -17,6 +17,6 @@
   },
   {
     "ParameterKey": "GitHubIdentityProviderArn",
-    "ParameterValue": "arn:aws:iam::088925538735:oidc-provider/token.actions.githubusercontent.com"
+    "ParameterValue": "arn:aws:iam::581264611691:oidc-provider/token.actions.githubusercontent.com"
   }
 ]
