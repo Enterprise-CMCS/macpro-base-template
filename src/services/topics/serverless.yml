@@ -44,8 +44,6 @@ custom:
         aws lambda invoke --region ${self:provider.region} --function-name ${self:service}-${sls:stage}-createTopics --invocation-type RequestResponse /dev/null > /dev/null
 
 params:
-  moonlight:
-    deleteTopicsEnabled: true
   master:
     topicNamespace: ""
     deleteTopicsEnabled: true
