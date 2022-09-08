@@ -57,7 +57,8 @@ export default class LabeledProcessRunner {
   async run_command_and_output(
     prefix: string,
     cmd: string[],
-    cwd: string | null
+    cwd: string | null,
+    catchAll = false
   ) {
     const proc_opts: Record<string, any> = {};
 
@@ -96,7 +97,8 @@ export default class LabeledProcessRunner {
       proc.on("close", (code) => {
         const paddedPrefix = this.formattedPrefix(prefix);
         process.stdout.write(`${paddedPrefix} Exit: ${code}\n`);
-        if (code != 0) {
+        // If there's a failure and we haven't asked to catch all...
+        if (code != 0 && !catchAll) {
           // This is not my area.
           // Deploy failures don't get handled and show up here with non zero exit codes
           // Here we throw an error.  Not sure what's best.

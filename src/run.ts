@@ -58,6 +58,15 @@ function getDirectories(path: string) {
   });
 }
 
+async function refreshOutputs(stage: string) {
+  await runner.run_command_and_output(
+    `SLS Refresh Outputs`,
+    ["sls", "refresh-outputs", "--stage", stage],
+    ".",
+    true
+  );
+}
+
 yargs(process.argv.slice(2))
   .command("install", "install all service dependencies", {}, async () => {
     await install_deps_for_services();
@@ -67,14 +76,22 @@ yargs(process.argv.slice(2))
     "deploy the project",
     {
       stage: { type: "string", demandOption: true },
+      service: { type: "string", demandOption: false },
     },
     async (options) => {
       await install_deps_for_services();
-      await runner.run_command_and_output(
-        `SLS Compose Deploy`,
-        ["sls", "deploy", "--stage", options.stage],
-        "."
-      );
+      var deployCmd = ["sls", "deploy", "--stage", options.stage];
+      if (options.service) {
+        await refreshOutputs(options.stage);
+        deployCmd = [
+          "sls",
+          options.service,
+          "deploy",
+          "--stage",
+          options.stage,
+        ];
+      }
+      await runner.run_command_and_output(`SLS Deploy`, deployCmd, ".");
     }
   )
   .command(
@@ -85,6 +102,7 @@ yargs(process.argv.slice(2))
     },
     async (options) => {
       await install_deps_for_services();
+      await refreshOutputs(options.stage);
       console.log(
         `Here, we would run tests for ${options.stage}, but there are no tests yet!`
       );
@@ -121,6 +139,22 @@ yargs(process.argv.slice(2))
     }
   )
   .command(
+    "connect",
+    "Prints a connection string that can be run to 'ssh' directly onto the connector ECS Fargate task",
+    {
+      stage: { type: "string", demandOption: true },
+    },
+    async (options) => {
+      await install_deps_for_services();
+      await refreshOutputs(options.stage);
+      await runner.run_command_and_output(
+        `SLS connect`,
+        ["sls", "connector", "connect", "--stage", options.stage],
+        "."
+      );
+    }
+  )
+  .command(
     "deleteTopics",
     "Deletes topics from Bigmac which were created by development/ephemeral branches.",
     {
@@ -129,11 +163,7 @@ yargs(process.argv.slice(2))
     },
     async (options) => {
       await install_deps_for_services();
-      await runner.run_command_and_output(
-        `SLS Refresh Outputs`,
-        ["sls", "refresh-outputs", "--stage", "master"],
-        "."
-      );
+      await refreshOutputs(options.stage);
       await runner.run_command_and_output(
         `Delete Topics`,
         [
