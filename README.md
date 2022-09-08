@@ -1,6 +1,9 @@
 <h1 align="center" style="border-bottom: none;">mmdl-connectors</h1>
 <h3 align="center">A microservice sending CMS Medicaid Model Data Lab (MMDL) data to CMS Bigmac.</h3>
 <p align="center">
+  <a href="https://ideal-engine-7242f556.pages.github.io/">
+    <img alt="Docs" src="https://img.shields.io/badge/Docs-Pages-blue.svg">
+  </a>
   <a href="https://cmsgov.slack.com/archives/C0403M0D007">
     <img alt="Slack" src="https://img.shields.io/badge/Slack-mmdl--connectors-purple.svg">
   </a>
@@ -18,13 +21,19 @@
   </a>
 </p>
 
+---
+
+### Please visit our [mmdl-connectors docs site](https://ideal-engine-7242f556.pages.github.io/) for complete documentation.
+
+---
+
 ## Overview
 
 The mmdl-connnectors project (oftened referenced in the context of this repository as just 'mmdl') is a microservice that streams Medicaid Data Lab (MMDL) data from it's Oracle database to CMS Bigmac's Kafka cluster in real time. It is powered by Kafka Connect and a JDBC connector.
 
 That's all for now; this project was just created!
 
-![Architecture Diagram](./.images/architecture.svg?raw=true)
+![Architecture Diagram](docs/assets/architecture.svg)
 
 ## Contributing
 
