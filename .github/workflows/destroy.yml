@@ -53,7 +53,7 @@ jobs:
       - name: Destroy
         run: run destroy --stage $STAGE_NAME --verify false
 
-      - name: Destroy
+      - name: Delete topics
         run: run deleteTopics --stage $STAGE_NAME
 
       - name: Slack Notification
