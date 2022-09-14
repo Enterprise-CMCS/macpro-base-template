@@ -64,7 +64,7 @@ This will deploy a single service for a given stage.  All other services on whic
 #### Summary
 This project uses [GitHub Actions](https://github.com/features/actions) as its CI/CD tool.  For the most part, this project also adheres to [GitOps](https://www.gitops.tech/).  That said...
 
-Each branch pushed to the base-acclerator git repository is automatically deployed to AWS.  GitHub Actions sees the 'push' event of a new branch, and runs our Deploy.yml workflow.  After a few minutes, the branch will be fully deployed.  This 1:1 relationship between git branches and deployed stages is the reason why 'stage' and 'branch' are sometimes used interchangeably to refer to a deployed set of the application.
+Each branch pushed to the mmdl-connectors git repository is automatically deployed to AWS.  GitHub Actions sees the 'push' event of a new branch, and runs our Deploy.yml workflow.  After a few minutes, the branch will be fully deployed.  This 1:1 relationship between git branches and deployed stages is the reason why 'stage' and 'branch' are sometimes used interchangeably to refer to a deployed set of the application.
 
 #### Prerequisites:
 - Git repo write access; complete the Git access request portion of [onboarding]({{ site.baseurl }}{% link docs/onboarding/onboarding.md %})

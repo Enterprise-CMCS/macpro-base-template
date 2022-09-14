@@ -31,7 +31,7 @@ Thanks, and we're glad you're here!
 The mmdl-connectors project is a work of the MACPRO Platform Team for the [Centers for Medicare & Medicaid Services (CMS)](https://www.cms.gov/).
 
 
-#### Thank you to the contributors of base-acclerator!
+#### Thank you to the contributors of mmdl-connectors!
 
 <ul class="list-style-none">
 {% for contributor in site.github.contributors %}
