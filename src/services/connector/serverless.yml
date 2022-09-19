@@ -51,6 +51,7 @@ custom:
       - production
   vpc: ${ssm:/aws/reference/secretsmanager/${self:custom.project}/${sls:stage}/vpc, ssm:/aws/reference/secretsmanager/${self:custom.project}/default/vpc}
   brokerString: ${ssm:/aws/reference/secretsmanager/${self:custom.project}/${sls:stage}/brokerString, ssm:/aws/reference/secretsmanager/${self:custom.project}/default/brokerString}
+  dbInfo: ${ssm:/aws/reference/secretsmanager/${self:custom.project}/${sls:stage}/dbInfo, ssm:/aws/reference/secretsmanager/${self:custom.project}/default/dbInfo}
   scripts:
     hooks:
       deploy:finalize: |
@@ -84,6 +85,12 @@ functions:
     environment:
       cluster: !Ref KafkaConnectCluster
       service: !Ref KafkaConnectService
+      topicNamespace: ${param:topicNamespace}
+      legacydbIp: ${self:custom.dbInfo.ip}
+      legacydbPort: ${self:custom.dbInfo.port}
+      legacyDb: ${self:custom.dbInfo.db}
+      legacydbUser: ${self:custom.dbInfo.user}
+      legacydbPassword: ${self:custom.dbInfo.password}
     maximumRetryAttempts: 0
     timeout: 300
     vpc:
@@ -189,8 +196,6 @@ resources:
                 Value: org.apache.kafka.connect.json.JsonConverter
               - Name: CONNECT_INTERNAL_VALUE_CONVERTER
                 Value: org.apache.kafka.connect.json.JsonConverter
-              - Name: CONNECT_PLUGIN_PATH
-                Value: /usr/share/java,/etc/kafka-connect/jars
               - Name: CONNECT_SECURITY_PROTOCOL
                 Value: SSL
               # Producer/Consumer configs below
