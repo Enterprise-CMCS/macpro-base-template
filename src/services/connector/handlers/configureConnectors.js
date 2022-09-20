@@ -24,10 +24,10 @@ const connectors = [
       transforms: "Cast,createKey,extractInt",
       "transforms.createKey.type":
         "org.apache.kafka.connect.transforms.ValueToKey",
-      "transforms.createKey.fields": "replica_id",
+      "transforms.createKey.fields": "REPLICA_ID",
       "transforms.extractInt.type":
         "org.apache.kafka.connect.transforms.ExtractField$Key",
-      "transforms.extractInt.field": "replica_id",
+      "transforms.extractInt.field": "REPLICA_ID",
       "transforms.Cast.type": "org.apache.kafka.connect.transforms.Cast$Value",
       "transforms.Cast.spec":
         "APLCTN_GEO_STATE_ID:int32, APLCTN_CO_WRKFLW_STUS_ID:int32, APLCTN_RO_WRKFLW_STUS_ID:int32, APLCTN_WRKFLW_STUS_ID:int32, PLAN_WVR_APLCTN_ID:int32, PLAN_WVR_DEMO_GRNT_SW:int32, PLAN_WVR_FLD_MPNG_ID:int32, PLAN_WVR_ID:int32, PLAN_WVR_RVSN_APRVL_PRD:int32, PLAN_WVR_RVSN_ID:int32, PLAN_WVR_RVSN_INIT_WVR_SW:int32, PLAN_WVR_RVSN_PRNT_ID:int32, PLAN_WVR_RVSN_VRSN_DTL_ID:int32, PLAN_WVR_RVSN_VRSN_ID:int32, REPLICA_ID:int32, SYS_ADD_USER_ID:int32, SYS_UPDT_USER_ID:int32",
@@ -54,10 +54,10 @@ const connectors = [
       transforms: "Cast,createKey,extractInt",
       "transforms.createKey.type":
         "org.apache.kafka.connect.transforms.ValueToKey",
-      "transforms.createKey.fields": "replica_id",
+      "transforms.createKey.fields": "REPLICA_ID",
       "transforms.extractInt.type":
         "org.apache.kafka.connect.transforms.ExtractField$Key",
-      "transforms.extractInt.field": "replica_id",
+      "transforms.extractInt.field": "REPLICA_ID",
       "transforms.Cast.type": "org.apache.kafka.connect.transforms.Cast$Value",
       "transforms.Cast.spec":
         "PLAN_WVR_RVSN_VRSN_ID:int32, PLAN_WVR_RVSN_VRSN_DTL_ID:int32, PLAN_WVR_FLD_MPNG_ID:int32, SYS_UPDT_USER_ID:int32, REPLICA_ID:int32",
