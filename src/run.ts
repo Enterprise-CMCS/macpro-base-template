@@ -140,16 +140,17 @@ yargs(process.argv.slice(2))
   )
   .command(
     "connect",
-    "Prints a connection string that can be run to 'ssh' directly onto the connector ECS Fargate task",
+    "Prints a connection string that can be run to 'ssh' directly onto the ECS Fargate task",
     {
       stage: { type: "string", demandOption: true },
+      service: { type: "string", demandOption: true },
     },
     async (options) => {
       await install_deps_for_services();
       await refreshOutputs(options.stage);
       await runner.run_command_and_output(
         `SLS connect`,
-        ["sls", "connector", "connect", "--stage", options.stage],
+        ["sls", options.service, "connect", "--stage", options.stage],
         "."
       );
     }

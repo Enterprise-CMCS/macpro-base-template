@@ -32,7 +32,7 @@ The connector service deploys a continuously running ECS Fargate task.  For debu
 - Use the run script's top level 'connect' command to generate the connection string:
   ```bash
     cd mmdl-connectors
-    run connect --stage foo
+    run connect --service [servicename] --stage [stagename]
   ```
   If the connector ECS task is running, this will output a command that begins with 'aws'.
 - Copy the command outputted by the above step, paste it into your terminal, and hit Enter.

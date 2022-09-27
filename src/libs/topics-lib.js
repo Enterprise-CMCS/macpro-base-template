@@ -121,7 +121,10 @@ export async function deleteTopics(brokerString, topicNamespace) {
   const currentTopics = await admin.listTopics();
   var topicsToDelete = _.filter(currentTopics, function (n) {
     console.log(n);
-    return n.startsWith(topicNamespace);
+    return (
+      n.startsWith(topicNamespace) ||
+      n.startsWith(`_confluent-ksql-${topicNamespace}`)
+    );
   });
   console.log(`Deleting topics:  ${topicsToDelete}`);
 
