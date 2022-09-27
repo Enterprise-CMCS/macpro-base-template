@@ -1,7 +1,8 @@
 const _ = require("lodash");
 import { Kafka, ResourceTypes } from "kafkajs";
 
-export async function createTopics(brokerString, topicNamespace, topics) {
+export async function createTopics(brokerString, topicNamespace, topicsConfig) {
+  const topics = topicsConfig;
   const brokers = brokerString.split(",");
 
   const kafka = new Kafka({
@@ -30,7 +31,8 @@ export async function createTopics(brokerString, topicNamespace, topics) {
     console.log("Topics Metadata:", JSON.stringify(topicsMetadata, null, 2));
 
     //namespace the topics, if needed
-    var namespacedTopics = _.map(topics, function (a) {
+    var namespacedTopics = _.map(topics, function (ref) {
+      var a = { ...ref };
       a.topic = `${topicNamespace}${a.topic}`;
       return a;
     });

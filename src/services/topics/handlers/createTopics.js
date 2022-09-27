@@ -1,11 +1,6 @@
 import * as topics from "../../../libs/topics-lib.js";
 const topicList = [
   {
-    topic: `aws.mmdl.mmdl.cdc.example.0`,
-    numPartitions: 1,
-    replicationFactor: 3,
-  },
-  {
     topic: `aws.mmdl.cdc.PLAN_BASE_WVR_TBL`,
     numPartitions: 1,
     replicationFactor: 3,
