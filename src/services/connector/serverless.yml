@@ -66,7 +66,13 @@ custom:
         echo "\nThe following command(s) may be used to exec onto running fargate tasks.  Note, if there are no commands shown, there are no runnings tasks:"
         for task in "${runningTasks[@]}"
         do
-          echo aws --region ${self:provider.region} ecs execute-command --cluster ${self:service}-${sls:stage}-connect --task ${task##*/} --container connect --interactive --command "/bin/sh"
+          echo """
+          To conect to the connector, run:
+          aws --region ${self:provider.region} ecs execute-command --cluster ${self:service}-${sls:stage}-connect --task ${task##*/} --container connect --interactive --command "/bin/sh"
+            
+          To connect to the sql instantclient, run:
+          aws --region ${self:provider.region} ecs execute-command --cluster ${self:service}-${sls:stage}-connect --task ${task##*/} --container instantclient --interactive --command "/bin/sh"
+          """
         done
 
 params:
@@ -218,6 +224,14 @@ resources:
                 awslogs-region: !Sub "${AWS::Region}"
                 awslogs-group: !Sub "${KafkaConnectWorkerLogGroup}"
                 awslogs-stream-prefix: fargate
+          - Name: instantclient
+            Image: "ghcr.io/oracle/oraclelinux8-instantclient:21"
+            Memory: 2048 # This will kill the instantclient container if it goes over 2048, to preserve the connector container.
+            Command:
+              - bash
+              - "-c"
+              - |
+                sleep infinity
         Family: ${self:service}-${sls:stage}-kafka-connect-worker
         NetworkMode: awsvpc
         ExecutionRoleArn: !GetAtt KafkaConnectWorkerRole.Arn
