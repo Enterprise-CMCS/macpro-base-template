@@ -12,6 +12,11 @@ nav_order: 4
 
 The ksqldb service is used to combine mmdl db records into easy to manage streams of data.
 
+#### Interactive ksql
+
+To run ksqldb in interactive mode you will need to increase the ksqldbIntService DesiredCount to 1 and deploy the service or manually increase the interactive task count within the aws console. 
+Once the task is running use top level [connect command]({{ site.baseurl }}{% link docs/development-workflows/connect-to-ecs-task.md %}) to remote into the interactive service and run `confluent-7.0.0/bin/ksql http://localhost:8088` to run ksql in interactive mode.
+
 #### DDL
 
 The data definition layer or DDL, contains the SQL files which are parsed and concatenated into a single file that is handed off

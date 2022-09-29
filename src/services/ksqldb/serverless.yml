@@ -304,6 +304,10 @@ resources:
               - |
                 df -h &&
                 echo "int ksqlDB task..." &&
+                cd ~ &&
+                curl -O https://packages.confluent.io/archive/7.0/confluent-community-7.0.0.tar.gz &&
+                tar -xzvf confluent-community-7.0.0.tar.gz && 
+                ln -s confluent-community-7.0.0 confluent-community &&
                 /usr/bin/docker/run
             Environment:
               - Name: KSQL_LISTENERS
