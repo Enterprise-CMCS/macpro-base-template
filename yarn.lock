@@ -2944,9 +2944,9 @@
     chokidar "^3.5.2"
 
 "@stratiformdigital/serverless-s3-security-helper@^3.1.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@stratiformdigital/serverless-s3-security-helper/-/serverless-s3-security-helper-3.2.0.tgz#9d9599d6b135497295dec324320f3f7d1b346e92"
-  integrity sha512-NucWBpECXQNbBSMufdBfi43w/IwDiJ84rmL55W/WWy9P8Hq9nXcKPE8yCTbQ74nlq4fDQ1MznSOoACsorXoA5g==
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@stratiformdigital/serverless-s3-security-helper/-/serverless-s3-security-helper-3.3.0.tgz#15a67e8d2c98658d21ef36f85c71721422c27702"
+  integrity sha512-hIIVG8PfqG84A/3KyEZggGjv1t6//VDR5gCov5A/XIvTxjGy0aVLZpJs2bi3WUUnpMOLOoCoqnp2fLWE13gIGA==
 
 "@stratiformdigital/serverless-stage-destroyer@^2.0.0":
   version "2.0.1"
