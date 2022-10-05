@@ -6,6 +6,11 @@ const topicList = [
     replicationFactor: 3,
   },
   {
+    topic: `aws.mmdl.cdc.PLAN_WVR_FLD_MPNG_TBL`,
+    numPartitions: 1,
+    replicationFactor: 3,
+  },
+  {
     topic: `aws.mmdl.cdc.PLAN_WVR_RVSN_TBL`,
     numPartitions: 1,
     replicationFactor: 3,
