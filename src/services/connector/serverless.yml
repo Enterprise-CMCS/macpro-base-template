@@ -41,6 +41,10 @@ provider:
             - ecs:ListTasks
             - ecs:DescribeTasks
           Resource: "*"
+        - Effect: "Allow"
+          Action:
+            - cloudwatch:PutMetricData
+          Resource: "*"
 
 custom:
   project: ${env:PROJECT}
@@ -99,6 +103,20 @@ functions:
       legacydbPassword: ${self:custom.dbInfo.password}
     maximumRetryAttempts: 0
     timeout: 300
+    vpc:
+      securityGroupIds:
+        - Ref: LambdaConfigureConnectorsSecurityGroup
+      subnetIds: >-
+        ${self:custom.vpc.privateSubnets}
+  testConnectors:
+    handler: handlers/testConnectors.handler
+    environment:
+      cluster: !Ref KafkaConnectCluster
+      service: !Ref KafkaConnectService
+      namespace: ${self:service}-${sls:stage}
+    timeout: 300
+    events:
+      - schedule: cron(0/1 * ? * * *)
     vpc:
       securityGroupIds:
         - Ref: LambdaConfigureConnectorsSecurityGroup
@@ -298,6 +316,32 @@ resources:
                 "stoppedReason": "$.detail.stoppedReason"
               InputTemplate: |
                 "An Connector ECS Task Failure Event has occured for mmdl-connectors. Account: <account> Cluster ARN: <clusterArn> Status: <status> Reason: <stoppedReason>"
+    JdbcTaskAlarm:
+      Type: AWS::CloudWatch::Alarm
+      Properties:
+        AlarmActions:
+          - ${param:ecsFailureTopicArn}
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        DatapointsToAlarm: 2
+        EvaluationPeriods: 5
+        MetricName: source.jdbc.mmdl-dbo-1_task_failures
+        Namespace: ${self:service}-${sls:stage}
+        Period: 60
+        Statistic: Sum
+        Threshold: 1
+    JdbcConnectorAlarm:
+      Type: AWS::CloudWatch::Alarm
+      Properties:
+        AlarmActions:
+          - ${param:ecsFailureTopicArn}
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        DatapointsToAlarm: 2
+        EvaluationPeriods: 5
+        MetricName: source.jdbc.mmdl-dbo-1_failures
+        Namespace: ${self:service}-${sls:stage}
+        Period: 60
+        Statistic: Sum
+        Threshold: 1
     LambdaConfigureConnectorsSecurityGroup:
       Type: AWS::EC2::SecurityGroup
       Properties:

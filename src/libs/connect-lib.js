@@ -150,14 +150,11 @@ export async function testConnector(ip, config) {
         .on("data", (d) => {
           console.log(d.toString("utf-8"));
           var data = JSON.parse(d);
-          if (data.connector.state != "RUNNING") {
-            throw new Error(
-              `Expected ${data.name} state to be RUNNING, saw state ${data.connector.state}`
-            );
-          }
+          resolve(data);
         })
         .on("error", (error) => {
           console.log(error);
+          reject(error);
         })
         .on("end", (d) => {
           resolver(req, resolve);
@@ -171,9 +168,12 @@ export async function testConnector(ip, config) {
 
 export async function testConnectors(cluster, service, connectors) {
   const workerIp = await ecs.findIpForEcsService(cluster, service);
-  for (var i = 0; i < connectors.length; i++) {
-    console.log(`Testing connector: ${connectors[i].name}`);
-    //This won't account for multiple tasks with multiple interfaces
-    await testConnector(workerIp, connectors[i]);
-  }
+  return await Promise.all(
+    connectors.map((connector) => {
+      console.log(`Testing connector: ${connector.name}`);
+      return testConnector(workerIp, connector);
+    })
+  ).then((res) => {
+    return res;
+  });
 }

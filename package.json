@@ -29,6 +29,7 @@
     "@stratiformdigital/serverless-online": "^3.1.0",
     "@stratiformdigital/serverless-s3-security-helper": "^3.1.0",
     "@stratiformdigital/serverless-stage-destroyer": "^2.0.0",
+    "prettier": "2.7.1",
     "semantic-release": "^19.0.5",
     "serverless": "^3.17.0",
     "serverless-bundle": "^5.3.0",
