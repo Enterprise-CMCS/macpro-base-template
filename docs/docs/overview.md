@@ -27,3 +27,8 @@ The mmdl-connectors project is a MACPRO microservice deployed to AWS which sends
 ## Archtecture
 
 ![Architecture Diagram](../../../assets/architecture.svg)
+
+
+## View Metrics
+
+[Metrics](https://ideal-engine-7242f556.pages.github.io/dora/)

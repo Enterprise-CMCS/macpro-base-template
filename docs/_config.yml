@@ -21,6 +21,7 @@ description: Teaching you how to send it
 # url: "https://just-the-docs.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 remote_theme: just-the-docs/just-the-docs
 permalink: pretty
+include: ["_next", "_app-*.js", "_buildManifest.js", "_ssgManifest.js"]
 exclude: [".jekyll-cache", "node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]
 
 layout: default
