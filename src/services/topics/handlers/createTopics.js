@@ -30,6 +30,11 @@ const topicList = [
     numPartitions: 1,
     replicationFactor: 3,
   },
+  {
+    topic: `aws.mmdl.mmdl.cdc.example.0`,
+    numPartitions: 1,
+    replicationFactor: 3,
+  },
 ];
 
 exports.handler = async function (event, context, callback) {

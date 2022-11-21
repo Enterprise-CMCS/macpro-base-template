@@ -14,7 +14,7 @@ CREATE SOURCE STREAM IF NOT EXISTS mmdl_nested_stream (
         PLAN_WVR_PGM_TYPE_CD string>
 
    ) WITH (
-     KAFKA_TOPIC = 'aws.mmdl.mmdl.cdc.example.0', 
+     KAFKA_TOPIC = '${param:topicNamespace}aws.mmdl.mmdl.cdc.example.0', 
      VALUE_FORMAT = 'JSON',
      REPLICAS = 3
    );
