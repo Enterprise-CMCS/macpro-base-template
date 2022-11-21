@@ -2943,10 +2943,12 @@
   dependencies:
     chokidar "^3.5.2"
 
-"@stratiformdigital/serverless-s3-security-helper@^3.1.0":
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/@stratiformdigital/serverless-s3-security-helper/-/serverless-s3-security-helper-3.3.0.tgz#15a67e8d2c98658d21ef36f85c71721422c27702"
-  integrity sha512-hIIVG8PfqG84A/3KyEZggGjv1t6//VDR5gCov5A/XIvTxjGy0aVLZpJs2bi3WUUnpMOLOoCoqnp2fLWE13gIGA==
+"@stratiformdigital/serverless-s3-security-helper@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@stratiformdigital/serverless-s3-security-helper/-/serverless-s3-security-helper-4.0.0.tgz#de160cd1e8334e5858d40891ecb91f1496528edd"
+  integrity sha512-xF7wtJf4ic1ekNQnb15rWs5KtsqfGQucFmu+37uCcO2NO/P7tqZRZY351wfJW3xgUGFMVihXr3LwdT44r7rTUg==
+  dependencies:
+    lodash "^4.17.21"
 
 "@stratiformdigital/serverless-stage-destroyer@^2.0.0":
   version "2.0.1"
