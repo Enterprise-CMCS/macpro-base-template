@@ -347,6 +347,60 @@ resources:
       Properties:
         GroupDescription: Security Group for configuring the connector.
         VpcId: ${self:custom.vpc.id}
+    ConnectorLogsErrorCount:
+      Type: AWS::Logs::MetricFilter
+      Properties:
+        LogGroupName:
+          Ref: "KafkaConnectWorkerLogGroup"
+        FilterName: ConnectorLogsErrorCount
+        FilterPattern: "ERROR"
+        MetricTransformations:
+          - MetricValue: "1"
+            DefaultValue: "0"
+            MetricNamespace: ${self:service}-${sls:stage}/Connector/ERRORS
+            MetricName: "ConnectorLogsErrorCount"
+            Unit: Count
+    ConnectorLogsErrorCountAlarm:
+      Type: AWS::CloudWatch::Alarm
+      Properties:
+        DatapointsToAlarm: 1
+        AlarmActions:
+          - ${param:ecsFailureTopicArn}
+        AlarmName: ${self:service}-${sls:stage}-ConnectorLogsErrorCount
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        EvaluationPeriods: 2
+        Period: 300
+        Threshold: 1
+        MetricName: ConnectorLogsErrorCount
+        Namespace: ${self:service}-${sls:stage}/Connector/ERRORS
+        Statistic: Sum
+    ConnectorLogsWarnCount:
+      Type: AWS::Logs::MetricFilter
+      Properties:
+        LogGroupName:
+          Ref: "KafkaConnectWorkerLogGroup"
+        FilterName: ConnectorLogsWarnCount
+        FilterPattern: "WARN"
+        MetricTransformations:
+          - MetricValue: "1"
+            DefaultValue: "0"
+            MetricNamespace: ${self:service}-${sls:stage}/Connector/WARNS
+            MetricName: "ConnectorLogsWarnCount"
+            Unit: Count
+    ConnectorLogsWarnCountAlarm:
+      Type: AWS::CloudWatch::Alarm
+      Properties:
+        DatapointsToAlarm: 1
+        AlarmActions:
+          - ${param:ecsFailureTopicArn}
+        AlarmName: ${self:service}-${sls:stage}-ConnectorLogsWarnCount
+        ComparisonOperator: GreaterThanOrEqualToThreshold
+        EvaluationPeriods: 2
+        Period: 300
+        Threshold: 1
+        MetricName: ConnectorLogsWarnCount
+        Namespace: ${self:service}-${sls:stage}/Connector/WARNS
+        Statistic: Sum
 
   Outputs:
     KafkaConnectWorkerSecurityGroupId:
