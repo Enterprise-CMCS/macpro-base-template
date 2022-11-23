@@ -191,6 +191,7 @@ yargs(process.argv.slice(2))
     {
       auth: { type: "string", demandOption: true },
       repository: { type: "string", demandOption: true },
+      accountNickname: { type: "string", demandOption: true },
     },
     async (options) => {
       for (let region of [process.env.REGION_A, process.env.REGION_B]) {
@@ -198,7 +199,7 @@ yargs(process.argv.slice(2))
           repository: options.repository,
           auth: options.auth,
           region: region,
-          accountNickname: "dev",
+          accountNickname: options.accountNickname,
         });
         await sync.sync();
       }

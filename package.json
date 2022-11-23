@@ -23,7 +23,7 @@
   "homepage": "https://github.com/CMSgov/mmdl-connectors#readme",
   "devDependencies": {
     "@serverless/compose": "^1.3.0",
-    "@stratiformdigital/security-hub-sync": "^1.0.3",
+    "@stratiformdigital/security-hub-sync": "^2.0.2",
     "@stratiformdigital/serverless-iam-helper": "^3.1.0",
     "@stratiformdigital/serverless-idempotency-helper": "^3.1.0",
     "@stratiformdigital/serverless-online": "^3.1.0",
