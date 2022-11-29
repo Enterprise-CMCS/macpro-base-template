@@ -32,7 +32,7 @@ No matter what task or container to which you're trying to connect, the command 
 
 #### Procedure
 - [Obtain and set AWS CLI credentials]({{ site.baseurl }}{%link docs/development-workflows/aws-auth.md %})
-- Determine the stage to which you wish to connect.  This could be master, or it could be a development stage, such as 'mystage'.
+- Determine the stage to which you wish to connect.  This could be main, or it could be a development stage, such as 'mystage'.
 - Determine the service that deploys the container to which you want to connect.  If you're wanting to connect to ksqldb interactive or headless, your service is ksqldb.  It you're wanting to connect to the connector's Kafka Connect worker or the Oracle instantclient, your service is connector.
 - Use the run script's top level 'connect' command to obtain the connection string:
   ```bash

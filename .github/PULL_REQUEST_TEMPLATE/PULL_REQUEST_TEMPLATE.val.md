@@ -1,6 +1,6 @@
 ## Release to VAL
 
-This Pull Request affects a release from master to val.
+This Pull Request affects a release from main to val.
 
 #### Closed Issues in this release
 

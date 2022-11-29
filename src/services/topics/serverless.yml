@@ -33,7 +33,7 @@ custom:
   project: ${env:PROJECT}
   serverlessTerminationProtection:
     stages: # Apply CloudFormation termination protection for these stages
-      - master
+      - main
       - val
       - production
   vpc: ${ssm:/aws/reference/secretsmanager/${self:custom.project}/${sls:stage}/vpc, ssm:/aws/reference/secretsmanager/${self:custom.project}/default/vpc}
@@ -44,7 +44,7 @@ custom:
         aws lambda invoke --region ${self:provider.region} --function-name ${self:service}-${sls:stage}-createTopics --invocation-type RequestResponse /dev/null > /dev/null
 
 params:
-  master:
+  main:
     topicNamespace: ""
     deleteTopicsEnabled: true
   val:

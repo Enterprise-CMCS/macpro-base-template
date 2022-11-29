@@ -164,7 +164,7 @@ yargs(process.argv.slice(2))
     },
     async (options) => {
       await install_deps_for_services();
-      await refreshOutputs("master");
+      await refreshOutputs("main");
       await runner.run_command_and_output(
         `Delete Topics`,
         [
@@ -172,7 +172,7 @@ yargs(process.argv.slice(2))
           "topics",
           "invoke",
           "--stage",
-          "master",
+          "main",
           "--function",
           "deleteTopics",
           "--data",
