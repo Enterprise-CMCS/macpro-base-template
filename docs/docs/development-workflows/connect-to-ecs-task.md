@@ -23,7 +23,6 @@ How-to to remote onto any ECS container deployed by mmdl-connectors.
 
 #### Summary
 These instructions should be followed anytime you'd like to remote onto a running ECS Container.  Direct access to the running containers is often helpful in development or debugging efforts.  This project currently deploys several containers:
-- the ksqldb service deploys two containers, interactive and headless, each in a seperate ECS task.
 - the connector service deploys two containers, a kafka connect worker and an oracle instant client, both in the same ECS task.
 No matter what task or container to which you're trying to connect, the command you run will be of the same format.  It's just the arguments that differ.
 
