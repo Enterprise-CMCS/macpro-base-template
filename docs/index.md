@@ -2,14 +2,14 @@
 layout: default
 title: Home
 nav_order: 1
-description: "The macpro-base-template project is a serverless monorepo template.  It sets up projects the way we like them, and exists to get ideas from zero to deployed as fast as possible."
+description: "The macpro-base-template. This is placeholder and can be replaced with what makes sense for your project"
 permalink: /
 ---
 
 # macpro-base-template
 {: .fs-9 }
 
-The macpro-base-template project is a MACPRO microservice sending CMS Meidcaid Model Data Lab (MMDL) data to CMS Bigmac in realtime.
+The macpro-base-template project is a project that can serve as a baseline to get up and running faster.
 {: .fs-6 .fw-300 }
 
 [Join us on Slack](https://cmsgov.slack.com/archives/C0403M0D007){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [View it on GitHub](https://github.com/Enterprise-CMCS/macpro-base-template){: .btn .fs-5 .mb-4 .mb-md-0 }
@@ -17,10 +17,6 @@ The macpro-base-template project is a MACPRO microservice sending CMS Meidcaid M
 ---
 
 ## Welcome!
-
-The macpro-base-template project is a MACPRO microservice deployed to AWS which sends CMS Meidcaid Model Data Lab (MMDL) data to [CMS Bigmac](https://github.com/cmsgov/cms-bigmac) in realtime.  It deploys a [Kafka Connect](https://docs.confluent.io/platform/current/connect/index.html) service to ECS Fargate.  The Kafka Connect service is configured with a [JDBC Source connector](https://docs.confluent.io/kafka-connectors/jdbc/current/index.html), which watches MMDL's Oracle database for data changes and sends them to topics in CMS Bigmac.  AWS Lambda is used to create topics in Bigmac, as well as some other perform some other deployment operations.  Alerting is leveraged through AWS Cloudwatch.  
-
-This project is under active development by the MACPRO Platform team.  Read on for more details, and feel free to join us on [Slack](https://cmsgov.slack.com/archives/C0403M0D007).
 
 Thanks, and we're glad you're here!
 
