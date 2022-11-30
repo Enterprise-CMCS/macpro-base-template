@@ -3,24 +3,22 @@
 Standard Operating Procedure for MACPRO Project Creation Output of: https://qmacbis.atlassian.net/browse/OY2-20437
 
 ## Introduction
-### MACPRO Platform Team 07 OCT 2022
  On MACPRO, we get a lot of ideas. These stem both from the client and our development teams, both aimed at delivering on the project’s charter. These ideas often require a new project to be created. Project in this context refers to a github repository with its own distinct delivery repository and lifecycle. This document aims to be a guide for starting a new project, or a guide on how to take an idea and start delivering it.
-### Audience
+## Audience
 This SOP is suited for anyone involved with project creation. Parts will be non technical process oriented, and other parts will require technical knowledge and experience. CMS Jira requests will need to be made, so someone with appropriate access will need to be involved.
-### Summary
+## Summary
 
 1. Request a new GitHub repository for the project
 1. Request a new set of AWS accounts (if applicable).
 1. Create a new Slack channel for the project.
 1. Bootstrap the new project with the base template.
 
-### Details
+## Details
 
 ### Step 1: Request a new GitHub repository for the project.
 Creating a new project will always involve creating a new GitHub repository, so this step must always be completed. Before making the request for the new repo, you need to decide a few things:
 - Should the repo be public or private? CMS, as a rule, likes to open source its projects, and keep some projects private by exception. So, if the project you’re creating is allowed to be public from a security stance, it should probably be public. If there’s any reason it should not be public, it should be private. The answer to this question is not always straightforward. Sometimes we have a project that doesn’t contain any secret or sensitive information, but it sheds light on the deployed, operational architecture of systems that do have such information. In that case we may decide to keep the project private. The public or private decision should be considered carefully.
 - Should GitHub Actions be enabled? The answer is almost certainly yes. New MACPRO projects use GitHub Actions as it’s CI/CD appliance. In the future, Actions may be substituted for a different tool, but for now Actions is required. This question is mainly being listed since the request for Actions to be enabled on the repo is done as a distinct task.
- MACPRO Platform Team 07 OCT 2022
 - Who should be the initial repository admin? The repo creation process requires adding at least one MACPRO user as a repository administrator. This administrator can then add the appropriate team members to the repo.
 - What should the project be called? This may already have an answer, one that you decided before referencing this document. But consider the repo name anyways. Keep in mind:
 - Newly created projects will be created within the CMSGov GitHub organization, so it usually doesn’t make sense to include ‘cms’ in the repository name.
@@ -52,20 +50,16 @@ Someone with appropriate permissions can follow this procedure to create a new S
 1. Login to the CMS Slack workspace (cmsgov.slack.com)
 1. Next to ‘Channels, click the ‘+’ sign.
 1. Create a new channel.
-    a.
-b. 4. Once a. b. c.
-Set the visibility (public/private) accordingly
-Name it the same as the project repository. created, make a note of the new channel’s URL
-Find the channel on the sidebar
-Right click it
-Select Copy, and Copy Link. You may put this link somewhere like a notepad, as you will use it later. But don’t worry, this can always be found again.
+    1. Set the visibility (public/private) accordingly
+    1. Name it the same as the project repository.
+1. Once created, make a note of the new channel’s URL
+    1. Find the channel on the sidebar
+    1. Right click it
+    1. Select Copy, and Copy Link. You may put this link somewhere like a notepad as you will use it later. But don’t worry, this can always be found again.
 1. You may add anyone who should have access to the channel.
 1. Bootstrap the new project with the base template.
-New MACPRO project repositories are bootstrapped with code from our base template repository. This base template repository is a github repo itself; it’s maintained by the MACPRO Platform Team as the standard MACPRO project structure. It includes patterns for deployment, deployment of dev branches, testing, security scanning, and so forth. There’s a lot of functionality packed into it, without commenting much on the actual application architecture. This is done deliberately, so projects may use the template as a starting point, and build the new project’s services on top of it. In the future, there may be other templates that are more specific, such as a webapp template or a kafka consumer template, but for now there is only the single
-MACPRO Platform Team 07 OCT 2022
- 
-MACPRO Platform Team 07 OCT 2022
-base template. This step involved getting the latest copy of that template and pushing it to the new project repository. These instructions are held elsewhere in detail.
+New MACPRO project repositories are bootstrapped with code from our base template repository. This base template repository is a github repo itself; it’s maintained by the MACPRO Platform Team as the standard MACPRO project structure. It includes patterns for deployment, deployment of dev branches, testing, security scanning, and so forth. There’s a lot of functionality packed into it, without commenting much on the actual application architecture. This is done deliberately, so projects may use the template as a starting point, and build the new project’s services on top of it. In the future, there may be other templates that are more specific, such as a webapp template or a kafka consumer template, but for now there is only the single base template. This step involved getting the latest copy of that template and pushing it to the new project repository. These instructions are held elsewhere in detail.
+
 Follow this procedure to bootstrap your new project repository:
 - Follow the document here:
 https://docs.google.com/document/d/1FdweJT8a4edK9hGHLg7Zf6ETV58a264PSGYrZYldEUE/edit
