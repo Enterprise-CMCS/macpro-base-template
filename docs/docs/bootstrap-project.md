@@ -1,6 +1,6 @@
 # Bootstrapping a New Project
 
-Standard Operating Procedure for MACPRO Project Creation Output of: https://qmacbis.atlassian.net/browse/OY2-20437
+Standard Operating Procedure for MACPRO Project Creation Output of: <https://qmacbis.atlassian.net/browse/OY2-20437>
 
 ## Introduction
  On MACPRO, we get a lot of ideas. These stem both from the client and our development teams, both aimed at delivering on the project’s charter. These ideas often require a new project to be created. Project in this context refers to a github repository with its own distinct delivery repository and lifecycle. This document aims to be a guide for starting a new project, or a guide on how to take an idea and start delivering it.
@@ -28,9 +28,9 @@ sometimes less is more.
 
 #### After considering the items above and making decisions, follow this procedure to get the repo created:
 
-1. Create a Web Help Service Desk (WHSD) Jira Ticket for repo creation, using https://jira.cms.gov/browse/WHSD-46744 as a template for the body. Update fields accordingly.
+1. Create a Web Help Service Desk (WHSD) Jira Ticket for repo creation, using <https://jira.cms.gov/browse/WHSD-46744> as a template for the body. Update fields accordingly.
 1. Wait. Wait until the repository is created.
-1. Create another WHSD Jira Ticket, this one for enabling GitHub Actions on the newly created repository, using https://jira.cms.gov/browse/WHSD-46923 as a template for the body. Update fields accordingly.
+1. Create another WHSD Jira Ticket, this one for enabling GitHub Actions on the newly created repository, using <https://jira.cms.gov/browse/WHSD-46923> as a template for the body. Update fields accordingly.
 1. The administrator added to the repository (that may well be you) may now go add
 anyone to the repository that should have permissions.
 
@@ -39,8 +39,8 @@ The ‘if applicable part’ is important. You’ll need to decide if this new p
 However, not all new projects require its own set of accounts. While a new service or idea may be best organized in its own repository, it's sometimes unnecessary to organize it in its own AWS accounts. For example: there exists a set of ‘Bigmac’ accounts (bigmac-dev, bigmac-val, bigmac-prod). Within this set of accounts, however, several projects (repositories) are deployed. The cms-bigmac project, mmdl-connectors, seatool-connectors, and seatool-compare are each an individual project and repository, but leverage the same set of accounts. This was done because from a security standpoint, there’s no harm in them coexisting. And from a business management perspective, having less AWS Accounts when it’s acceptably secure is preferred.
 In general, answer this: can my new project leverage an existing set of AWS Accounts without compromising security? Keep in mind, our developer access is organized at the account level. So for instance, anyone who gets access to Project B also gets access to Project A if B and A are deployed to the same set of AWS Accounts.
 If you do have a set of AWS Accounts you can use, great! Move along to step 3. If you need to create new AWS Accounts, follow this procedure:
- - https://cloud.cms.gov/aws-account-creation
- 
+ - <https://cloud.cms.gov/aws-account-creation>
+
 ### Step 3: Create a new Slack channel for the project.
 Slack is used on MACPRO as a primary means of communication. While Slack is neither a "System of Record" nor approved for sensitive information or inappropriate use, it nonetheless is crucial to MACPRO development.
 While there are many Slack channels for various purposes, we typically create one dedicated slack channel per project or repository. This channel is typically subscribed to GitHub repository events, such as releases, and is where developers can send messages regarding the product. As such, creating a new Slack channel is part of the project creation SOP
@@ -63,7 +63,7 @@ New MACPRO project repositories are bootstrapped with code from our base templat
 
 Follow this procedure to bootstrap your new project repository:
 - Follow the document here:
-https://docs.google.com/document/d/1FdweJT8a4edK9hGHLg7Zf6ETV58a264PSGYrZYldEUE/edit
+<https://docs.google.com/document/d/1FdweJT8a4edK9hGHLg7Zf6ETV58a264PSGYrZYldEUE/edit>
 
 *** This section currently points to a gdrive doc explaining how to bootstrap a project based on mmdl-connectors, while this procedure explains how to bootstrap from a base template repo. This is admittedly inconsistent, but deliberate; I expect this document to be updated when the base template is created, and the gdrive doc to be further refined and eventually made static.
 End
