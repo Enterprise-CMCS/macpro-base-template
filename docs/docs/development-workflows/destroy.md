@@ -33,10 +33,10 @@ In most cases, stages are deployed from a branch in the git repo.  If this is th
 - Stop and think about what you are doing.  Destroying is a lot easier to avoid then to undo.
 - Delete the branch for the stage you wish to delete.
   ```bash
-    cd mmdl-connectors
+    cd macpro-base-template
     git push --delete origin foo
   ```
-- Monitor the status of your stage's destruction in the repo's [Actions area](https://github.com/cmsgov/mmdl-connectors/actions).
+- Monitor the status of your stage's destruction in the repo's [Actions area](https://github.com/cmsgov/macpro-base-template/actions).
 
 #### Notes
 - None
@@ -50,14 +50,14 @@ The same GitHub Actions workflow referenced above can be triggered manually.  Th
 - Git repo write access; complete the Git access request portion of [onboarding]({{ site.baseurl }}{% link docs/onboarding/onboarding.md %})
 
 #### Procedure
-- In a browser, go to the [repo](https://github.com/cmsgov/mmdl-connectors)
+- In a browser, go to the [repo](https://github.com/Enterprise-CMCS/macpro-base-template)
 - Click the Actions tab
 - Click Destroy, located on the left hand side of the screen.
 - Click 'Run workflow'
   - Leave 'Use workflow from' set to main.
   - Enter the name of the stage you wish to destroy in the free text field. 
   - Click 'Run workflow'
-- Monitor the status of your stage's destruction in the repo's [Actions area](https://github.com/cmsgov/mmdl-connectors/actions).
+- Monitor the status of your stage's destruction in the repo's [Actions area](https://github.com/Enterprise-CMCS/macpro-base-template/actions).
 
 #### Notes
 - None
@@ -75,7 +75,7 @@ This destroys a n entire application, so the entire stage, to AWS.
 - [Obtain and set AWS CLI credentials]({{ site.baseurl }}{%link docs/development-workflows/aws-auth.md %})
 - Destroy using the run script:
   ```bash
-    cd mmdl-connectors
+    cd macpro-base-template
     nvm use
     run destroy --stage foo
   ```
@@ -99,7 +99,7 @@ This will destroy a single service for a given stage.
 - [Obtain and set AWS CLI credentials]({{ site.baseurl }}{%link docs/development-workflows/aws-auth.md %})
 - Destroy a single service using the run script:
   ```bash
-    cd mmdl-connectors
+    cd macpro-base-template
     nvm use
     run destroy --service bar --stage foo
   ```

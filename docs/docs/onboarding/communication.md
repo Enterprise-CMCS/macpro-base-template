@@ -43,7 +43,7 @@ We use ~~GitHub Issues~~ Jira to document work items.  This should be the place 
 
 ## GitHub Pull Requests (PRs)
 
-GitHub Pull Requests are the primary vehicle to propose code changes to mmdl-connectors.  A PR is always used to ship code to the main branch, with very few exceptions.
+GitHub Pull Requests are the primary vehicle to propose code changes to macpro-base-template.  A PR is always used to ship code to the main branch, with very few exceptions.
 
 This project has PR templates which will be used automatically when you create a PR.  While the template sets up a PR with the fields that are typically required, you need to add the content to the various sections.
 

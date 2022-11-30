@@ -1,4 +1,4 @@
-<h1 align="center" style="border-bottom: none;">mmdl-connectors</h1>
+<h1 align="center" style="border-bottom: none;">macpro-base-template</h1>
 <h3 align="center">A microservice sending CMS Medicaid Model Data Lab (MMDL) data to CMS Bigmac.</h3>
 <p align="center">
   <a href="https://ideal-engine-7242f556.pages.github.io/">
@@ -23,7 +23,7 @@
 
 ---
 
-### Please visit our [mmdl-connectors docs site](https://ideal-engine-7242f556.pages.github.io/) for complete documentation.
+### Please visit our [macpro-base-template docs site](https://enterprise-cmcs.github.io/macpro-base-template/) for complete documentation.
 
 ---
 
@@ -37,7 +37,7 @@ That's all for now; this project was just created!
 
 ## Contributing
 
-Work items for mmdl-connectors are tracked in CMS' Jira. If you have access to our Jira, you can view mmdl-connectors related work there. While there's no dedicated mmdl-connectors product view in Jira yet, the [Platform Team board](https://qmacbis.atlassian.net/jira/software/c/projects/OY2/boards/216/backlog?selectedIssue=OY2-17657&epics=visible&issueLimit=100) is a good stand in.
+Work items for macpro-base-template are tracked in CMS' Jira. If you have access to our Jira, you can view macpro-base-template related work there. While there's no dedicated macpro-base-template product view in Jira yet, the [Platform Team board](https://qmacbis.atlassian.net/jira/software/c/projects/OY2/boards/216/backlog?selectedIssue=OY2-17657&epics=visible&issueLimit=100) is a good stand in.
 
 If you don't have access to Jira, would like access to Jira, or would like to discuss any enhancement, bug, idea, or question, please visit the [MMDL Connectors Slack channel](https://cmsgov.slack.com/archives/C0403M0D007). This is a public channel open to anyone in CMS Slack, and all input is welcome!
 

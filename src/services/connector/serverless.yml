@@ -315,7 +315,7 @@ resources:
                 "account": "$.account"
                 "stoppedReason": "$.detail.stoppedReason"
               InputTemplate: |
-                "An Connector ECS Task Failure Event has occured for mmdl-connectors. Account: <account> Cluster ARN: <clusterArn> Status: <status> Reason: <stoppedReason>"
+                "An Connector ECS Task Failure Event has occured for macpro-base-template. Account: <account> Cluster ARN: <clusterArn> Status: <status> Reason: <stoppedReason>"
     JdbcTaskAlarm:
       Type: AWS::CloudWatch::Alarm
       Properties:
