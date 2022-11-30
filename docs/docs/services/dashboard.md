@@ -5,7 +5,7 @@ parent: Services
 nav_order: 2
 ---
 
-# Dashboard
+# dashboard
 {: .no_toc }
 
 ## Table of contents
