@@ -8,11 +8,14 @@ Standard Operating Procedure for MACPRO Project Creation Output of: https://qmac
 ### Audience
 This SOP is suited for anyone involved with project creation. Parts will be non technical process oriented, and other parts will require technical knowledge and experience. CMS Jira requests will need to be made, so someone with appropriate access will need to be involved.
 ### Summary
+
 1. Request a new GitHub repository for the project
 2. Request a new set of AWS accounts (if applicable).
 3. Create a new Slack channel for the project.
 4. Bootstrap the new project with the base template.
+
 ### Details
+
 ### Step 1: Request a new GitHub repository for the project.
 Creating a new project will always involve creating a new GitHub repository, so this step must always be completed. Before making the request for the new repo, you need to decide a few things:
 - Should the repo be public or private? CMS, as a rule, likes to open source its projects, and keep some projects private by exception. So, if the project you’re creating is allowed to be public from a security stance, it should probably be public. If there’s any reason it should not be public, it should be private. The answer to this question is not always straightforward. Sometimes we have a project that doesn’t contain any secret or sensitive information, but it sheds light on the deployed, operational architecture of systems that do have such information. In that case we may decide to keep the project private. The public or private decision should be considered carefully.
@@ -24,12 +27,15 @@ Creating a new project will always involve creating a new GitHub repository, so 
 - All lowercase letters is a standard
 - The name of the project/repo will be used a lot. It should be accurate, but
 sometimes less is more.
+
 #### After considering the items above and making decisions, follow this procedure to get the repo created:
+
 1. Create a Web Help Service Desk (WHSD) Jira Ticket for repo creation, using https://jira.cms.gov/browse/WHSD-46744 as a template for the body. Update fields accordingly.
 2. Wait. Wait until the repository is created.
 3. Create another WHSD Jira Ticket, this one for enabling GitHub Actions on the newly created repository, using https://jira.cms.gov/browse/WHSD-46923 as a template for the body. Update fields accordingly.
 4. The administrator added to the repository (that may well be you) may now go add
 anyone to the repository that should have permissions.
+
 ### Step 2: Request a new set of AWS accounts (if applicable).
 The ‘if applicable part’ is important. You’ll need to decide if this new project requires its own set of AWS accounts. For background, CMS creates AWS accounts in sets of three: a ‘dev’ account, an ‘impl’ account, and a ‘prod’ account. These are created when requested by MACPRO to support new products.
 However, not all new projects require its own set of accounts. While a new service or idea may be best organized in its own repository, it's sometimes unnecessary to organize it in its own AWS accounts. For example: there exists a set of ‘Bigmac’ accounts (bigmac-dev, bigmac-val, bigmac-prod). Within this set of accounts, however, several projects (repositories) are deployed. The cms-bigmac project, mmdl-connectors, seatool-connectors, and seatool-compare are each an individual project and repository, but leverage the same set of accounts. This was done because from a security standpoint, there’s no harm in them coexisting. And from a business management perspective, having less AWS Accounts when it’s acceptably secure is preferred.
@@ -46,7 +52,7 @@ Someone with appropriate permissions can follow this procedure to create a new S
 1. Login to the CMS Slack workspace (cmsgov.slack.com)
 2. Next to ‘Channels, click the ‘+’ sign.
 3. Create a new channel.
-a.
+    a.
 b. 4. Once a. b. c.
 Set the visibility (public/private) accordingly
 Name it the same as the project repository. created, make a note of the new channel’s URL
