@@ -48,7 +48,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
           REPO_NAME: macpro-base-template
-          BRANCHES_TO_GENERATE: master,val,production
+          BRANCHES_TO_GENERATE: master
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
