@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Deploy Cloudwatch Dashboard
+title: dashboard
 parent: Services
 nav_order: 2
 ---
 
-# Deploy CloudWatch Dashboard
+# Dashboard
 {: .no_toc }
 
 ## Table of contents
