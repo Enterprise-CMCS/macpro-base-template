@@ -40,6 +40,7 @@ However, not all new projects require its own set of accounts. While a new servi
 In general, answer this: can my new project leverage an existing set of AWS Accounts without compromising security? Keep in mind, our developer access is organized at the account level. So for instance, anyone who gets access to Project B also gets access to Project A if B and A are deployed to the same set of AWS Accounts.
 If you do have a set of AWS Accounts you can use, great! Move along to step 3. If you need to create new AWS Accounts, follow this procedure:
  - https://cloud.cms.gov/aws-account-creation
+ 
 ### Step 3: Create a new Slack channel for the project.
 Slack is used on MACPRO as a primary means of communication. While Slack is neither a "System of Record" nor approved for sensitive information or inappropriate use, it nonetheless is crucial to MACPRO development.
 While there are many Slack channels for various purposes, we typically create one dedicated slack channel per project or repository. This channel is typically subscribed to GitHub repository events, such as releases, and is where developers can send messages regarding the product. As such, creating a new Slack channel is part of the project creation SOP
