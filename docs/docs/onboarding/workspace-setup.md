@@ -70,7 +70,7 @@ Now that you have all prerequisites installed, it's time to get the code base. T
 - Configure your GitHub user with an SSH key, and add it to your ssh-agent. [Help can be found here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). Using https and personal access tokens, instead of SSH and a key, is possible but discouraged.
 - Clone the repository
   ```
-  git clone git@github.com:cmsgov/mmdl-connectors.git
+  git clone git@github.com:Enterprise-CMCS/macpro-base-template.git
   ```
 
 ## Configure AWS CLI
@@ -83,6 +83,6 @@ This step requires that your request for AWS access has been completed. If it ha
 
 ## Now what?
 
-Nice job! If you've successfully stepped through this document, you should be entirely ready to start active development on the mmdl-connectors project.
+Nice job! If you've successfully stepped through this document, you should be entirely ready to start active development on the macpro-base-template project.
 
 If you've had errors along the way, that's OK! We're here to help. If you've successfully joined our Slack channel, feel free to post there.  Else, please send an email to mdial@collabralink.com explaining the issue. We will get back to you ASAP.

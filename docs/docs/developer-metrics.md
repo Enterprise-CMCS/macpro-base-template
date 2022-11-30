@@ -23,4 +23,6 @@ DORA, short for (DevOps Research and Assessment) was a study performed by google
 ## How does it work
 Linked below is Development Metrics dashboard in question. But in essence it collects a data around deployments, commits, and pull-requests that occur in github and displays it in a useful and easily readable way.
 
-[View Development Metrics](https://ideal-engine-7242f556.pages.github.io/dora/)
+A link to the dora page will need to be pasted here. View this page in the code to see the format.
+
+<!-- [View Development Metrics](https://ideal-engine-7242f556.pages.github.io/dora/) -->

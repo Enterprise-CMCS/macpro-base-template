@@ -21,7 +21,7 @@ You'll need access to a few systems to be a fully privileged developer.  This se
 
 ## Git Repository
 
-To be a fully privileged developer on mmdl-connectors, you will need write access to the repository.
+To be a fully privileged developer on macpro-base-template, you will need write access to the repository.
 
 To request access, please send an email to mdial@collabralink.com which includes:
 
@@ -31,7 +31,7 @@ To request access, please send an email to mdial@collabralink.com which includes
 
 ## AWS Account(s)
 
-mmdl-connectors is deployed to one (or many) AWS accounts.  While many workflows can be done without direct AWS Console/CLI access, a fully equipped developer will need AWS access. To request access, please send an email to mdial@collabralink.com which includes:
+macpro-base-template is deployed to one (or many) AWS accounts.  While many workflows can be done without direct AWS Console/CLI access, a fully equipped developer will need AWS access. To request access, please send an email to mdial@collabralink.com which includes:
 
 - Name
 - Your email address
@@ -46,4 +46,4 @@ We use [Code Climate](https://codeclimate.com/) to monitor project quality.  Thi
 
 Code Climate is a completely external tool which is free to use.  You may go to Code Climate and create a new account.  We recommend you sign up with GitHub, for convenience, so you won't need to maintain a separate username and password.  
 
-Once you have an account, you may view any repositories for which you have access.  For private repositories (mmdl-connectors is currently private), you will not be able to view the repository in Code Climate until you have Git repository write access (see above).
+Once you have an account, you may view any repositories for which you have access.  For private repositories (macpro-base-template is currently private), you will not be able to view the repository in Code Climate until you have Git repository write access (see above).

@@ -8,7 +8,7 @@ nav_order: 6
 # Connect to an ECS Container
 {: .no_toc }
 
-How-to to remote onto any ECS container deployed by mmdl-connectors.
+How-to to remote onto any ECS container deployed by macpro-base-template.
 {: .fs-6 .fw-300 }
 
 ## Table of contents
@@ -23,7 +23,6 @@ How-to to remote onto any ECS container deployed by mmdl-connectors.
 
 #### Summary
 These instructions should be followed anytime you'd like to remote onto a running ECS Container.  Direct access to the running containers is often helpful in development or debugging efforts.  This project currently deploys several containers:
-- the ksqldb service deploys two containers, interactive and headless, each in a seperate ECS task.
 - the connector service deploys two containers, a kafka connect worker and an oracle instant client, both in the same ECS task.
 No matter what task or container to which you're trying to connect, the command you run will be of the same format.  It's just the arguments that differ.
 
@@ -36,7 +35,7 @@ No matter what task or container to which you're trying to connect, the command 
 - Determine the service that deploys the container to which you want to connect.  If you're wanting to connect to ksqldb interactive or headless, your service is ksqldb.  It you're wanting to connect to the connector's Kafka Connect worker or the Oracle instantclient, your service is connector.
 - Use the run script's top level 'connect' command to obtain the connection string:
   ```bash
-    cd mmdl-connectors
+    cd macpro-base-template
     run connect --service [servicename] --stage [stagename]
   ```
   If the connector ECS task is running, this will output connection commands.  Read the outputted commands and find the one you want.
