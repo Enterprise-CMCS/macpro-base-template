@@ -4,7 +4,7 @@ name: Deploy Jekyll with GitHub Pages dependencies preinstalled
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: ["master"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -48,7 +48,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
           REPO_NAME: BigMac
-          BRANCHES_TO_GENERATE: main,val,production
+          BRANCHES_TO_GENERATE: master,val,production
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:

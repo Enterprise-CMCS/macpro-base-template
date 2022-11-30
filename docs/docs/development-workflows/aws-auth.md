@@ -37,7 +37,7 @@ To get to the AWS Console:
 - Select Web Access.  The AWS Console for the account should open in a new browser tab.  Once the console is open, you may close your VPN connection, if you wish.
 
 #### Notes
-- This project deploys to the 'Bigmac Dev', 'Bigmac Val', and 'Bigmac Prod' accounts.  This is not a typo.  MMDL deploys to the same set of accounts as CMS Bigmac, although they are distinct products.  You very likely want to select Bigmac Dev, as you are most likely trying to interact with a dev/ephemeral environment or main.  You should only select Bigmac Val or Bigmac Prod if you have a specific reason, and are confident in what you are doing.
+- This project deploys to the 'Bigmac Dev', 'Bigmac Val', and 'Bigmac Prod' accounts.  This is not a typo.  MMDL deploys to the same set of accounts as CMS Bigmac, although they are distinct products.  You very likely want to select Bigmac Dev, as you are most likely trying to interact with a dev/ephemeral environment or master.  You should only select Bigmac Val or Bigmac Prod if you have a specific reason, and are confident in what you are doing.
 - If you can't see your target Bigmac account when logging in, try clicking 'All Projects' on the left hand side.  It may simply not be available in your quick menu displayed at login.
 - If you still cannot find the correct Bigmac account, you don't have access.  Please see the onboarding instructions listed in the Prerequisites section of this procedure.
 

@@ -21,7 +21,7 @@ custom:
   project: ${env:PROJECT}
   serverlessTerminationProtection:
     stages: # Apply CloudFormation termination protection for these stages
-      - main
+      - master
       - val
       - production
 
