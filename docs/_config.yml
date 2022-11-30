@@ -16,7 +16,7 @@
 # Theme settings
 
 title: macpro-base-template
-description: Teaching you how to send it
+description: MacPro Base Template Documentation
 # baseurl: "/just-the-docs" # the subpath of your site, e.g. /blog
 # url: "https://just-the-docs.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 remote_theme: just-the-docs/just-the-docs
