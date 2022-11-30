@@ -10,9 +10,9 @@ This SOP is suited for anyone involved with project creation. Parts will be non 
 ### Summary
 
 1. Request a new GitHub repository for the project
-2. Request a new set of AWS accounts (if applicable).
-3. Create a new Slack channel for the project.
-4. Bootstrap the new project with the base template.
+1. Request a new set of AWS accounts (if applicable).
+1. Create a new Slack channel for the project.
+1. Bootstrap the new project with the base template.
 
 ### Details
 
@@ -31,9 +31,9 @@ sometimes less is more.
 #### After considering the items above and making decisions, follow this procedure to get the repo created:
 
 1. Create a Web Help Service Desk (WHSD) Jira Ticket for repo creation, using https://jira.cms.gov/browse/WHSD-46744 as a template for the body. Update fields accordingly.
-2. Wait. Wait until the repository is created.
-3. Create another WHSD Jira Ticket, this one for enabling GitHub Actions on the newly created repository, using https://jira.cms.gov/browse/WHSD-46923 as a template for the body. Update fields accordingly.
-4. The administrator added to the repository (that may well be you) may now go add
+1. Wait. Wait until the repository is created.
+1. Create another WHSD Jira Ticket, this one for enabling GitHub Actions on the newly created repository, using https://jira.cms.gov/browse/WHSD-46923 as a template for the body. Update fields accordingly.
+1. The administrator added to the repository (that may well be you) may now go add
 anyone to the repository that should have permissions.
 
 ### Step 2: Request a new set of AWS accounts (if applicable).
@@ -50,8 +50,8 @@ Consider this:
 repository’s visibility. A public repository should probably have a public Slack channel, and a private repository should probably have a private Slack channel.
 Someone with appropriate permissions can follow this procedure to create a new Slack Channel:
 1. Login to the CMS Slack workspace (cmsgov.slack.com)
-2. Next to ‘Channels, click the ‘+’ sign.
-3. Create a new channel.
+1. Next to ‘Channels, click the ‘+’ sign.
+1. Create a new channel.
     a.
 b. 4. Once a. b. c.
 Set the visibility (public/private) accordingly
@@ -59,8 +59,8 @@ Name it the same as the project repository. created, make a note of the new chan
 Find the channel on the sidebar
 Right click it
 Select Copy, and Copy Link. You may put this link somewhere like a notepad, as you will use it later. But don’t worry, this can always be found again.
-5. You may add anyone who should have access to the channel.
-4. Bootstrap the new project with the base template.
+1. You may add anyone who should have access to the channel.
+1. Bootstrap the new project with the base template.
 New MACPRO project repositories are bootstrapped with code from our base template repository. This base template repository is a github repo itself; it’s maintained by the MACPRO Platform Team as the standard MACPRO project structure. It includes patterns for deployment, deployment of dev branches, testing, security scanning, and so forth. There’s a lot of functionality packed into it, without commenting much on the actual application architecture. This is done deliberately, so projects may use the template as a starting point, and build the new project’s services on top of it. In the future, there may be other templates that are more specific, such as a webapp template or a kafka consumer template, but for now there is only the single
 MACPRO Platform Team 07 OCT 2022
  
