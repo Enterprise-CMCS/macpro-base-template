@@ -1,6 +1,7 @@
 ---
 layout: default
-title: Deploy CloudWatch Dashboard
+title: Deploy Cloudwatch Dashboard
+parent: Services
 nav_order: 2
 ---
 
