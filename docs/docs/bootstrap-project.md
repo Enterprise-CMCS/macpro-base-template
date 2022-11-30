@@ -8,10 +8,10 @@ Standard Operating Procedure for MACPRO Project Creation Output of: https://qmac
 ### Audience
 This SOP is suited for anyone involved with project creation. Parts will be non technical process oriented, and other parts will require technical knowledge and experience. CMS Jira requests will need to be made, so someone with appropriate access will need to be involved.
 ### Summary
-    1. Request a new GitHub repository for the project
-    2. Request a new set of AWS accounts (if applicable).
-    3. Create a new Slack channel for the project.
-    4. Bootstrap the new project with the base template.
+1. Request a new GitHub repository for the project
+2. Request a new set of AWS accounts (if applicable).
+3. Create a new Slack channel for the project.
+4. Bootstrap the new project with the base template.
 ### Details
 ### Step 1: Request a new GitHub repository for the project.
 Creating a new project will always involve creating a new GitHub repository, so this step must always be completed. Before making the request for the new repo, you need to decide a few things:
