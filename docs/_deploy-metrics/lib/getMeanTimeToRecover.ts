@@ -6,7 +6,7 @@ export const getMeanTimeToRecover = async (branch: string) => {
   const response = await octokit.paginate(
     "GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs",
     {
-      owner: "CMSgov",
+      owner: "Enterprise-CMCS",
       repo: getRepoName,
       workflow_id: "deploy.yml",
       branch,
@@ -37,6 +37,8 @@ export const getMeanTimeToRecover = async (branch: string) => {
     return result;
   };
   const getMeanFromTimes = (times: { failedTime: Date; upTime: Date }[]) => {
+    if(times.length === 0) return 0;
+    
     return (
       times.reduce((prev, current) => {
         const diff = differenceInHours(current.upTime, current.failedTime);

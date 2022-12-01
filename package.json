@@ -1,5 +1,5 @@
 {
-  "name": "base-template",
+  "name": "macpro-base-template",
   "type": "module",
   "description": "A microservice sending CMS Medicaid Model Data Lab (MMDL) data to CMS Bigmac.",
   "version": "0.0.0-managed-by-semantic-release",

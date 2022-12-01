@@ -5,7 +5,7 @@ export const getSuccessfulDeploys = async (branch: string) => {
   const data = await octokit.paginate(
     "GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs",
     {
-      owner: "CMSgov",
+      owner: "Enterprise-CMCS",
       repo: getRepoName,
       workflow_id: "deploy.yml",
       branch,
