@@ -3576,7 +3576,7 @@
     "@aws-sdk/client-sts" "^3.188.0"
     octokit "^2.0.9"
 
-"@stratiformdigital/serverless-iam-helper@^3.1.0":
+"@stratiformdigital/serverless-iam-helper@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@stratiformdigital/serverless-iam-helper/-/serverless-iam-helper-3.2.0.tgz#2825d36412bf03cd0407d33411f22cb66fc5d285"
   integrity sha512-SvyWxSxbqqW6MGV1CZdsz1cVw+L9K68R6Mk6viXurzJKh34ecFg1ZsjtrcGQVcK+EviV8Ee7J9CUnEDKOAwGfw==
@@ -11083,7 +11083,7 @@ serverless-plugin-warmup@^7.1.0:
   resolved "https://registry.yarnpkg.com/serverless-plugin-warmup/-/serverless-plugin-warmup-7.3.0.tgz#e168e8bfa133b1c8e586d66dbc858b44720e7f24"
   integrity sha512-Me4IqkbMLO2aLmis/gMlSWYAGu235soKJThktD0w3/6QgGYHJSRliqv4lM9A3bV2iNyv/M9rTnUdqpCM9TfdtQ==
 
-serverless-stack-termination-protection@^2.0.0:
+serverless-stack-termination-protection@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/serverless-stack-termination-protection/-/serverless-stack-termination-protection-2.0.2.tgz#f56d61e745fd346daf3b49612a4751f63a84b97e"
   integrity sha512-pPUVJmH5if8A12KVSTMqNjo7u8rfW0/vJO+UFp19lvkY0t8jfoO3R3DySwTDVcB+jzaCrU/NyEHPtbiDLVjSSw==
