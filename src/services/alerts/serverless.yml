@@ -48,4 +48,4 @@ resources:
   Outputs:
     ECSFailureTopicArn:
       Description: ECS Failure SNS topic ARN
-      Value: !Ref ECSTaskFailureTopic
+      Value: !Ref AlertsTopic
