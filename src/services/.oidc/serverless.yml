@@ -1,4 +1,4 @@
-service: ${self:custom.project}-alerts
+service: ${self:custom.project}-oidc
 
 frameworkVersion: "3"
 
