@@ -1,7 +1,7 @@
 <h1 align="center" style="border-bottom: none;">macpro-base-template</h1>
 <h3 align="center">A microservice sending CMS Medicaid Model Data Lab (MMDL) data to CMS Bigmac.</h3>
 <p align="center">
-  <a href="https://ideal-engine-7242f556.pages.github.io/">
+  <a href="https://enterprise-cmcs.github.io/macpro-base-template/">
     <img alt="Docs" src="https://img.shields.io/badge/Docs-Pages-blue.svg">
   </a>
   <a href="https://cmsgov.slack.com/archives/C04D6HXJ3GA">
