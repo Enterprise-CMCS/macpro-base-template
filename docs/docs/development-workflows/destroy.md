@@ -22,7 +22,7 @@ How-to deploy a new or existing stage to AWS.
 ### Destroy using GitHub Actions - branch deletion
 
 #### Summary
-GitHub Actions is usually the best way to destroy a stage.  A Destroy workflow exists for this project, which will neatly take down any and all infrastructure related to a branch/stage, as well as deactivate the GitHub Environment, if it exists.  
+GitHub Actions is usually the best way to destroy a stage.  A Destroy workflow exists for this project, which will neatly take down any and all infrastructure related to a branch/stage, as well as deactivate the GitHub Environment, if it exists.
 
 In most cases, stages are deployed from a branch in the git repo.  If this is the case, and if the branch can be safely deleted, destroying using GitHub Actions and branch deletion is the preferred approach.
 
@@ -36,7 +36,7 @@ In most cases, stages are deployed from a branch in the git repo.  If this is th
     cd macpro-base-template
     git push --delete origin foo
   ```
-- Monitor the status of your stage's destruction in the repo's [Actions area](https://github.com/cmsgov/macpro-base-template/actions).
+- Monitor the status of your stage's destruction in the repo's [Actions area](https://github.com/Enterprise-CMCS/macpro-base-template/actions).
 
 #### Notes
 - None
@@ -55,7 +55,7 @@ The same GitHub Actions workflow referenced above can be triggered manually.  Th
 - Click Destroy, located on the left hand side of the screen.
 - Click 'Run workflow'
   - Leave 'Use workflow from' set to main.
-  - Enter the name of the stage you wish to destroy in the free text field. 
+  - Enter the name of the stage you wish to destroy in the free text field.
   - Click 'Run workflow'
 - Monitor the status of your stage's destruction in the repo's [Actions area](https://github.com/Enterprise-CMCS/macpro-base-template/actions).
 

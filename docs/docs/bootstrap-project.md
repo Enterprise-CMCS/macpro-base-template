@@ -21,7 +21,7 @@ Creating a new project will always involve creating a new GitHub repository, so 
 - Should GitHub Actions be enabled? The answer is almost certainly yes. New MACPRO projects use GitHub Actions as it’s CI/CD appliance. In the future, Actions may be substituted for a different tool, but for now Actions is required. This question is mainly being listed since the request for Actions to be enabled on the repo is done as a distinct task.
 - Who should be the initial repository admin? The repo creation process requires adding at least one MACPRO user as a repository administrator. This administrator can then add the appropriate team members to the repo.
 - What should the project be called? This may already have an answer, one that you decided before referencing this document. But consider the repo name anyways. Keep in mind:
-- Newly created projects will be created within the CMSGov GitHub organization, so it usually doesn’t make sense to include ‘cms’ in the repository name.
+- Newly created projects will be created within the Enterprise-CMCS GitHub organization, so it usually doesn’t make sense to include ‘cms’ in the repository name.
 - All lowercase letters is a standard
 - The name of the project/repo will be used a lot. It should be accurate, but
 sometimes less is more.
