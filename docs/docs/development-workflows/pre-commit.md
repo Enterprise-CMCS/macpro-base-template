@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Deploy a Stage
+title: Pre-commit
 parent: Development Workflows
 nav_order: 8
 ---
