@@ -7,8 +7,8 @@
   <a href="https://cmsgov.slack.com/archives/C04D6HXJ3GA">
     <img alt="Slack" src="https://img.shields.io/badge/Slack-base--template-purple.svg">
   </a>
-  <a href="https://codeclimate.com/repos/63122231cf202c2a4a00ffe9/maintainability">
-    <img src="https://api.codeclimate.com/v1/badges/719b68a07022e9833caf/maintainability" />
+  <a href="https://codeclimate.com/github/Enterprise-CMCS/macpro-base-template/maintainability">
+    <img src="https://api.codeclimate.com/v1/badges/f7cce65e43346ac8e2c2/maintainability" />
   </a>
   <a href="https://dependabot.com/">
     <img alt="Dependabot" src="https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot">
