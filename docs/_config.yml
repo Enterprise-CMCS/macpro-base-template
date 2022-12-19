@@ -11,7 +11,7 @@
 #   - MACPro Platform Team
 
 title: Base Template
-description: A serverless monorepo project deployed to AWS with GitHub Actions.
+description: A baseline serverless monorepo project that helps get your project up and running faster.
 # baseurl: "/just-the-docs" # the subpath of your site, e.g. /blog
 url: "https://just-the-docs.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 

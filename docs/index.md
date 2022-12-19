@@ -6,28 +6,28 @@ description: "The macpro-base-template. This is placeholder and can be replaced 
 permalink: /
 ---
 
-# macpro-base-template
+# {{site.title}}
 {: .fs-9 }
 
-The macpro-base-template project is a project that can serve as a baseline to get up and running faster.
+{{ site.description }}
 {: .fs-6 .fw-300 }
 
-[Join us on Slack](https://cmsgov.slack.com/archives/C0403M0D007){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [View it on GitHub](https://github.com/Enterprise-CMCS/macpro-base-template){: .btn .fs-5 .mb-4 .mb-md-0 }
+[Get started now](#getting-started){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [View it on GitHub]({{ site.repo.url }}){: .btn .fs-5 .mb-4 .mb-md-0 }
 
 ---
 
 ## Welcome!
 
-Thanks, and we're glad you're here!
+{{ site.repo.name }} is a serverless monorepo template.  The actual application is 'hello world', but the repository support and configuration is full featured. This is by design, to allow for simpler project creation from the template.  Full CI/CD support with GitHub Actions, automated security scanning, documentation with GH Pages, infrastructure and application deployment workflows, etc. is all included.  There are a few services that apply to almost any project in Amazon, and those are included.
 
 ---
 
 ## About the project
 
-The macpro-base-template project is a work of the MACPRO Platform Team for the [Centers for Medicare & Medicaid Services (CMS)](https://www.cms.gov/).
+The {{ site.repo.name }} is a work of the [Centers for Medicare & Medicaid Services (CMS)](https://www.cms.gov/).
 
 
-#### Thank you to the contributors of macpro-base-template!
+#### Thank you to the contributors of {{ site.repo.name }}!
 
 <ul class="list-style-none">
 {% for contributor in site.github.contributors %}
