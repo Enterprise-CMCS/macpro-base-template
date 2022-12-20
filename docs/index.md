@@ -2,7 +2,7 @@
 layout: default
 title: Home
 nav_order: 1
-description: "The macpro-base-template. This is placeholder and can be replaced with what makes sense for your project"
+description: "The home page."
 permalink: /
 ---
 

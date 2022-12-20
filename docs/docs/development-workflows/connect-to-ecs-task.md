@@ -8,7 +8,7 @@ nav_order: 6
 # Connect to an ECS Container
 {: .no_toc }
 
-How-to to remote onto any ECS container deployed by macpro-base-template.
+How-to to remote onto any ECS container deployed by {{ site.repo.name }}.
 {: .fs-6 .fw-300 }
 
 ## Table of contents
@@ -35,7 +35,7 @@ No matter what task or container to which you're trying to connect, the command 
 - Determine the service that deploys the container to which you want to connect.  If you're wanting to connect to ksqldb interactive or headless, your service is ksqldb.  It you're wanting to connect to the connector's Kafka Connect worker or the Oracle instantclient, your service is connector.
 - Use the run script's top level 'connect' command to obtain the connection string:
   ```bash
-    cd macpro-base-template
+    cd {{ site.repo.name }}
     run connect --service [servicename] --stage [stagename]
   ```
   If the connector ECS task is running, this will output connection commands.  Read the outputted commands and find the one you want.
