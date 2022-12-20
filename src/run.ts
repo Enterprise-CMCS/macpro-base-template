@@ -214,7 +214,7 @@ yargs(process.argv.slice(2))
     },
     async (options) => {
       await runner.run_command_and_output(
-        `Run docs in docker`,
+        `Run docs at http://localhost:4000`,
         ["docker-compose", options.stop ? "down" : "up"],
         "docs"
       );
