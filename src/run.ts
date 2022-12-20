@@ -209,26 +209,13 @@ yargs(process.argv.slice(2))
   .command(
     "docs",
     "Starts the Jekyll documentation site in a docker container, available on http://localhost:4000.",
-    {},
-    async () => {
+    {
+      stop: { type: "boolean", demandOption: false, default: false },
+    },
+    async (options) => {
       await runner.run_command_and_output(
-        `Install Bundler for user`,
-        ["gem", "install", "bundler", "--user-install"],
-        "docs"
-      );
-      await runner.run_command_and_output(
-        `Configure Bundler to install locally`,
-        ["bundle", "config", "set", "--local", "path", ".bundle"],
-        "docs"
-      );
-      await runner.run_command_and_output(
-        `Bundle Install`,
-        ["bundle", "install"],
-        "docs"
-      );
-      await runner.run_command_and_output(
-        `Serve docs on http://localhost:4000`,
-        ["bundle", "exec", "jekyll", "serve", "-t"],
+        `Run docs in docker`,
+        ["docker-compose", options.stop ? "down" : "up"],
         "docs"
       );
     }
