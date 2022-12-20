@@ -70,7 +70,7 @@ Now that you have all prerequisites installed, it's time to get the code base. T
 - Configure your GitHub user with an SSH key, and add it to your ssh-agent. [Help can be found here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). Using https and personal access tokens, instead of SSH and a key, is possible but discouraged.
 - Clone the repository
   ```
-  git clone git@github.com:Enterprise-CMCS/{{ site.repo.name }}.git
+  git clone git@github.com:{{ site.repo.org }}/{{ site.repo.name }}.git
   ```
 
 ## Configure AWS CLI

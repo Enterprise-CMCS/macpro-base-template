@@ -36,7 +36,7 @@ In most cases, stages are deployed from a branch in the git repo.  If this is th
     cd {{ site.repo.name }}
     git push --delete origin foo
   ```
-- Monitor the status of your stage's destruction in the repo's [Actions area](https://github.com/Enterprise-CMCS/{{ site.repo.name }}/actions).
+- Monitor the status of your stage's destruction in the repo's [Actions area](https://github.com/{{ site.repo.org }}/{{ site.repo.name }}/actions).
 
 #### Notes
 - None
@@ -50,14 +50,14 @@ The same GitHub Actions workflow referenced above can be triggered manually.  Th
 - Git repo write access; complete the Git access request portion of [onboarding]({{ site.baseurl }}{% link docs/onboarding/onboarding.md %})
 
 #### Procedure
-- In a browser, go to the [repo](https://github.com/Enterprise-CMCS/{{ site.repo.name }})
+- In a browser, go to the [repo](https://github.com/{{ site.repo.org }}/{{ site.repo.name }})
 - Click the Actions tab
 - Click Destroy, located on the left hand side of the screen.
 - Click 'Run workflow'
   - Leave 'Use workflow from' set to main.
   - Enter the name of the stage you wish to destroy in the free text field.
   - Click 'Run workflow'
-- Monitor the status of your stage's destruction in the repo's [Actions area](https://github.com/Enterprise-CMCS/{{ site.repo.name }}/actions).
+- Monitor the status of your stage's destruction in the repo's [Actions area](https://github.com/{{ site.repo.org }}/{{ site.repo.name }}/actions).
 
 #### Notes
 - None

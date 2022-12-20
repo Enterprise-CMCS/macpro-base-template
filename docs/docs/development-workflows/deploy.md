@@ -79,7 +79,7 @@ Each branch pushed to the {{ site.repo.name }} git repository is automatically d
     git checkout -b foo
     git push --set-upstream origin foo
   ```
-- Monitor the status of your branch's deployment in the repo's [Actions area](https://github.com/Enterprise-CMCS/{{ site.repo.name }}/actions).
+- Monitor the status of your branch's deployment in the repo's [Actions area](https://github.com/{{ site.repo.org }}/{{ site.repo.name }}/actions).
 
 #### Notes
 - None
