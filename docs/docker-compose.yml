@@ -3,7 +3,7 @@ services:
   jekyll:
     container_name: jekyll
     image: jekyll/builder
-    command: sh -c "bundle install && bundle exec jekyll serve --incremental"
+    command: sh -c "bundle install && bundle exec jekyll serve --incremental --host 0.0.0.0"
     platform: linux/amd64
     environment:
       - PAGES_REPO_NWO=stratiformdigital/base-accelerator
