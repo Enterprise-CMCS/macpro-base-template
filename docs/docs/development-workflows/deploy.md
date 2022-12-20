@@ -25,10 +25,10 @@ How-to deploy a new or existing stage to AWS.
 This deploys the entire application, so the entire stage, to AWS.
 
 #### Prerequisites:
-- Completed all [onboarding]({% link docs/onboarding/onboarding.md %})
+- Completed all [onboarding]({{ site.baseurl }}{% link docs/onboarding/onboarding.md %})
 
 #### Procedure
-- [Obtain and set AWS CLI credentials]({%link docs/development-workflows/aws-auth.md %})
+- [Obtain and set AWS CLI credentials]({{ site.baseurl }}{%link docs/development-workflows/aws-auth.md %})
 - Deploy using the run script:
   ```bash
     cd {{ site.repo.name }}
@@ -45,10 +45,10 @@ This deploys the entire application, so the entire stage, to AWS.
 This will deploy a single service for a given stage.  All other services on which your target service is dependent must already be deployed for the stage.  For example:  if service B depends on service A, and you want to use this procedure to deploy only service B, then service A must have already been deployed.
 
 #### Prerequisites:
-- Completed all [onboarding]({% link docs/onboarding/onboarding.md %})
+- Completed all [onboarding]({{ site.baseurl }}{% link docs/onboarding/onboarding.md %})
 
 #### Procedure
-- [Obtain and set AWS CLI credentials]({%link docs/development-workflows/aws-auth.md %})
+- [Obtain and set AWS CLI credentials]({{ site.baseurl }}{%link docs/development-workflows/aws-auth.md %})
 - Deploy using the run script:
   ```bash
     cd {{ site.repo.name }}
