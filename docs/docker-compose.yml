@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  jekyll:
+    container_name: jekyll
+    image: jekyll/builder
+    command: sh -c "bundle install && bundle exec jekyll serve --incremental"
+    platform: linux/amd64
+    environment:
+      - PAGES_REPO_NWO=stratiformdigital/base-accelerator
+    ports:
+      - "0.0.0.0:4000:4000"
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/srv/jekyll
