@@ -26,7 +26,7 @@ The 10,000ft view
 
 A diagram is often the best way to communicate the architecture:
 
-![diagram](../../../assets/architecture.svg)
+![diagram](../../../assets/diagram.svg)
 
 
 ## Development Metrics (DORA)
