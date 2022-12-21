@@ -7,8 +7,8 @@
   <a href="https://cmsgov.slack.com/archives/C04D6HXJ3GA">
     <img alt="Slack" src="https://img.shields.io/badge/Slack-base--template-purple.svg">
   </a>
-  <a href="https://codeclimate.com/repos/63122231cf202c2a4a00ffe9/maintainability">
-    <img src="https://api.codeclimate.com/v1/badges/719b68a07022e9833caf/maintainability" />
+  <a href="https://codeclimate.com/github/Enterprise-CMCS/macpro-base-template/maintainability">
+    <img src="https://api.codeclimate.com/v1/badges/f7cce65e43346ac8e2c2/maintainability" />
   </a>
   <a href="https://dependabot.com/">
     <img alt="Dependabot" src="https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot">
@@ -29,11 +29,9 @@
 
 ## Overview
 
-The mmdl-connnectors project (oftened referenced in the context of this repository as just 'mmdl') is a microservice that streams Medicaid Data Lab (MMDL) data from it's Oracle database to CMS Bigmac's Kafka cluster in real time. It is powered by Kafka Connect and a JDBC connector.
+The macpro-base-template project (oftened referenced in the context of this repository as just 'base' or 'base-template') is a serverless monorepo accelerator.  The actual application is fairly 'hello world', but the repository support and configuration is full featured. This is by design, to allow for simpler project creation from the template. Full CI/CD support with GitHub Actions, automated security scanning, docs site in GitHub Pages, PR/Issue templates, infrastructure and application deployment workflows, etc. is all included.
 
-That's all for now; this project was just created!
-
-![Architecture Diagram](docs/assets/architecture.svg)
+![Architecture Diagram](docs/assets/diagram.svg)
 
 ## Contributing
 

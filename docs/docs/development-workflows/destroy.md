@@ -5,10 +5,10 @@ parent: Development Workflows
 nav_order: 3
 ---
 
-# Deploy a Stage
+# Destroy a Stage
 {: .no_toc }
 
-How-to deploy a new or existing stage to AWS.
+How-to destroy a stage in AWS.
 {: .fs-6 .fw-300 }
 
 ## Table of contents
@@ -22,7 +22,7 @@ How-to deploy a new or existing stage to AWS.
 ### Destroy using GitHub Actions - branch deletion
 
 #### Summary
-GitHub Actions are usually the best way to destroy a stage.  A Destroy workflow exists for this project, which will neatly take down any and all infrastructure related to a branch/stage, as well as deactivate the GitHub Environment, if it exists.
+GitHub Actions is usually the best way to destroy a stage.  A Destroy workflow exists for this project, which will neatly take down any and all infrastructure related to a branch/stage, as well as deactivate the GitHub Environment, if it exists.
 
 In most cases, stages are deployed from a branch in the git repo.  If this is the case, and if the branch can be safely deleted, destroying using GitHub Actions and branch deletion is the preferred approach.
 
@@ -33,10 +33,10 @@ In most cases, stages are deployed from a branch in the git repo.  If this is th
 - Stop and think about what you are doing.  Destroying is a lot easier to avoid then to undo.
 - Delete the branch for the stage you wish to delete.
   ```bash
-    cd macpro-base-template
+    cd {{ site.repo.name }}
     git push --delete origin foo
   ```
-- Monitor the status of your stage's destruction in the repo's [Actions area](https://github.com/Enterprise-CMCS/macpro-base-template/actions).
+- Monitor the status of your stage's destruction in the repo's [Actions area](https://github.com/{{ site.repo.org }}/{{ site.repo.name }}/actions).
 
 #### Notes
 - None
@@ -50,14 +50,14 @@ The same GitHub Actions workflow referenced above can be triggered manually.  Th
 - Git repo write access; complete the Git access request portion of [onboarding]({{ site.baseurl }}{% link docs/onboarding/onboarding.md %})
 
 #### Procedure
-- In a browser, go to the [repo](https://github.com/Enterprise-CMCS/macpro-base-template)
+- In a browser, go to the [repo](https://github.com/{{ site.repo.org }}/{{ site.repo.name }})
 - Click the Actions tab
 - Click Destroy, located on the left hand side of the screen.
 - Click 'Run workflow'
-  - Leave 'Use workflow from' set to main.
+  - Leave 'Use workflow from' set to master.
   - Enter the name of the stage you wish to destroy in the free text field.
   - Click 'Run workflow'
-- Monitor the status of your stage's destruction in the repo's [Actions area](https://github.com/Enterprise-CMCS/macpro-base-template/actions).
+- Monitor the status of your stage's destruction in the repo's [Actions area](https://github.com/{{ site.repo.org }}/{{ site.repo.name }}/actions).
 
 #### Notes
 - None
@@ -65,7 +65,7 @@ The same GitHub Actions workflow referenced above can be triggered manually.  Th
 ### Destroy a stage
 
 #### Summary
-This destroys a n entire application, so the entire stage, to AWS.
+This destroys an entire application, so the entire stage, to AWS.
 
 #### Prerequisites:
 - Completed all [onboarding]({{ site.baseurl }}{% link docs/onboarding/onboarding.md %})
@@ -75,7 +75,7 @@ This destroys a n entire application, so the entire stage, to AWS.
 - [Obtain and set AWS CLI credentials]({{ site.baseurl }}{%link docs/development-workflows/aws-auth.md %})
 - Destroy using the run script:
   ```bash
-    cd macpro-base-template
+    cd {{ site.repo.name }}
     nvm use
     run destroy --stage foo
   ```
@@ -99,7 +99,7 @@ This will destroy a single service for a given stage.
 - [Obtain and set AWS CLI credentials]({{ site.baseurl }}{%link docs/development-workflows/aws-auth.md %})
 - Destroy a single service using the run script:
   ```bash
-    cd macpro-base-template
+    cd {{ site.repo.name }}
     nvm use
     run destroy --service bar --stage foo
   ```

@@ -20,13 +20,15 @@ The 10,000ft view
 
 ## Overview
 
-This is a placeholder for an overview of your project
+{{ site.repo.name }} is a serverless monorepo template.  The actual application is 'hello world', but the repository support and configuration is full featured. This is by design, to allow for simpler project creation from the template.  Full CI/CD support with GitHub Actions, automated security scanning, documentation with GH Pages, infrastructure and application deployment workflows, etc. is all included.  There are a few services that apply to almost any project in Amazon, and those are included.
 
-## Archtecture
+## Architecture
 
-This is a placeholder for your repositories Architecture Diagram
+A diagram is often the best way to communicate the architecture:
+
+![diagram](../../../assets/diagram.svg)
 
 
-## View Metrics
+## Development Metrics (DORA)
 
-Replace this text with the link to your github pages site in this format (site-url/dora)
+We programmatically publish a set of Development metrics that align to the DevOps Research and Assesment (DORA) standards.  Those metrics can be viewed [here]({{ site.url }}/dora).
