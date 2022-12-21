@@ -3,7 +3,6 @@ services:
   jekyll:
     container_name: jekyll
     image: jekyll/builder
-    privileged: true
     command: sh -c "bundle install && bundle exec jekyll serve --incremental --host 0.0.0.0"
     platform: linux/amd64
     ports:
@@ -11,4 +10,4 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - .:/srv/jekyll:w
+      - .:/srv/jekyll
