@@ -31,10 +31,10 @@ jobs:
       - name: Upgrade all node dependencies
         id: upgrade
         run: |
-          yarn upgrade
-          for dir in src/services/*/ src/services/.*/ ; do
-              if [[ "$dir" =~ ^src/services/(./|../)$ ]]; then continue ; fi
-              yarn --cwd $dir upgrade
+          lockfiles=(`find . -name "yarn.lock" ! -path '*/node_modules/*'`)
+          for i in "${lockfiles[@]}"
+          do
+            yarn --cwd "${i%/*}" upgrade
           done
           if [ "$(git status --porcelain)" ]; then 
             echo "::set-output name=changes::true"
