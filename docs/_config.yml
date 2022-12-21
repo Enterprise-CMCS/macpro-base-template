@@ -17,6 +17,24 @@ url: "https://just-the-docs.github.io" # the base hostname & protocol for your s
 
 contact_email: bpaige@gswell.com
 
+team:
+  members: # This list automatically populates the Team Introduction page.  Add/Edit as appropriate.
+    - role: Product Owner
+      description: Responsible for project scope, direction, and delivery.
+      name: Berry Davenport
+      email: bdavenport@gswell.com
+    - role: Tech Lead
+      description: Leads tooling, tech, and arch discussions and decisions.
+      name: Mike Dial
+      email: mdial@gswell.com
+  core_hours: 10:00am - 3:00pm ET
+
+meetings:
+  - name: Daily Standup
+    time: 10:00am - 10:30am ET
+    attendance: optional
+    link: Ask for the Hangouts invite on Slack.
+
 repo:
   org: Enterprise-CMCS
   name: macpro-base-template

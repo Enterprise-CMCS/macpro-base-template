@@ -5,10 +5,10 @@ parent: Development Workflows
 nav_order: 3
 ---
 
-# Deploy a Stage
+# Destroy a Stage
 {: .no_toc }
 
-How-to deploy a new or existing stage to AWS.
+How-to destroy a stage in AWS.
 {: .fs-6 .fw-300 }
 
 ## Table of contents
@@ -22,7 +22,7 @@ How-to deploy a new or existing stage to AWS.
 ### Destroy using GitHub Actions - branch deletion
 
 #### Summary
-GitHub Actions are usually the best way to destroy a stage.  A Destroy workflow exists for this project, which will neatly take down any and all infrastructure related to a branch/stage, as well as deactivate the GitHub Environment, if it exists.
+GitHub Actions is usually the best way to destroy a stage.  A Destroy workflow exists for this project, which will neatly take down any and all infrastructure related to a branch/stage, as well as deactivate the GitHub Environment, if it exists.
 
 In most cases, stages are deployed from a branch in the git repo.  If this is the case, and if the branch can be safely deleted, destroying using GitHub Actions and branch deletion is the preferred approach.
 
@@ -65,7 +65,7 @@ The same GitHub Actions workflow referenced above can be triggered manually.  Th
 ### Destroy a stage
 
 #### Summary
-This destroys a n entire application, so the entire stage, to AWS.
+This destroys an entire application, so the entire stage, to AWS.
 
 #### Prerequisites:
 - Completed all [onboarding]({{ site.baseurl }}{% link docs/onboarding/onboarding.md %})

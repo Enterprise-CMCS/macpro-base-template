@@ -24,8 +24,6 @@ How-to run our GitHub Pages Jekyll docs site (the site you're viewing) locally.
 #### Summary
 This procedure will walk you through starting up the docs site locally.  You may want to run the docs site locally if you are modifying the documentation, allowing you to preview before committing.  
 
-Note:  Jekyll's reloading performance in Docker on an M1 Mac when using docker volumes has been observed to be unacceptable.  The shortest reload time possible was close to 10 seconds.  In view of this, this procedure starts the docs site on bare metal (your Mac).
-
 #### Prerequisites:
 - Completed all [onboarding]({{ site.baseurl }}{% link docs/onboarding/onboarding.md %})
 
@@ -39,5 +37,5 @@ Note:  Jekyll's reloading performance in Docker on an M1 Mac when using docker v
 - As you make changes to the files under the repo's docs folder, you should see the changes reflected in your browser in less than a second.
 
 #### Notes
-- Jekyll's reloading performance in Docker on an M1 Mac when using docker volumes has been observed to be unacceptable.  The shortest reload time possible was close to 10 seconds.  In view of this, this procedure starts the docs site on bare metal (your Mac).
-- The livereload functionality of Jekyll, whereby you can change a file in source and not need to refresh your browser, requires a ruby gem that is problematic on an M1 Mac.  In view of this, while Jekyll will automatically regenerate the site when files are changed with sub second performance, you will need to refresh your browser to see the update.  I'd like to get this fixed, but it's not seen as a priority at the moment.
+- ~~Note:  Jekyll's reloading performance in Docker on an M1 Mac when using docker volumes has been observed to be unacceptable.  The shortest reload time possible was close to 10 seconds.  In view of this, this procedure starts the docs site on bare metal (your Mac).~~
+Note:  Jekyll's reloading performance in Docker on M1 chipped Macs has been observed to be slow.  Reloading takes 12-15 second, usually.  However, it's proven very problematic to support bare metal Jekyll, so we accept the performance hit.  The hope is that most developers making changes don't need to wait for the site reload on each small change; instead, they likely make many edits to a markdown file's content at once, and can wait for the page to reload once.

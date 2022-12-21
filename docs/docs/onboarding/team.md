@@ -18,12 +18,16 @@ nav_order: 1
 
 ### Meet the team
 
-Here's a quick introduction of some important roles on the project.  This list does not include all developers and contributors, but lists some people and roles you might need to know on initial contact.  Above all, this list is meant to be helpful, and will change over time.
+A list of a few important roles and people on the project (not comprehensive!):
 
-| Role                | Description                                                                                     | Team Member                                  | Email                                                 |
-| ------------------- | ----------------------------------------------------------------------------------------------- | -------------------------------------------- | ----------------------------------------------------- |
-| Product Owner       | Responsible for the project's scope, direction, and delivery.                                   | [Berry Davenport](https://github.com/berryd) | [bdavenport@gswell.com](mailto:bdavenport@gswell.com) |
-| Tech Lead | Responsible for the project's high level technical design, architecture, and tooling.           | [Mike Dial](https://github.com/mdial89f)     | [mdial@gswell.com](mailto:mdial@gswell.com)           |
-| Data SME            | The authority on all data related concerns of the project, such as schema design and topic architecture. | [Milind Kalkar](https://github.com/mskalkar) | [mkalkar@gswell.com](mailto:mkalkar@gswell.com)       |
+| Role | Description | Team Member | Email |
+| ---- | ----------- | ----------- | ----- |
+|{% for element in site.team.members %} {{ element.role }} | {{ element.description }} | {{ element.name }} | {{ element.email }} |
+{% endfor %}
 
-**Note:  Anybody above can be reached in the project's [Slack Channel](https://cmsgov.slack.com/archives/C0403M0D007).**
+
+### Core Work Hours
+
+Core Team work hours are {{ site.team.core_hours }}.
+
+We strive to do most work asynchronously, as we are spread across timezones and have others demands on our time. Using Pull Request reviews, GitHub Discussions, Slack, and email are examples of ways we try to keep things async. However, we strive to be available online for meetings and pair programming during this time window.
