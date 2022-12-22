@@ -213,11 +213,37 @@ yargs(process.argv.slice(2))
       stop: { type: "boolean", demandOption: false, default: false },
     },
     async (options) => {
+      // Always clean up first...
       await runner.run_command_and_output(
-        `Run docs at http://localhost:4000`,
-        ["docker-compose", options.stop ? "down" : "up"],
+        `Stop any existing container.`,
+        ["docker", "rm", "-f", "jekyll"],
         "docs"
       );
+
+      // If we're starting...
+      if (!options.stop) {
+        await runner.run_command_and_output(
+          `Run docs at http://localhost:4000`,
+          [
+            "docker",
+            "run",
+            "--rm",
+            "-i",
+            "-v",
+            `${process.cwd()}/docs:/site`,
+            "--name",
+            "jekyll",
+            "--pull=always",
+            "-p",
+            "0.0.0.0:4000:4000",
+            "bretfisher/jekyll-serve",
+            "sh",
+            "-c",
+            "bundle install && bundle exec jekyll serve --force_polling --host 0.0.0.0",
+          ],
+          "docs"
+        );
+      }
     }
   )
   .strict() // This errors and prints help if you pass an unknown command
