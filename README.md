@@ -29,7 +29,7 @@
 
 ## Overview
 
-The macpro-base-template project (oftened referenced in the context of this repository as just 'base' or 'base-template') is a serverless monorepo accelerator.  The actual application is fairly 'hello world', but the repository support and configuration is full featured. This is by design, to allow for simpler project creation from the template. Full CI/CD support with GitHub Actions, automated security scanning, docs site in GitHub Pages, PR/Issue templates, infrastructure and application deployment workflows, etc. is all included.
+The macpro-base-template project (oftened referenced in the context of this repository as just 'base' or 'base-template') is a serverless monorepo accelerator. The actual application is fairly 'hello world', but the repository support and configuration is full featured. This is by design, to allow for simpler project creation from the template. Full CI/CD support with GitHub Actions, automated security scanning, docs site in GitHub Pages, PR/Issue templates, infrastructure and application deployment workflows, etc. is all included.
 
 ![Architecture Diagram](docs/assets/diagram.svg)
 
