@@ -26,6 +26,7 @@ This procedure will walk you through starting up the docs site locally.  You may
 
 #### Prerequisites:
 - Completed all [onboarding]({{ site.baseurl }}{% link docs/onboarding/onboarding.md %})
+- You will need a docker runtime up and running.  This can be Docker Desktop (if licensed), or an open source tool like Colima.  Generally, if you can run the command `docker ps` and not get an error, you have a docker runtime up and running.
 
 #### Procedure
 - Start the docs site using the run script:
@@ -37,5 +38,3 @@ This procedure will walk you through starting up the docs site locally.  You may
 - As you make changes to the files under the repo's docs folder, you should see the changes reflected in your browser in less than a second.
 
 #### Notes
-- ~~Note:  Jekyll's reloading performance in Docker on an M1 Mac when using docker volumes has been observed to be unacceptable.  The shortest reload time possible was close to 10 seconds.  In view of this, this procedure starts the docs site on bare metal (your Mac).~~
-Note:  Jekyll's reloading performance in Docker on M1 chipped Macs has been observed to be slow.  Reloading takes 12-15 second, usually.  However, it's proven very problematic to support bare metal Jekyll, so we accept the performance hit.  The hope is that most developers making changes don't need to wait for the site reload on each small change; instead, they likely make many edits to a markdown file's content at once, and can wait for the page to reload once.
