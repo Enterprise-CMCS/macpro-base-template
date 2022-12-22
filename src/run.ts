@@ -213,15 +213,41 @@ yargs(process.argv.slice(2))
       stop: { type: "boolean", demandOption: false, default: false },
     },
     async (options) => {
-      let composeFile = process.env.APPLE_SILICON
-        ? "docker-compose.apple.yml"
-        : "docker-compose.yml";
-      console.log(composeFile);
+      // Always clean up first...
       await runner.run_command_and_output(
-        `Run docs at http://localhost:4000`,
-        ["docker-compose", "-f", composeFile, options.stop ? "down" : "up"],
+        `Stop any existing container.`,
+        ["docker", "rm", "-f", "jekyll"],
         "docs"
       );
+
+      // If we're starting...
+      if (!options.stop) {
+        let image = process.env.APPLE_SILICON
+          ? "bretfisher/jekyll-serve"
+          : "jekyll/builder";
+        let volume = process.env.APPLE_SILICON ? "/site" : "/srv/jekyll";
+        await runner.run_command_and_output(
+          `Run docs at http://localhost:4000`,
+          [
+            "docker",
+            "run",
+            "--rm",
+            "-i",
+            "-v",
+            `${process.cwd()}/docs:${volume}`,
+            "--name",
+            "jekyll",
+            "--pull=always",
+            "-p",
+            "0.0.0.0:4000:4000",
+            image,
+            "sh",
+            "-c",
+            "bundle install && bundle exec jekyll serve --incremental --host 0.0.0.0",
+          ],
+          "docs"
+        );
+      }
     }
   )
   .strict() // This errors and prints help if you pass an unknown command
