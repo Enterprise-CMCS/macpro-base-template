@@ -213,9 +213,13 @@ yargs(process.argv.slice(2))
       stop: { type: "boolean", demandOption: false, default: false },
     },
     async (options) => {
+      let composeFile = process.env.APPLE_SILICON
+        ? "docker-compose.apple.yml"
+        : "docker-compose.yml";
+      console.log(composeFile);
       await runner.run_command_and_output(
         `Run docs at http://localhost:4000`,
-        ["docker-compose", options.stop ? "down" : "up"],
+        ["docker-compose", "-f", composeFile, options.stop ? "down" : "up"],
         "docs"
       );
     }
