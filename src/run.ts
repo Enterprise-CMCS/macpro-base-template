@@ -243,7 +243,7 @@ yargs(process.argv.slice(2))
             image,
             "sh",
             "-c",
-            "bundle install && bundle exec jekyll serve --incremental --host 0.0.0.0",
+            "bundle install && bundle exec jekyll serve --force_polling --host 0.0.0.0",
           ],
           "docs"
         );
