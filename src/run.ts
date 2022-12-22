@@ -222,12 +222,6 @@ yargs(process.argv.slice(2))
 
       // If we're starting...
       if (!options.stop) {
-        let image =
-          process.env.APPLE_SILICON == "true"
-            ? "bretfisher/jekyll-serve"
-            : "jekyll/builder";
-        let volume =
-          process.env.APPLE_SILICON == "true" ? "/site" : "/srv/jekyll";
         await runner.run_command_and_output(
           `Run docs at http://localhost:4000`,
           [
@@ -236,13 +230,13 @@ yargs(process.argv.slice(2))
             "--rm",
             "-i",
             "-v",
-            `${process.cwd()}/docs:${volume}`,
+            `${process.cwd()}/docs:/site`,
             "--name",
             "jekyll",
             "--pull=always",
             "-p",
             "0.0.0.0:4000:4000",
-            image,
+            "bretfisher/jekyll-serve",
             "sh",
             "-c",
             "bundle install && bundle exec jekyll serve --force_polling --host 0.0.0.0",
