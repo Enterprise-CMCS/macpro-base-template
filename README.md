@@ -1,3 +1,7 @@
+[slack url]: https://lol.com
+
+This is my slack url:  [slack url].
+
 <h1 align="center" style="border-bottom: none;">macpro-base-template</h1>
 <h3 align="center">A serverless monorepo accelerator tailored for use at Centers for Medicare & Medicaid Services (CMS).</h3>
 <p align="center">
