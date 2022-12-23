@@ -58,13 +58,59 @@ Someone with appropriate permissions can follow this procedure to create a new S
     1. Right click it
     1. Select Copy, and Copy Link. You may put this link somewhere like a notepad as you will use it later. But don’t worry, this can always be found again.
 1. You may add anyone who should have access to the channel.
-1. Bootstrap the new project with the base template.
-New MACPRO project repositories are bootstrapped with code from our base template repository. This base template repository is a github repo itself; it’s maintained by the MACPRO Platform Team as the standard MACPRO project structure. It includes patterns for deployment, deployment of dev branches, testing, security scanning, and so forth. There’s a lot of functionality packed into it, without commenting much on the actual application architecture. This is done deliberately, so projects may use the template as a starting point, and build the new project’s services on top of it. In the future, there may be other templates that are more specific, such as a webapp template or a kafka consumer template, but for now there is only the single base template. This step involved getting the latest copy of that template and pushing it to the new project repository. These instructions are held elsewhere in detail.
 
-Follow this procedure to bootstrap your new project repository:
-- Follow the document here:
-<https://docs.google.com/document/d/1FdweJT8a4edK9hGHLg7Zf6ETV58a264PSGYrZYldEUE/edit>
+### Bootstrap the new repository.
+New MACPRO project repositories are bootstrapped with code from our base template repository. This base template repository is a github repo itself; it’s maintained by the MACPRO Platform Team as the standard MACPRO project structure. It includes patterns for deployment, deployment of dev branches, testing, security scanning, and so forth. There’s a lot of functionality packed into it, without commenting much on the actual application architecture. This is done deliberately, so projects may use the template as a starting point, and build the new project’s services on top of it. In the future, there may be other templates that are more specific, such as a webapp template or a kafka consumer template, but for now there is only the single base template. This step involved getting the latest copy of that template and pushing it to the new project repository.
 
-*** This section currently points to a gdrive doc explaining how to bootstrap a project based on mmdl-connectors, while this procedure explains how to bootstrap from a base template repo. This is admittedly inconsistent, but deliberate; I expect this document to be updated when the base template is created, and the gdrive doc to be further refined and eventually made static.
-End
+For the purposes of these instructions, we will assume your new repository (created in the steps above) is called acme, and is in the Enterprise-CMCS organization.  We will also assume the template repository you will bootstrap your project with is called macpro-base-template, in the same org.
+1. Ensure all GitHub Actions are enabled for your new repository.
+    - Go to the repo in GitHub in a browser.
+    - Click Settings
+    - Click Actions (left hand side) -> General
+    - Select 'Allow all actions and reusable workflows', if not already selected.  If this option is not already set and not selectable, you will need to open a ticket with the CMS Cloud team.
+1. Clone the macpro-base-template, and push the master branch to your new repository.
+  ```
+  git clone git@github.com:Enterprise-CMCS/macpro-base-template.git
+  cd macpro-base-template
+  git remote add acme git@github.com:Enterprise-CMCS/acme.git
+  git push acme master
+  ```
+1. Ensure 'master' is set as the default branch for the new repository.
+    - Go to the repo in GitHub in a web browser.
+    - Click Settings
+    - Click Branches (left hand side)
+    - Set master as the default, if not already set.
+1. Trigger the deployment of your repo's GitHub Pages (documentation) site.
+    - Go to the repo in GitHub in a web browser.
+    - Click Actions
+    - Select 'Deploy Jekyll with GitHub Pages' (left hand side)
+    - Click Run Workflow (right hand side).  When the drop down appears, leave the branch set to master, and click Run workflow.
+    - CIRCLEBACK TO GET URL
+1. Add and configure the repository in Code Climate.
+    - Go to [https://codeclimate.com/](https://codeclimate.com/)
+    - Click Login -> Quality (top right).
+    - On the 'Pick an Organization' page, select the organization to which your new repository belongs.  However, if your repository is public, select Open Source.
+    - Click Add a Repository
+    - Find your repo and click Add Repo.
+    - You should be taken to the landing page for your repo in Code Climate.  Sometimes adding a repo gets your browser stuck.  If that happens, just start back at [https://codeclimate.com/](https://codeclimate.com/) and find the repository again.  This time, though, you won't need to add it.
+    - Click Repo Settings
+    - Ensure the default branch is set to 'master' and click save.
+    - Go back to Repo Settings
+    - Click GitHub
+    - Enable all features, including installing the webhook, and save all.
+    - Go back to Repo Settings
+    - Click Badges
+    - Copy the HTML version of the Maintainability tag.  Keep this in a notepad for use later in these instructions.
+1. Update project specific values in your codebase; commit and push them to the master branch.
+    - Open and edit acme/.envrc
+        - Update the value for PROJECT.  Shorter is usually better, as it is used extensively for namespacing purposes.  It should be all lower case, only contain letters and hyphens, and be unique in the target AWS accounts; that is, there should not be two repositories deploying to the same AWS account that use the same PROJECT value.
+    - Open and edit acme/README.md
+        - 
+
+
+
+
+
+### Conclusion
 If you’ve followed this document, you should have a new GitHub project deployed to AWS and ready for further development. This document is a WIP, and assuredly has errors and omissions, and will change over time. You can help this by reaching out to the MACPRO Platform team on Slack and letting us know about issues you find.
+>>>>>>> Stashed changes:docs/docs/x-new-project-creation.md
