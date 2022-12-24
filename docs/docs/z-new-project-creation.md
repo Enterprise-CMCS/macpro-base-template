@@ -1,4 +1,10 @@
-# Bootstrapping a New Project
+---
+layout: default
+title: New Project Creation
+nav_order: 99
+---
+
+# New Project Creation
 
 Standard Operating Procedure for MACPRO Project Creation Output of: <https://qmacbis.atlassian.net/browse/OY2-20437>
 
