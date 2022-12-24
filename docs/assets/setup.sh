@@ -20,9 +20,26 @@ fi
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo 'PATH="/opt/homebrew/bin:$PATH"' >> ~/.zshrc
 
-# Install lots of tools with HomeBrew
+# Install several tools with HomeBrew
 /opt/homebrew/bin/brew install jq nvm yarn awscli session-manager-plugin awslogs git docker colima
+
+# Configure nvm
 mkdir -p ~/.nvm
-echo 'export NVM_DIR="$HOME/.nvm"
+if ! cat ~/.zshrc | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm'; then
+  echo '''
+### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm
+export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion' >> ~/.zshrc
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm
+''' >> ~/.zshrc
+fi
+
+# Configure direnv
+if ! cat ~/.zshrc | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv'; then
+  echo '''
+### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv
+eval "$(direnv hook zsh)"
+### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv
+''' >> ~/.zshrc
+fi
