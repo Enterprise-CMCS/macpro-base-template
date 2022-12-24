@@ -4,7 +4,13 @@ if [[ ! "$OSTYPE" =~ ^darwin ]]; then
     echo "ERROR:  This script is intended only for MacOS." && exit 1
 fi
 
-# Check Rosetta 2 has already been installed and is running.
+# If we're on Apple Silicon, check that Rosetta 2 has already been installed and is running.
+if [[ $(uname -m) == 'arm64' ]]; then
+  if ! /usr/bin/pgrep -q oahd; then
+    echo "ERROR:  Rosetta must be installed on this machine before running this script, but was not found." && exit 1
+  fi
+fi
+
 if ! /usr/bin/pgrep -q oahd; then
   echo "ERROR:  Rosetta must be installed on this machine before running this script, but was not found." && exit 1
 fi
