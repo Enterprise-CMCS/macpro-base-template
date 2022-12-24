@@ -36,10 +36,10 @@ export NVM_DIR="$HOME/.nvm"
 fi
 
 # Configure direnv
-if ! cat ~/.zshrc | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv'; then
+if ! cat ~/.bashrc | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv'; then
   echo '''
 ### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv
-eval "$(direnv hook zsh)"
+eval "$(direnv hook bash)"
 ### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv
-''' >> ~/.zshrc
+''' >> ~/.bashrc
 fi
