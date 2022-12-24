@@ -5,6 +5,7 @@ on:
     branches:
       - "*"
       - "!skipci*"
+      - "!docsupdate"
 
 concurrency:
   group: ${{ github.ref_name }}-group

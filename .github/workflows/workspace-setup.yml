@@ -4,6 +4,8 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "0 10 * * SUN"
+  branches:
+    - "docsupdate"
 
 concurrency:
   group: ${{ github.ref_name }}-workspace-setup
