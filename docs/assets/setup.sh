@@ -21,7 +21,7 @@ fi
 echo 'PATH="/opt/homebrew/bin:$PATH"' >> ~/.zshrc
 
 # Install lots of tools with HomeBrew
-/opt/homebrew/bin/brew install jq nvm yarn awscli session-manager-plugin awslogs git
+/opt/homebrew/bin/brew install jq nvm yarn awscli session-manager-plugin awslogs git docker colima
 mkdir -p ~/.nvm
 echo 'export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
