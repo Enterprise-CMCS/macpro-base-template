@@ -11,10 +11,6 @@ if uname -m | grep arm64; then
   fi
 fi
 
-if ! /usr/bin/pgrep -q oahd; then
-  echo "ERROR:  Rosetta must be installed on this machine before running this script, but was not found." && exit 1
-fi
-
 # Check that XCode Command Line Tools are installed.
 if ! xcode-select -p; then
   echo "ERROR:  XCode Command Line Tools must be installed on this machine before running this script, but were not found." && exit 1
