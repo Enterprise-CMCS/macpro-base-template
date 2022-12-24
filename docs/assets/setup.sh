@@ -25,14 +25,14 @@ echo 'PATH="/opt/homebrew/bin:$PATH"' >> ~/.zshrc
 
 # Configure nvm
 mkdir -p ~/.nvm
-if ! cat ~/.zshrc | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm'; then
+if ! cat ~/.bashrc | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm'; then
   echo '''
 ### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 ### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm
-''' >> ~/.zshrc
+''' >> ~/.bashrc
 fi
 
 # Configure direnv
