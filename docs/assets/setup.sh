@@ -5,10 +5,7 @@ if [[ ! "$OSTYPE" =~ ^darwin ]]; then
 fi
 
 # If we're on Apple Silicon, check that Rosetta 2 has already been installed and is running.
-uname
-uname -m
-echo "mike"
-if [[ $(uname -m) == 'arm64' ]]; then
+if uname -m | grep arm64; then
   if ! /usr/bin/pgrep -q oahd; then
     echo "ERROR:  Rosetta must be installed on this machine before running this script, but was not found." && exit 1
   fi
