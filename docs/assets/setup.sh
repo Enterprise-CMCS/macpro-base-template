@@ -1,3 +1,4 @@
+set -e
 
 # Check that we're on a mac.
 if [[ ! "$OSTYPE" =~ ^darwin ]]; then
@@ -18,10 +19,10 @@ fi
 
 # Install HomeBrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo 'PATH="/opt/homebrew/bin:$PATH"' >> ~/.zshrc
+echo 'PATH="/opt/homebrew/bin:$PATH"' >> ~/.bashrc
 
 # Install several tools with HomeBrew
-/opt/homebrew/bin/brew install jq nvm yarn awscli session-manager-plugin awslogs git docker colima
+brew install jq nvm yarn awscli session-manager-plugin awslogs git docker colima
 
 # Configure nvm
 mkdir -p ~/.nvm
