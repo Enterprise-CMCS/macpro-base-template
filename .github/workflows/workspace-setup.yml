@@ -27,10 +27,6 @@ jobs:
 
       - name: Run install
         run: |
-          find / -name direnv
           ls -la ~
-          echo 'eval "$(direnv hook bash)"' >> ~/.bashrc
-          source ~/.bashrc
-          echo $SHELL
           direnv allow
           run install
