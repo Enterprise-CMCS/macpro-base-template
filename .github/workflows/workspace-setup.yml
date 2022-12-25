@@ -22,6 +22,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Configure direnv
+        uses: HatsuneMiku3939/direnv-action@v1
+
       - name: Run workspace setup
         run: |
           sh docs/assets/setup.sh
@@ -30,9 +33,6 @@ jobs:
           nvm install
           nvm use
           run install
-      
-      # - name: Configure direnv
-      #   uses: HatsuneMiku3939/direnv-action@v1
 
       # - name: Run install
       #   run: |
