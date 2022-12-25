@@ -76,7 +76,7 @@ if ! nvm ls > /dev/null ; then
 fi
 mkdir -p ~/.nvm
 if ! cat $rcfile | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm'; then
-    echo """\n### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm
+    echo """### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm
 export NVM_DIR="$HOME/.nvm"
   [ -s "$homebrewprefix/opt/nvm/nvm.sh" ] && \. "$homebrewprefix/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "$homebrewprefix/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$homebrewprefix/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
@@ -113,7 +113,7 @@ if ! which direnv > /dev/null ; then
   brew install direnv
 fi
 if ! cat $rcfile | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv'; then
-  echo "/n### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv" >> $rcfile
+  echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv" >> $rcfile
   if [ "$shellname" == "zsh" ]; then
     echo 'eval "$(direnv hook zsh)"' >> $rcfile
   else
