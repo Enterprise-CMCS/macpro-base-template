@@ -26,6 +26,8 @@ jobs:
         run: |
           sh docs/assets/setup.sh
           source ~/.bashrc
+          direnv allow
+          nvm install
           nvm use
           run install
       
