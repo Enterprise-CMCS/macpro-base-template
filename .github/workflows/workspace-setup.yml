@@ -27,6 +27,6 @@ jobs:
 
       - name: Run install
         run: |
-          ls -la ~
+          ls -la
           direnv allow
           run install
