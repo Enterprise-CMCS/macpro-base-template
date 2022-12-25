@@ -96,10 +96,8 @@ fi
 if ! which direnv > /dev/null ; then
   brew install direnv
   if ! cat ~/.bashrc | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv'; then
-  echo '''
-### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv
+  echo '''### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv
 eval "$(direnv hook bash)"
-### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv
-''' >> ~/.bashrc
+### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv''' >> ~/.bashrc
   fi
 fi

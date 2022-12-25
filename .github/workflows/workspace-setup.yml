@@ -31,4 +31,5 @@ jobs:
           cat ~/.bashrc
           source ~/.bashrc
           direnv allow
+          awslogs
           run install
