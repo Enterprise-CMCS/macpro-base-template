@@ -1,5 +1,15 @@
 set -e
 
+# Determine what shell rc file we might want to modify
+rcfile=""
+if [ "$CI" == true ]; then
+  rcfile="/tmp/rcfile"
+elif [ "$SHELL" == "/bin/zsh" ]; then
+  rcfile="~/.zshrc"
+else
+  rcfile="~/.bashrc"
+fi
+
 # Check that we're on a mac.
 if [[ ! "$OSTYPE" =~ ^darwin ]]; then
     echo "ERROR:  This script is intended only for MacOS." && exit 1
@@ -24,13 +34,13 @@ fi
 if ! which brew > /dev/null ; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   if ! cat ~/.bashrc | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew'; then
-    echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm" >> ~/.bashrc
+    echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm" >> $rcfile
     if [ "$arch" == "arm64" ]; then
-      echo "export PATH=/opt/homebrew/bin:$PATH" >> ~/.bashrc
+      echo "export PATH=/opt/homebrew/bin:$PATH" >> $rcfile
     else
-      echo "PATH=/usr/local/bin:$PATH" >> ~/.bashrc
+      echo "PATH=/usr/local/bin:$PATH" >> $rcfile
     fi
-    echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm" >> ~/.bashrc
+    echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm" >> $rcfile
   fi
 fi
 
@@ -48,22 +58,22 @@ fi
 if ! nvm ls > /dev/null ; then
 	brew install nvm
   mkdir -p ~/.nvm
-  if ! cat ~/.bashrc | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm'; then
-    echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm" >> ~/.bashrc
+  if ! cat $rcfile | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm'; then
+    echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm" >> $rcfile
     if [ "$arch" == "arm64" ]; then
       echo '''
   export NVM_DIR="$HOME/.nvm"
     [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
     [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-  ''' >> ~/.bashrc
+  ''' >> $rcfile
     else
       echo '''
   export NVM_DIR="$HOME/.nvm"
     [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
     [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-  ''' >> ~/.bashrc
+  ''' >> $rcfile
     fi
-    echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm" >> ~/.bashrc
+    echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm" >> $rcfile
   fi
 fi
 
@@ -95,9 +105,9 @@ fi
 # Install and configure direnv, a tool for automatically setting environment variables
 if ! which direnv > /dev/null ; then
   brew install direnv
-  if ! cat ~/.bashrc | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv'; then
+  if ! cat $rcfile | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv'; then
   echo '''### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv
 eval "$(direnv hook bash)"
-### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv''' >> ~/.bashrc
+### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv''' >> $rcfile
   fi
 fi
