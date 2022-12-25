@@ -30,4 +30,5 @@ jobs:
 
       - name: Run install
         run: |
+          nvm use
           run install
