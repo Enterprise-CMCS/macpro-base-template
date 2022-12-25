@@ -48,6 +48,7 @@ jobs:
       - name: Test install command
         run: |
           source /tmp/rcfile
+          direnv allow
           nvm use
           run install
       
