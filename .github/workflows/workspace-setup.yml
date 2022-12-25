@@ -55,14 +55,14 @@ jobs:
         run: |
           source /tmp/rcfile
           nvm use
-          run deploy --stage $STAGE
+          run deploy --stage $STAGE_NAME
       
       - name: Test destroy command
         if: always()
         run: |
           source /tmp/rcfile
           nvm use
-          run destroy --stage $STAGE --verify false --wait false
+          run destroy --stage $STAGE_NAME --verify false --wait false
 
       - name: Test docker and colima
         run: |
