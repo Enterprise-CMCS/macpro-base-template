@@ -28,6 +28,7 @@ jobs:
       - name: Run install
         run: |
           ls -la
+          cat ~/.bashrc
           source ~/.bashrc
           direnv allow
           run install
