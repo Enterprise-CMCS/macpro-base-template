@@ -18,6 +18,8 @@ jobs:
       name: test-ws-setup
     env:
       STAGE_NAME: test-ws-setup
+    permissions:
+      id-token: write
     steps:
 
       - name: Checkout
