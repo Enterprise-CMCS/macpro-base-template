@@ -6,7 +6,6 @@ package:
   individually: true
 
 plugins:
-  - "@stratiformdigital/serverless-iam-helper"
   - serverless-stack-termination-protection
   - "@stratiformdigital/serverless-s3-security-helper"
 
@@ -14,20 +13,17 @@ provider:
   name: aws
   runtime: nodejs14.x
   region: us-east-1
-  stage: infra
   stackTags:
     PROJECT: ${self:custom.project}
     SERVICE: ${self:service}
-  iam:
-    role:
-      path: ${ssm:/aws/reference/secretsmanager/${self:custom.project}/${sls:stage}/iam/path, ssm:/aws/reference/secretsmanager/${self:custom.project}/default/iam/path}
-      permissionsBoundary: ${ssm:/aws/reference/secretsmanager/${self:custom.project}/${sls:stage}/iam/permissionsBoundary, ssm:/aws/reference/secretsmanager/${self:custom.project}/default/iam/permissionsBoundary}
 
 custom:
   project: ${env:PROJECT}
   serverlessTerminationProtection:
     stages: # Apply CloudFormation termination protection for these stages
-      - infra
+      - master
+      - val
+      - production
   GitHubIdentityProviderArn: "arn:aws:iam::${aws:accountId}:oidc-provider/token.actions.githubusercontent.com"
   ManagedPolicyARNs:
     - arn:aws:iam::${aws:accountId}:policy/ADO-Restriction-Policy
@@ -39,6 +35,8 @@ resources:
     GitHubActionsServiceRole:
       Type: AWS::IAM::Role
       Properties:
+        Path: /delegatedadmin/developer/
+        PermissionsBoundary: !Sub arn:aws:iam::${AWS::AccountId}:policy/cms-cloud-admin/ct-ado-poweruser-permissions-boundary-policy
         MaxSessionDuration: 10800
         AssumeRolePolicyDocument:
           Version: "2012-10-17"

@@ -1,4 +1,4 @@
-service: dashboard
+service: ${self:custom.project}-dashboard
 
 frameworkVersion: "3"
 
@@ -20,8 +20,8 @@ provider:
     SERVICE: ${self:service}
   iam:
     role:
-      path: ${ssm:/configuration/${sls:stage}/iam/path, ssm:/configuration/default/iam/path, "/"}
-      permissionsBoundary: ${ssm:/configuration/${sls:stage}/iam/permissionsBoundaryPolicyArn, ssm:/configuration/default/iam/permissionsBoundaryPolicyArn, ""}
+      path: ${ssm:/aws/reference/secretsmanager/${self:custom.project}/${sls:stage}/iam/path, ssm:/aws/reference/secretsmanager/${self:custom.project}/default/iam/path}
+      permissionsBoundary: ${ssm:/aws/reference/secretsmanager/${self:custom.project}/${sls:stage}/iam/permissionsBoundary, ssm:/aws/reference/secretsmanager/${self:custom.project}/default/iam/permissionsBoundary}
       statements:
         - Effect: Allow
           Action:
