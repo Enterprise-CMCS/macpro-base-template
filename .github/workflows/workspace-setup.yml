@@ -44,33 +44,32 @@ jobs:
           source /tmp/rcfile
           nvm install
 
-      - name: Test install command
+      - name: Test install
         run: |
           source /tmp/rcfile
           nvm use
           run install
 
-      - name: Test deploy command
+      - name: Test docs
+        run: |
+          source /tmp/rcfile
+          colima start
+          run docs & sleep 30
+          docker ps | grep jekyll
+          run docs --stop
+          colima stop
+
+      - name: Test deploy
         run: |
           source /tmp/rcfile
           nvm use
           run deploy --stage $STAGE_NAME
 
-      - name: Test destroy command
+      - name: Test destroy
         run: |
           source /tmp/rcfile
           nvm use
           run destroy --stage $STAGE_NAME --verify false --wait false
-
-      - name: Test docker and colima
-        run: |
-          source /tmp/rcfile
-          colima start
-          docker ps
-          docker images
-          docker pull busybox
-          docker images
-          colima stop
 
       # UNCOMMENT THIS BEFORE MERGE
       # - name: Slack Notification
