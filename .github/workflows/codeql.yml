@@ -74,3 +74,8 @@ jobs:
       uses: github/codeql-action/analyze@v2
       with:
         category: "/language:${{matrix.language}}"
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: my-artifact
+        path: results/javascript.sarif
