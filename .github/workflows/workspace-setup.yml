@@ -21,7 +21,6 @@ jobs:
     permissions:
       id-token: write
     steps:
-
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -50,15 +49,14 @@ jobs:
           source /tmp/rcfile
           nvm use
           run install
-      
+
       - name: Test deploy command
         run: |
           source /tmp/rcfile
           nvm use
           run deploy --stage $STAGE_NAME
-      
+
       - name: Test destroy command
-        if: always()
         run: |
           source /tmp/rcfile
           nvm use
