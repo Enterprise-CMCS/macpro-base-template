@@ -56,7 +56,7 @@ jobs:
           source /tmp/rcfile
           nvm use
           colima start
-          run docs & sleep 30
+          run docs & sleep 60
           docker ps | grep jekyll
           run docs --stop
           colima stop
