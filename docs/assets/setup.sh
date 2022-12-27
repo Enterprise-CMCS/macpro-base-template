@@ -2,19 +2,12 @@ set -e
 
 # Check that we're on a mac.
 if [[ ! "$OSTYPE" =~ ^darwin ]]; then
-    echo "ERROR:  This script is intended only for MacOS." && exit 1
+  echo "ERROR:  This script is intended only for MacOS." && exit 1
 fi
 
-# Set some things based on chip architecture
-arch=`uname -m`
-homebrewprefix=""
-if [ "$arch" == "arm64" ]; then
-  if ! /usr/bin/pgrep -q oahd; then
-    echo "ERROR:  Rosetta must be installed on this machine before running this script, but was not found." && exit 1
-  fi
-  homebrewprefix="/opt/homebrew"
-else
-  homebrewprefix="/usr/local"
+# Check that XCode Command Line Tools are installed.
+if ! xcode-select -p > /dev/null; then
+  echo "ERROR:  XCode Command Line Tools must be installed on this machine before running this script, but were not found." && exit 1
 fi
 
 # Determine what shell rc file we might want to modify
@@ -31,8 +24,17 @@ else
   shellname="bash"
 fi
 
-# Determine the CPU architecture, as it drives a few bits of logic.
+# Set some things based on chip architecture
 arch=`uname -m`
+homebrewprefix=""
+if [ "$arch" == "arm64" ]; then
+  if ! /usr/bin/pgrep -q oahd; then
+    echo "ERROR:  Rosetta must be installed on this machine before running this script, but was not found." && exit 1
+  fi
+  homebrewprefix="/opt/homebrew"
+else
+  homebrewprefix="/usr/local"
+fi
 
 # If we're on Apple Silicon, check that Rosetta 2 has already been installed and is running.
 if [ "$arch" == "arm64" ]; then
@@ -41,23 +43,15 @@ if [ "$arch" == "arm64" ]; then
   fi
 fi
 
-# Check that XCode Command Line Tools are installed.
-if ! xcode-select -p > /dev/null; then
-  echo "ERROR:  XCode Command Line Tools must be installed on this machine before running this script, but were not found." && exit 1
-fi
-
 # Install HomeBrew, an OSX package manager
 if ! which brew > /dev/null ; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  if ! cat $rcfile | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew'; then
-    echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew" >> $rcfile
-    if [ "$arch" == "arm64" ]; then
-      echo "export PATH=/opt/homebrew/bin:$PATH" >> $rcfile
-    else
-      echo "PATH=/usr/local/bin:$PATH" >> $rcfile
-    fi
-    echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew" >> $rcfile
-  fi
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+if ! cat $rcfile | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew'; then
+  echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew" >> $rcfile
+  echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> $rcfile
+  echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew" >> $rcfile
 fi
 
 # Install the AWS CLI, used to interact with any/all AWS services
