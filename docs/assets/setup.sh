@@ -50,13 +50,13 @@ fi
 if ! which brew > /dev/null ; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   if ! cat $rcfile | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew'; then
-    echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm" >> $rcfile
+    echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew" >> $rcfile
     if [ "$arch" == "arm64" ]; then
       echo "export PATH=/opt/homebrew/bin:$PATH" >> $rcfile
     else
       echo "PATH=/usr/local/bin:$PATH" >> $rcfile
     fi
-    echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm" >> $rcfile
+    echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew" >> $rcfile
   fi
 fi
 
@@ -71,7 +71,7 @@ if ! which jq > /dev/null ; then
 fi
 
 # Install nvm, a version manager for Node, allowing multiple versions of Node to be installed and used
-if ! nvm ls > /dev/null ; then
+if ! nvm which > /dev/null ; then
 	brew install nvm
 fi
 mkdir -p ~/.nvm
