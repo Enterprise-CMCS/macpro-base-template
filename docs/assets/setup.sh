@@ -16,12 +16,17 @@ shellname=""
 if [ "$CI" == true ]; then
   rcfile="/tmp/rcfile"
   shellname="bash"
-elif [ "$SHELL" == "/bin/zsh" ]; then
-  rcfile="$HOME/.zshrc"
-  shellname="zsh"
 else
-  rcfile="$HOME/.bashrc"
-  shellname="bash"
+  if [ -n "$($SHELL -c 'echo $ZSH_VERSION')" ]; then
+    rcfile="$HOME/.zshrc"
+    shellname="zsh"
+  elif [ -n "$($SHELL -c 'echo $BASH_VERSION')" ]; then
+    rcfile="$HOME/.bashrc"
+    shellname="bash"
+  else
+    echo "ERROR:  Could not determine what shell is in use."
+    exit 1
+  fi
 fi
 
 # Set some things based on chip architecture
