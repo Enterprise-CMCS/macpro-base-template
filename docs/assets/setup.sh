@@ -70,7 +70,7 @@ if ! which jq > /dev/null ; then
 fi
 
 # Install nvm, a version manager for Node, allowing multiple versions of Node to be installed and used
-if ! nvm which > /dev/null ; then
+if [ ! -f ~/.nvm/nvm.sh ]; then
 	brew install nvm
 fi
 mkdir -p ~/.nvm
