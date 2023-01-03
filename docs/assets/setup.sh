@@ -43,19 +43,13 @@ fi
 arch=`uname -m`
 homebrewprefix=""
 if [ "$arch" == "arm64" ]; then
+  # If we're on Apple Silicon, check that Rosetta 2 has already been installed and is running.
   if ! /usr/bin/pgrep -q oahd; then
     echo "ERROR:  Rosetta must be installed on this machine before running this script, but was not found." && exit 1
   fi
   homebrewprefix="/opt/homebrew"
 else
   homebrewprefix="/usr/local"
-fi
-
-# If we're on Apple Silicon, check that Rosetta 2 has already been installed and is running.
-if [ "$arch" == "arm64" ]; then
-  if ! /usr/bin/pgrep -q oahd; then
-    echo "ERROR:  Rosetta must be installed on this machine before running this script, but was not found." && exit 1
-  fi
 fi
 
 # Install HomeBrew, an OSX package manager
