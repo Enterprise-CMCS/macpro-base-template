@@ -20,7 +20,7 @@ if [ "$CI" != "true" ]; then
     case $selectedshell in
       "zsh")
         shell=$selectedshell
-        rcfile=rcfile="$HOME/.zshrc"
+        rcfile="$HOME/.zshrc"
         ;;
 
       "bash")
@@ -61,12 +61,12 @@ fi
 # Install HomeBrew, an OSX package manager
 if ! which brew > /dev/null ; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+eval "$($homebrewprefix/bin/brew shellenv)"
 if ! cat $rcfile | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew'; then
   echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew" >> $rcfile
-  echo 'eval $(/opt/homebrew/bin/brew shellenv)' >> $rcfile
-  echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew" >> $rcfile
+  echo "eval \"\$($homebrewprefix/bin/brew shellenv)\"" >> $rcfile
+  echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew\n" >> $rcfile
 fi
 
 # Install the AWS CLI, used to interact with any/all AWS services
@@ -123,10 +123,6 @@ if ! which direnv > /dev/null ; then
 fi
 if ! cat $rcfile | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv'; then
   echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv" >> $rcfile
-  if [ "$shell" == "zsh" ]; then
-    echo 'eval "$(direnv hook zsh)"' >> $rcfile
-  else
-    echo 'eval "$(direnv hook bash)"' >> $rcfile
-  fi
+  echo "eval \"\$(direnv hook $shell)\"" >> $rcfile
   echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv\n" >> $rcfile
 fi
