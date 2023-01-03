@@ -42,14 +42,6 @@ jobs:
           source /tmp/rcfile
           nvm install
 
-      - name: Test install
-        run: |
-          source /tmp/rcfile
-          nvm use
-          direnv allow
-          echo $PROJECT
-          direnv exec run install
-
       - name: Test docs
         run: |
           source /tmp/rcfile
@@ -58,23 +50,33 @@ jobs:
           docker pull busybox
           colima stop
 
+      - name: Test install
+        run: |
+          source /tmp/rcfile
+          nvm use
+          direnv allow
+          direnv exec run install
+
       - name: Test deploy
         run: |
           source /tmp/rcfile
           nvm use
-          run deploy --stage $STAGE_NAME
+          direnv allow
+          direnv exec run deploy --stage $STAGE_NAME
 
       - name: Test test
         run: |
           source /tmp/rcfile
           nvm use
-          run test --stage $STAGE_NAME
+          direnv allow
+          direnv exec run test --stage $STAGE_NAME
 
       - name: Test destroy
         run: |
           source /tmp/rcfile
           nvm use
-          run destroy --stage $STAGE_NAME --verify false --wait false
+          direnv allow
+          direnv exec run destroy --stage $STAGE_NAME --verify false --wait false
 
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
