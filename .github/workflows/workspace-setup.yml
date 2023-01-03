@@ -38,6 +38,7 @@ jobs:
 
       - name: Run nvm install
         run: |
+          cat /tmp/rcfile
           source /tmp/rcfile
           nvm install
 
