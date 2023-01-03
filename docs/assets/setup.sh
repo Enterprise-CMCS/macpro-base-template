@@ -80,8 +80,12 @@ if ! which jq > /dev/null ; then
 fi
 
 # Install nvm, a version manager for Node, allowing multiple versions of Node to be installed and used
-if [ ! -f ~/.nvm/nvm.sh ]; then
-	brew install nvm
+if [ "$CI" != "true" ]; then
+  if [ ! -f ~/.nvm/nvm.sh ]; then
+    brew install nvm
+  fi
+else
+  brew install nvm
 fi
 mkdir -p ~/.nvm
 if ! cat $rcfile | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm'; then
