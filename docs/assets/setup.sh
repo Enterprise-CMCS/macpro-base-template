@@ -10,23 +10,33 @@ if ! xcode-select -p > /dev/null; then
   echo "ERROR:  XCode Command Line Tools must be installed on this machine before running this script, but were not found." && exit 1
 fi
 
-# Determine what shell rc file we might want to modify
+# Determine what shell and rc file we might want to modify
 rcfile=""
-shellname=""
-if [ "$CI" == true ]; then
-  rcfile="/tmp/rcfile"
-  shellname="bash"
+shell=""
+if [ "$CI" != "true" ]; then
+  echo "Which terminal shell do you want to configure?  Please input a number and hit Enter:"
+  select selectedshell in zsh bash
+  do
+    case $selectedshell in
+      "zsh")
+        shell=$selectedshell
+        rcfile=rcfile="$HOME/.zshrc"
+        ;;
+
+      "bash")
+        shell=$selectedshell
+        rcfile="$HOME/.bashrc"
+        ;;
+      *)
+        echo "ERROR:  Invalid input.  Exiting."
+        exit 1
+        ;;
+    esac
+    break
+  done
 else
-  if [ -n "$($SHELL -c 'echo $ZSH_VERSION')" ]; then
-    rcfile="$HOME/.zshrc"
-    shellname="zsh"
-  elif [ -n "$($SHELL -c 'echo $BASH_VERSION')" ]; then
-    rcfile="$HOME/.bashrc"
-    shellname="bash"
-  else
-    echo "ERROR:  Could not determine what shell is in use."
-    exit 1
-  fi
+  shell="bash"
+  rcfile="/tmp/rcfile"
 fi
 
 # Set some things based on chip architecture
@@ -113,7 +123,7 @@ if ! which direnv > /dev/null ; then
 fi
 if ! cat $rcfile | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv'; then
   echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv" >> $rcfile
-  if [ "$shellname" == "zsh" ]; then
+  if [ "$shell" == "zsh" ]; then
     echo 'eval "$(direnv hook zsh)"' >> $rcfile
   else
     echo 'eval "$(direnv hook bash)"' >> $rcfile
