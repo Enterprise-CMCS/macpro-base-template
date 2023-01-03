@@ -46,6 +46,7 @@ jobs:
         run: |
           source /tmp/rcfile
           nvm use
+          direnv allow
           run install
 
       - name: Test docs
