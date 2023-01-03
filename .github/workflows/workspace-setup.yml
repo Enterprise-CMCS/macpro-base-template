@@ -46,6 +46,8 @@ jobs:
         run: |
           source /tmp/rcfile
           nvm use
+          direnv allow
+          echo $PROJECT
           direnv exec run install
 
       - name: Test docs
