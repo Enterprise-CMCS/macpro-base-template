@@ -110,7 +110,7 @@ if ! which docker > /dev/null ; then
   brew install docker
 fi
 
-# Install docker, a container runtime in which we can run Docker images
+# Install colima, a container runtime in which we can run Docker images
 if ! which colima > /dev/null ; then
   brew install colima
 fi
