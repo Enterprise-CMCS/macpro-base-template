@@ -112,4 +112,3 @@ For the purposes of these instructions, we will assume your new repository (crea
 
 ### Conclusion
 If you’ve followed this document, you should have a new GitHub project deployed to AWS and ready for further development. This document is a WIP, and assuredly has errors and omissions, and will change over time. You can help this by reaching out to the MACPRO Platform team on Slack and letting us know about issues you find.
->>>>>>> Stashed changes:docs/docs/x-new-project-creation.md
