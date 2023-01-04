@@ -23,7 +23,7 @@
 
 ---
 
-### Please visit our [macpro-base-template docs site](https://enterprise-cmcs.github.io/macpro-base-template/) for complete documentation.
+### Please visit our [docs site](https://enterprise-cmcs.github.io/macpro-base-template/) for complete documentation.
 
 ---
 

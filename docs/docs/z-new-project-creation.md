@@ -104,11 +104,18 @@ For the purposes of these instructions, we will assume your new repository (crea
     - Open and edit acme/.envrc
         - Update the value for PROJECT.  Shorter is usually better, as it is used extensively for namespacing purposes.  It should be all lower case, only contain letters and hyphens, and be unique in the target AWS accounts; that is, there should not be two repositories deploying to the same AWS account that use the same PROJECT value.
     - Open and edit acme/README.md
-        - 
-
-
-
-
+        - Find all `https://enterprise-cmcs.github.io/macpro-base-template/` and replace all with the url to your GitHub Pages docs site.
+        - Find all `https://cmsgov.slack.com/archives/C04D6HXJ3GA` and replace all with the url to your project Slack channel.
+        - Find the block:
+            ```
+            <a href="https://codeclimate.com/github/Enterprise-CMCS/macpro-base-template/maintainability">
+                <img src="https://api.codeclimate.com/v1/badges/f7cce65e43346ac8e2c2/maintainability" />
+            </a>
+            ``` and replace with the CodeClimate badge block you copied from CodeClimate in a previous step.
+        - Update the text in the Overview and Contributing sections, as appropriate.
+    - Open and edit the Jekyll config file, docs/_config.yml.  Rather than list each place where a value might need replacing/updating, we recommend you walk through this file in detail.  It's a config file, so most of it's information will need updating.
+    - Update the docs site overview, located at docs/docs/overview.md - subsection Overview.  we recommend reusing the overview you put in the README
+    - Commit and push all changes to your new repository, and check the GitHub Actions for success.
 
 ### Conclusion
 If you’ve followed this document, you should have a new GitHub project deployed to AWS and ready for further development. This document is a WIP, and assuredly has errors and omissions, and will change over time. You can help this by reaching out to the MACPRO Platform team on Slack and letting us know about issues you find.
