@@ -6,7 +6,7 @@ nav_order: 99
 
 # New Project Creation
 
-Standard Operating Procedure for MACPRO Project Creation Output of: <https://qmacbis.atlassian.net/browse/OY2-20437>
+Standard Operating Procedure for MACPRO Project Creation.
 
 ## Introduction
  On MACPRO, we get a lot of ideas. These stem both from the client and our development teams, both aimed at delivering on the project’s charter. These ideas often require a new project to be created. Project in this context refers to a github repository with its own distinct delivery repository and lifecycle. This document aims to be a guide for starting a new project, or a guide on how to take an idea and start delivering it.
