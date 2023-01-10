@@ -31,7 +31,7 @@ team:
 
 meetings:
   - name: Daily Standup
-    time: 10:00am - 10:30am ET
+    time: 10:30am - 11:00am ET
     attendance: optional
     link: Ask for the Hangouts invite on Slack.
 
