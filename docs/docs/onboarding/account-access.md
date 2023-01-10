@@ -44,7 +44,7 @@ Further, accessing the AWS Console or CLI requires fetching temporary credential
 
 So, to have full AWS access, you will need two things:  access to the Cloud VPN so you can hit Kion, and then permissions for the project's specific AWS accounts.  CMS requests to be granted access to these two systems can be made together, or seperately.
 
-Please [follow this how-to guide](https://qmacbis.atlassian.net/wiki/spaces/DE/pages/2788786177/How+to+request+CMS+AWS+Cloud+VPN+and+or+AWS+Console+Access+via+Cloudtamer) to obtain access to AWS and the Cloud VPN.
+Please [follow this how-to guide](https://qmacbis.atlassian.net/l/cp/yY5s5is2) to obtain access to AWS and the Cloud VPN.
 
 ## Code Climate
 
