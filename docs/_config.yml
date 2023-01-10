@@ -81,6 +81,8 @@ heading_anchors: true
 aux_links:
   "GitHub":
     - "https://github.com/Enterprise-CMCS/macpro-base-template"
+  "Jira":
+    - "https://qmacbis.atlassian.net/jira/software/c/projects/OY2/boards/246"
   "Slack":
     - "https://cmsgov.slack.com/archives/C04D6HXJ3GA"
 aux_links_new_tab: false
@@ -92,6 +94,8 @@ nav_sort: case_sensitive # Capital letters sorted before lowercase
 nav_external_links:
   - title: GitHub
     url: https://github.com/Enterprise-CMCS/macpro-base-template
+  - title: Jira
+    url: https://qmacbis.atlassian.net/jira/software/c/projects/OY2/boards/246
   - title: Slack
     url: https://cmsgov.slack.com/archives/C04D6HXJ3GA
 
