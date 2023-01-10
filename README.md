@@ -27,17 +27,19 @@
 
 ---
 
+<p align="center">
+  <img width="55%" src="docs/assets/diagram.svg">
+</p>
+
 ## Overview
 
 The macpro-base-template project (oftened referenced in the context of this repository as just 'base' or 'base-template') is a serverless monorepo accelerator. The actual application is fairly 'hello world', but the repository support and configuration is full featured. This is by design, to allow for simpler project creation from the template. Full CI/CD support with GitHub Actions, automated security scanning, docs site in GitHub Pages, PR/Issue templates, infrastructure and application deployment workflows, etc. is all included.
 
-![Architecture Diagram](docs/assets/diagram.svg)
-
 ## Contributing
 
-Work items for this project is tracked in CMS' Jira. If you have access to our Jira, you can view related work there. While there's not yet a dedicated product view in Jira, the [Platform Team board](https://qmacbis.atlassian.net/jira/software/c/projects/OY2/boards/216/backlog?selectedIssue=OY2-17657&epics=visible&issueLimit=100) is a good stand in.
+Work items for this project are tracked in Jira. Check out the [project kanban board](https://qmacbis.atlassian.net/jira/software/c/projects/OY2/boards/246) to view all work items affecting this repo.
 
-If you don't have access to Jira, would like access to Jira, or would like to discuss any enhancement, bug, idea, or question, please visit the [slack channel](https://cmsgov.slack.com/archives/C0403M0D007). This is a public channel open to anyone in CMS Slack, and all input is welcome!
+If you don't have access to Jira, would like access to Jira, or would like to drop us an idea without pursuing Jira access, please visit the [slack channel](https://cmsgov.slack.com/archives/C0403M0D007).
 
 ## License
 
