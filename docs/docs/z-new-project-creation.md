@@ -113,8 +113,9 @@ For the purposes of these instructions, we will assume your new repository (crea
             </a>
             ``` and replace with the CodeClimate badge block you copied from CodeClimate in a previous step.
         - Update the text in the Overview and Contributing sections, as appropriate.
+    - Open and edit the project's top level package.json file to be accurate.  Updates should include name, description, repository.url, and homepage.
     - Open and edit the Jekyll config file, docs/_config.yml.  Rather than list each place where a value might need replacing/updating, we recommend you walk through this file in detail.  It's a config file, so most of it's information will need updating.
-    - Update the docs site overview, located at docs/docs/overview.md - subsection Overview.  we recommend reusing the overview you put in the README
+    - Update the docs site overview information, located at docs/docs/overview.md - subsection Overview.  we recommend reusing the overview you put in the README
     - Commit and push all changes to your new repository, and check the GitHub Actions for success.
 
 ### Conclusion
