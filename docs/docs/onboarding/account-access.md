@@ -19,11 +19,15 @@ You'll need access to a few systems to be a fully privileged developer.  This se
 {:toc}
 ---
 
-## Git Repository
+## Git organization
 
 To be a fully privileged developer on the {{ site.repo.name }} project, you will need access to both the GitHub organization and the repository.
 
-Access to the GitHub organization is governed by a CMS team and CMS Job Codes.  Instructions on how to fit into this process is outside this document's scope.  We hope to have a link to docuentation to follow in the future, but currently have no link.
+Access to the GitHub organization is governed by a CMS team and CMS Job Codes.  Please follow the [instructions to obtain org access](https://qmacbis.atlassian.net/l/cp/xe4XCoGo).
+
+## Git Repository
+
+To be a fully privileged developer on the {{ site.repo.name }} project, you will need access to both the GitHub organization and the repository.
 
 To be granted access to the repo:, please send an email to {{ site.contact_email }} which includes:
 
