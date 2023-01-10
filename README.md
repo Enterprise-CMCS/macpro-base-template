@@ -37,9 +37,9 @@ The macpro-base-template project (oftened referenced in the context of this repo
 
 ## Contributing
 
-Work items for this project are tracked in CMS' Jira. Check out the [project kanban board](https://qmacbis.atlassian.net/jira/software/c/projects/OY2/boards/246) to view all work items affecting this repo.
+Work items for this project are tracked in Jira. Check out the [project kanban board](https://qmacbis.atlassian.net/jira/software/c/projects/OY2/boards/246) to view all work items affecting this repo.
 
-If you don't have access to Jira, would like access to Jira, or would like to drop us an idea without bothering with Jira, please visit the [slack channel](https://cmsgov.slack.com/archives/C0403M0D007).
+If you don't have access to Jira, would like access to Jira, or would like to drop us an idea without pursuing Jira access, please visit the [slack channel](https://cmsgov.slack.com/archives/C0403M0D007).
 
 ## License
 
