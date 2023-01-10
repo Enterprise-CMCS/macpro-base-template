@@ -15,7 +15,7 @@ description: A baseline serverless monorepo project that helps get your project 
 # baseurl: "/just-the-docs" # the subpath of your site, e.g. /blog
 url: "https://just-the-docs.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
-contact_email: bpaige@gswell.com
+contact_email: mdial@gswell.com
 
 team:
   members: # This list automatically populates the Team Introduction page.  Add/Edit as appropriate.
