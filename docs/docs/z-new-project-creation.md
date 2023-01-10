@@ -32,7 +32,7 @@ Creating a new project will always involve creating a new GitHub repository, so 
 - The name of the project/repo will be used a lot. It should be accurate, but
 sometimes less is more.
 
-Once you've considered the above points, [follow this how-to guide](https://qmacbis.atlassian.net/wiki/spaces/DE/pages/3095232517/How+to+request+a+new+Github+repository+in+CMSC+Github+Draft) to create a new Git repo.
+Once you've considered the above points, [follow this how-to guide](https://qmacbis.atlassian.net/l/cp/QDuKKWGH) to create a new Git repo.
 
 
 ### Step 2: Request a new set of AWS accounts, if applicable
