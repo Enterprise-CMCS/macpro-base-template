@@ -10,13 +10,6 @@ nav_order: 8
 
 How to use pre-commit on the project
 
-[Pre-commit](https://pre-commit.com/) is a python package that enables projects to specifies a list of hooks to run before a commit is made (a pre-commit hook).  This is really useful to enforce standards or conventions, as it prevents non conformant changes from getting committed.  
-
-On this project, we use pre-commit to automate several checks, including:
-- running a code formatting check based on [prettier](https://prettier.io/)
-- checking for large files typically not desired to keep in source control
-- scanning for secret material, such as AWS keys
-
 {: .fs-6 .fw-300 }
 
 ## Table of contents
@@ -51,8 +44,11 @@ Although pre-commit is installed on your workstation, you must configure pre-com
 
 This procedure needs to only be run once per repository, or once each time the .pre-commit-config.yaml file is changed in the repository (very infrequently).
 
-1. open a terminal
-1. cd {{ site.repo.name }}
-1. pre-commit install -a
+- open a terminal
+- install all hooks configured in .pre-commit-config.yaml
+  ```bash
+    cd {{ site.repo.name }}
+    pre-commit install -a
+  ```
 
-That's it... after running the above commands inside the project repository, pre-comit will run the checks configured in .pre-commit-config.yaml before any commit.
+That's it -- after running the above commands inside the project repository, pre-comit will run the project's configured checks before any commit.
