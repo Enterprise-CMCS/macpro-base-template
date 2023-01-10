@@ -23,9 +23,9 @@ Here's how our team communicates.
 
 Here's a list of recurring meetings you might need.  If you need or want an invite, reach out on [Slack]({{ site.slack.channel_url}} ).
 
-| Meeting | Time | Attendance | Link |
-| ------- | ---- | ---------- | ---- |
-|{% for element in site.meetings %} {{ element.name }} | {{ element.time }} | {{ element.attendance }} | {{ element.link }} |
+| Meeting | Day(s) | Time | Link |
+| ------- | ------ | ---- | ---- |
+|{% for element in site.meetings %} {{ element.name }} | {{ element.days }} |{{ element.time }} | {{ element.link }} |
 {% endfor %}
 
 ## Slack
