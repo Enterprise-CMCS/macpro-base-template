@@ -23,12 +23,13 @@ You'll need access to a few systems to be a fully privileged developer.  This se
 
 To be a fully privileged developer on the {{ site.repo.name }} project, you will need access to both the GitHub organization and the repository.
 
-To be granted access to the organization (if not already done): please [follow these instructions to obtain GitHub org access]
+Access to the GitHub organization is governed by a CMS team and CMS Job Codes.  Instructions on how to fit into this process is outside this document's scope.  We hope to have a link to docuentation to follow in the future, but currently have no link.
 
-To be granted access to the repo:, please send an email to mdial@collabralink.com which includes:
+To be granted access to the repo:, please send an email to {{ site.contact_email }} which includes:
 
 - Name
 - GitHub user id
+- Level of access requested (read, write, admin, maintain)
 - Reason for access / who you are
 
 ## AWS and Cloud VPN
