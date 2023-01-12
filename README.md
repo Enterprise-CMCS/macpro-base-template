@@ -2,10 +2,10 @@
 <h3 align="center">A serverless monorepo accelerator tailored for use at Centers for Medicare & Medicaid Services (CMS).</h3>
 <p align="center">
   <a href="https://enterprise-cmcs.github.io/macpro-base-template/">
-    <img alt="Docs" src="https://img.shields.io/badge/Docs-Pages-blue.svg">
+    <img alt="Docs" src="https://img.shields.io/badge/Docs-site-blue.svg">
   </a>
   <a href="https://qmacbis.atlassian.net/jira/software/c/projects/OY2/boards/246">
-    <img alt="Jira" src="https://img.shields.io/badge/Jira-Board-0052CC.svg">
+    <img alt="Jira" src="https://img.shields.io/badge/Jira-board-0052CC.svg">
   </a>
   <a href="https://cmsgov.slack.com/archives/C04D6HXJ3GA">
     <img alt="Slack" src="https://img.shields.io/badge/Slack-channel-purple.svg">
