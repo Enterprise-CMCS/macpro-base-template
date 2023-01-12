@@ -1,3 +1,7 @@
+---
+### Please visit our [docs site](https://enterprise-cmcs.github.io/macpro-base-template/) for complete documentation.
+---
+
 <h1 align="center" style="border-bottom: none;">macpro-base-template</h1>
 <h3 align="center">A serverless monorepo accelerator tailored for use at Centers for Medicare & Medicaid Services (CMS).</h3>
 <p align="center">
@@ -23,12 +27,6 @@
     <img alt="semantic-release: angular" src="https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release">
   </a>
 </p>
-
----
-
-### Please visit our [docs site](https://enterprise-cmcs.github.io/macpro-base-template/) for complete documentation.
-
----
 
 <p align="center">
   <img width="55%" src="docs/assets/diagram.svg">
