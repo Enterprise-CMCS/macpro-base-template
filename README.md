@@ -4,6 +4,9 @@
   <a href="https://enterprise-cmcs.github.io/macpro-base-template/">
     <img alt="Docs" src="https://img.shields.io/badge/Docs-Pages-blue.svg">
   </a>
+  <a href="https://qmacbis.atlassian.net/jira/software/c/projects/OY2/boards/246">
+    <img alt="Jira" src="https://img.shields.io/badge/Jira-Board-0052CC.svg">
+  </a>
   <a href="https://cmsgov.slack.com/archives/C04D6HXJ3GA">
     <img alt="Slack" src="https://img.shields.io/badge/Slack-channel-purple.svg">
   </a>
