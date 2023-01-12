@@ -29,7 +29,7 @@ jobs:
           fi
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Configure direnv
         uses: HatsuneMiku3939/direnv-action@v1
