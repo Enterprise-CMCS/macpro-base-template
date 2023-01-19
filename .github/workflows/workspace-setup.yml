@@ -30,7 +30,7 @@ jobs:
           role-duration-seconds: 10800
 
       - run: shopt -q login_shell && echo 'Login shell' || echo 'Not login shell'
-
+      - run: echo "BASH_ENV=/tmp/.profile" >> $GITHUB_OUTPUT
       - name: Run workspace setup
         run: |
           sh docs/assets/setup.sh
