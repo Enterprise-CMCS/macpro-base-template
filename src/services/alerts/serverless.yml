@@ -79,12 +79,9 @@ resources:
           Statement:
             - Effect: Allow
               Principal:
-                Service: events.amazonaws.com
-              Action: sns:Publish
-              Resource: !Ref AlertsTopic
-            - Effect: Allow
-              Principal:
-                Service: cloudwatch.amazonaws.com
+                Service:
+                  - events.amazonaws.com
+                  - cloudwatch.amazonaws.com
               Action: sns:Publish
               Resource: !Ref AlertsTopic
         Topics:
