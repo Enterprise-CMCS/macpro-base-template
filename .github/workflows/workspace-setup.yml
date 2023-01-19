@@ -32,8 +32,6 @@ jobs:
           aws-region: us-east-1
           role-duration-seconds: 10800
 
-      - run: shopt -q login_shell && echo 'Login shell' || echo 'Not login shell'
-      - run: echo "BASH_ENV=/tmp/.profile" >> $GITHUB_OUTPUT
       - name: Run workspace setup
         run: |
           sh docs/assets/setup.sh
@@ -44,7 +42,7 @@ jobs:
 
       - name: Test docs
         run: |
-          source /tmp/rcfile
+          source /tmp/.profile
           nvm use
           colima start
           docker pull busybox
@@ -52,28 +50,28 @@ jobs:
 
       - name: Test install
         run: |
-          source /tmp/rcfile
+          source /tmp/.profile
           nvm use
           direnv allow
           direnv exec run install
 
       - name: Test deploy
         run: |
-          source /tmp/rcfile
+          source /tmp/.profile
           nvm use
           direnv allow
           direnv exec run deploy --stage $STAGE_NAME
 
       - name: Test test
         run: |
-          source /tmp/rcfile
+          source /tmp/.profile
           nvm use
           direnv allow
           direnv exec run test --stage $STAGE_NAME
 
       - name: Test destroy
         run: |
-          source /tmp/rcfile
+          source /tmp/.profile
           nvm use
           direnv allow
           direnv exec run destroy --stage $STAGE_NAME --verify false --wait false
