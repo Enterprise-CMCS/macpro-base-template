@@ -39,7 +39,6 @@ jobs:
       - name: Run nvm install
         run: |
           source /tmp/.profile
-          nvm use
           nvm install
 
       - name: Test docs
