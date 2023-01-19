@@ -10,9 +10,12 @@ if ! xcode-select -p > /dev/null; then
   echo "ERROR:  XCode Command Line Tools must be installed on this machine before running this script, but were not found." && exit 1
 fi
 
+setenvsh="~/.macpro_profile"
+
 # Determine what shell and rc file we might want to modify
-rcfile=""
 shell=""
+shellprofile=""
+macprorcfile=""
 if [ "$CI" != "true" ]; then
   echo "Which terminal shell do you want to configure?  Please input a number and hit Enter:"
   select selectedshell in zsh bash
@@ -20,12 +23,16 @@ if [ "$CI" != "true" ]; then
     case $selectedshell in
       "zsh")
         shell=$selectedshell
-        rcfile="$HOME/.zshrc"
+        shellprofile="$HOME/.profile"
+        macprorcfile="$HOME/.macprorc"
         ;;
 
       "bash")
         shell=$selectedshell
-        rcfile="$HOME/.bashrc"
+        macprorcfile="$HOME/.macprorc"
+        if test -f "$FILE"; then
+          echo "$FILE exists."
+        fi
         ;;
       *)
         echo "ERROR:  Invalid input.  Exiting."
@@ -36,8 +43,10 @@ if [ "$CI" != "true" ]; then
   done
 else
   shell="bash"
-  rcfile="/tmp/rcfile"
+  shellprofile="/tmp/.profile"
+  macprorcfile="/tmp/.macprorc"
 fi
+touch $macprorcfile
 
 # Set some things based on chip architecture
 arch=`uname -m`
@@ -57,10 +66,10 @@ if ! which brew > /dev/null ; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 eval "$($homebrewprefix/bin/brew shellenv)"
-if ! cat $rcfile | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew'; then
-  echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew" >> $rcfile
-  echo "eval \"\$($homebrewprefix/bin/brew shellenv)\"" >> $rcfile
-  echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew\n" >> $rcfile
+if ! cat $macprorcfile | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew'; then
+  echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew" >> $macprorcfile
+  echo "eval \"\$($homebrewprefix/bin/brew shellenv)\"" >> $macprorcfile
+  echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - homebrew\n" >> $macprorcfile
 fi
 
 # Install the AWS CLI, used to interact with any/all AWS services
@@ -82,12 +91,12 @@ else
   brew install nvm
 fi
 mkdir -p ~/.nvm
-if ! cat $rcfile | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm'; then
+if ! cat $macprorcfile | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm'; then
     echo """### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm
 export NVM_DIR="$HOME/.nvm"
   [ -s "$homebrewprefix/opt/nvm/nvm.sh" ] && \. "$homebrewprefix/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "$homebrewprefix/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$homebrewprefix/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm\n""" >> $rcfile
+### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - nvm\n""" >> $macprorcfile
 fi
 
 # Install awslogs, a utility for streaming CloudWatch logs
@@ -119,8 +128,14 @@ fi
 if ! which direnv > /dev/null ; then
   brew install direnv
 fi
-if ! cat $rcfile | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv'; then
-  echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv" >> $rcfile
-  echo "eval \"\$(direnv hook $shell)\"" >> $rcfile
-  echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv\n" >> $rcfile
+if ! cat $macprorcfile | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv'; then
+  echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv" >> $macprorcfile
+  echo "eval \"\$(direnv hook $shell)\"" >> $macprorcfile
+  echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - direnv\n" >> $macprorcfile
+fi
+
+if ! cat $shellprofile | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - source .macprorc'; then
+  echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - source .macprorc" >> $shellprofile
+  echo "source $macprorcfile" >> $shellprofile
+  echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - source .macprorc\n" >> $shellprofile
 fi
