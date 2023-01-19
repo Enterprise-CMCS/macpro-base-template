@@ -4,6 +4,9 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "0 10 * * SUN"
+  push:
+    branches:
+      - brake1 #revertme
 
 concurrency:
   group: ${{ github.ref_name }}-test-ws-setup
