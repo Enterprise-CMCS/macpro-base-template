@@ -102,7 +102,11 @@ For the purposes of these instructions, we will assume your new repository (crea
     - Copy the HTML version of the Maintainability tag.  Keep this in a notepad for use later in these instructions.
 1. Update project specific values in your codebase; commit and push them to the master branch.
     - Open and edit acme/.envrc
-        - Update the value for PROJECT.  Shorter is usually better, as it is used extensively for namespacing purposes.  It should be all lower case, only contain letters and hyphens, and be unique in the target AWS accounts; that is, there should not be two repositories deploying to the same AWS account that use the same PROJECT value.
+        - Update the value for PROJECT.
+            - This value is used extensively in deployment, as it drives project namespacing.  It is what enables us to run many products in one AWS account ,if need be.
+            - This value is typically related to your project name.  However, it does not need to match exactly, or really at all.  
+            - To that point, a shorter name is preferred, as it will be put in many resource names.  For instance:  this repository, macpro-base-template, has a PROJECT value of just 'base'.  That's enough to be indicative of what project owns a resource with that tag, but not so long to be askward.
+            - Once you've chosen a new project name during project creation, changing it can be extremely difficult.  So take a minute and make sure it's what you want.
     - Open and edit acme/README.md
         - Find all `https://enterprise-cmcs.github.io/macpro-base-template/` and replace all with the url to your GitHub Pages docs site.
         - Find all `https://cmsgov.slack.com/archives/C04D6HXJ3GA` and replace all with the url to your project Slack channel.
