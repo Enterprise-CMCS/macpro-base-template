@@ -23,14 +23,14 @@ if [ "$CI" != "true" ]; then
     case $selectedshell in
       "zsh")
         shell=$selectedshell
-        shellprofile="$HOME/.profile"
+        shellprofile="$HOME/.zshrc"
         macprorcfile="$HOME/.macprorc"
         ;;
 
       "bash")
         shell=$selectedshell
         macprorcfile="$HOME/.macprorc"
-        if test -f "$FILE"; then
+        if test -f "$HOME/.bash_profile"; then
           echo "$FILE exists."
         fi
         ;;
@@ -47,6 +47,7 @@ else
   macprorcfile="/tmp/.macprorc"
 fi
 touch $macprorcfile
+touch $shellprofile
 
 # Set some things based on chip architecture
 arch=`uname -m`
@@ -136,6 +137,8 @@ fi
 
 if ! cat $shellprofile | grep -q '### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - source .macprorc'; then
   echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - source .macprorc" >> $shellprofile
-  echo "source $macprorcfile" >> $shellprofile
+  echo "if [ -f $HOME/.bashrc ]; then" >> $shellprofile
+  echo "  source $macprorcfile" >> $shellprofile
+  echo "fi" >> $shellprofile
   echo "### MANAGED BY MACPRO Workspace Setup - DO NOT EDIT - source .macprorc\n" >> $shellprofile
 fi
