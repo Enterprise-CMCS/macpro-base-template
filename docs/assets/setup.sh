@@ -10,8 +10,6 @@ if ! xcode-select -p > /dev/null; then
   echo "ERROR:  XCode Command Line Tools must be installed on this machine before running this script, but were not found." && exit 1
 fi
 
-setenvsh="~/.macpro_profile"
-
 # Determine what shell and rc file we might want to modify
 shell=""
 shellprofile=""
