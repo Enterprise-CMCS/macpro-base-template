@@ -133,12 +133,12 @@ eval \"\$(direnv hook $shell)\"
 """ > $macprorcfile
 
 
-if ! cat $shellprofile | grep -q '### MANAGED BY MACPRO Workspace Setup - (DO NOT EDIT)'; then
+if ! cat $shellprofile | grep -q '### MANAGED BY MACPRO Workspace Setup - source - (DO NOT EDIT)'; then
   echo """
-### MANAGED BY MACPRO Workspace Setup - (DO NOT EDIT)
+### MANAGED BY MACPRO Workspace Setup - source - (DO NOT EDIT)
 if [ -f $macprorcfile ]; then
   source $macprorcfile
 fi
-### MANAGED BY MACPRO Workspace Setup - (DO NOT EDIT)
+### MANAGED BY MACPRO Workspace Setup - source - (DO NOT EDIT)
 """ >> $shellprofile
 fi
