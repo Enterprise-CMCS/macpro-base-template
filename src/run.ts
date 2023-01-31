@@ -248,20 +248,18 @@ yargs(process.argv.slice(2))
     }
   )
   .command(
-    "upgrade-base",
+    "base-update",
     "this will upgrade your code to the latest version of the base template",
     {},
     async () => {
-      const addRemoteCommand: string[] = [];
-
       try {
-        addRemoteCommand.push(
+        const addRemoteCommand = [
           "git",
           "remote",
           "add",
           "base",
           "https://github.com/Enterprise-CMCS/macpro-base-template"
-        );
+        ];
 
         await runner.run_command_and_output(
           "Upgrade from Base | adding remote",
@@ -280,7 +278,7 @@ yargs(process.argv.slice(2))
         "."
       );
 
-      const mergeCommand = ["git", "merge", "base/production"];
+      const mergeCommand = ["git", "merge", "base/production", "--no-ff"];
 
       await runner.run_command_and_output(
         "Upgrade from Base | merging code from base template",
