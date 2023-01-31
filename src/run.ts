@@ -264,7 +264,7 @@ yargs(process.argv.slice(2))
         "Upgrade from Base | adding remote",
         addRemoteCommand,
         ".",
-        true,
+        true
       );
 
       const fetchBaseCommand = ["git", "fetch", "base"];
@@ -281,7 +281,11 @@ yargs(process.argv.slice(2))
         "Upgrade from Base | merging code from base template",
         mergeCommand,
         ".",
-        true,
+        true
+      );
+
+      console.log(
+        "Merge command was performed. You may have conflicts. This is normal behaivor. To complete the update process fix any conflicts, commit, push, and open a PR."
       );
     }
   )
