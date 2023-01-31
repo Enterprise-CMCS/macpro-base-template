@@ -21,15 +21,17 @@ This SOP is suited for anyone involved with project creation. Parts will be non 
 
 ## Video Walkthrough
 
-A video walkthrough is provided; it can accompany you as you step through the documentation, if you find it helpful.
+A video walkthrough of this new project creation procedure is provided, to accompany the docs.  It's our longest video walkthrough, so it's cut into 12 minute parts:
 
-Note: this procedure is long, so the video is cut into 12 minute sections.
+[Part 1 - New Project Setup](https://user-images.githubusercontent.com/48921055/215788850-de1fc49a-18c2-419e-af74-da35816a4a03.mp4){:target="_blank"}
 
-<iframe width="420" height="315" src="https://user-images.githubusercontent.com/48921055/215788850-de1fc49a-18c2-419e-af74-da35816a4a03.mp4" frameborder="0" allowfullscreen></iframe>
-<iframe width="420" height="315" src="https://user-images.githubusercontent.com/48921055/215788887-2fae5af6-eb89-40ff-87ba-314a96d06b06.mp4" frameborder="0" allowfullscreen></iframe>
-<iframe width="420" height="315" src="https://user-images.githubusercontent.com/48921055/215788913-b7e2f76a-614a-4139-8a34-cedeb79e5e60.mp4" frameborder="0" allowfullscreen></iframe>
-<iframe width="420" height="315" src="https://user-images.githubusercontent.com/48921055/215788926-4060eef2-c47a-4067-b17f-a138f91db69b.mp4" frameborder="0" allowfullscreen></iframe>
-<iframe width="420" height="315" src="https://user-images.githubusercontent.com/48921055/215788936-71f91418-8fdd-4cc1-901a-b843de355ed7.mp4" frameborder="0" allowfullscreen></iframe>
+[Part 2 - New Project Setup](https://user-images.githubusercontent.com/48921055/215788887-2fae5af6-eb89-40ff-87ba-314a96d06b06.mp4){:target="_blank"}
+
+[Part 3 - New Project Setup](https://user-images.githubusercontent.com/48921055/215788913-b7e2f76a-614a-4139-8a34-cedeb79e5e60.mp4){:target="_blank"}
+
+[Part 4 - New Project Setup](https://user-images.githubusercontent.com/48921055/215788926-4060eef2-c47a-4067-b17f-a138f91db69b.mp4){:target="_blank"}
+
+[Part 5 - New Project Setup](https://user-images.githubusercontent.com/48921055/215788936-71f91418-8fdd-4cc1-901a-b843de355ed7.mp4){:target="_blank"}
 
 ## Details
 
