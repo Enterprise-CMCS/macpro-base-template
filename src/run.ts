@@ -280,7 +280,8 @@ yargs(process.argv.slice(2))
       await runner.run_command_and_output(
         "Upgrade from Base | merging code from base template",
         mergeCommand,
-        "."
+        ".",
+        true,
       );
     }
   )
