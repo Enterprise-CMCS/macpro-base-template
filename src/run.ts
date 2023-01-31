@@ -257,14 +257,14 @@ yargs(process.argv.slice(2))
         "remote",
         "add",
         "base",
-        "https://github.com/Enterprise-CMCS/macpro-base-template"
+        "https://github.com/Enterprise-CMCS/macpro-base-template",
       ];
 
       await runner.run_command_and_output(
         "Upgrade from Base | adding remote",
         addRemoteCommand,
         ".",
-        true
+        true,
       );
 
       const fetchBaseCommand = ["git", "fetch", "base"];
