@@ -248,6 +248,48 @@ yargs(process.argv.slice(2))
     }
   )
   .command(
+    "upgrade-base",
+    "this will upgrade your code to the latest version of the base template",
+    {},
+    async () => {
+      const addRemoteCommand: string[] = [];
+
+      try {
+        addRemoteCommand.push(
+          "git",
+          "remote",
+          "add",
+          "base",
+          "https://github.com/Enterprise-CMCS/macpro-base-template"
+        );
+
+        await runner.run_command_and_output(
+          "Upgrade from Base | adding remote",
+          addRemoteCommand,
+          "."
+        );
+      } catch (err) {
+        console.log("Don't add remote, one already exists.");
+      }
+
+      const fetchBaseCommand = ["git", "fetch", "base"];
+
+      await runner.run_command_and_output(
+        "Upgrade from Base | fetching base template",
+        fetchBaseCommand,
+        "."
+      );
+
+      const mergeCommand = ["git", "merge", "base/production"];
+
+      await runner.run_command_and_output(
+        "Upgrade from Base | merging code from base template",
+        mergeCommand,
+        "."
+      );
+    }
+  )
+  .command(
     ["listRunningStages", "runningEnvs", "listRunningEnvs"],
     "Reports on running environments in your currently connected AWS account.",
     {},
