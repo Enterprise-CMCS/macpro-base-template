@@ -252,23 +252,20 @@ yargs(process.argv.slice(2))
     "this will upgrade your code to the latest version of the base template",
     {},
     async () => {
-      try {
-        const addRemoteCommand = [
-          "git",
-          "remote",
-          "add",
-          "base",
-          "https://github.com/Enterprise-CMCS/macpro-base-template"
-        ];
+      const addRemoteCommand = [
+        "git",
+        "remote",
+        "add",
+        "base",
+        "https://github.com/Enterprise-CMCS/macpro-base-template"
+      ];
 
-        await runner.run_command_and_output(
-          "Upgrade from Base | adding remote",
-          addRemoteCommand,
-          "."
-        );
-      } catch (err) {
-        console.log("Don't add remote, one already exists.");
-      }
+      await runner.run_command_and_output(
+        "Upgrade from Base | adding remote",
+        addRemoteCommand,
+        ".",
+        true
+      );
 
       const fetchBaseCommand = ["git", "fetch", "base"];
 
