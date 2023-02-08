@@ -3,10 +3,6 @@ name: cfn-nag
 on:
   pull_request:
   workflow_dispatch:
-  push:
-    branches:
-      - "*"
-      - "!skipci*"
 
 jobs:
   cfn-nag:
@@ -59,7 +55,7 @@ jobs:
         id: getCfts
         run: |
           mkdir -p cftemplates
-          stacks=$(aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --query "StackSummaries[?contains(StackName, '$STAGE_NAME')].[StackName]" --output text)
+          stacks=$(aws cloudformation list-stacks --stack-status-filter CREATE_IN_PROGRESS UPDATE_IN_PROGRESS UPDATE_COMPLETE_CLEANUP_IN_PROGRESS CREATE_COMPLETE UPDATE_COMPLETE --query "StackSummaries[?contains(StackName, '$STAGE_NAME')].[StackName]" --output text)
           for stack in $stacks; do
             aws cloudformation get-template --stack-name "$stack" --query TemplateBody > "cftemplates/${stack}.json"
           done
