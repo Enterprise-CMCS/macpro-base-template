@@ -18,16 +18,6 @@ jobs:
 
     if: "!startsWith(github.head_ref || github.ref_name, 'skipci-')"
     steps:
-      - name: Validate stage name
-        run: |
-          if [[ ! $STAGE_NAME =~ ^[a-z][a-z0-9-]*$ ]]; then
-              echo "ERROR:  Your branch name, $STAGE_NAME, is not a valid Serverless Framework stage name." && exit 1
-          fi
-          if [ ${#STAGE_NAME} -gt 19 ]; then
-            echo "ERROR:  Your branch name, $STAGE_NAME, is too long, stage name cannot exceed 19 characters." && exit 1
-            # this is because a function name cannot exceed 64 characters and our longest function name is base-dashboard-${STAGE_NAME}-templatizeCloudWatchDashboard
-          fi
-
       - name: Checkout
         uses: actions/checkout@v3
 
