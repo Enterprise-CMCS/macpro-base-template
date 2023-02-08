@@ -16,7 +16,7 @@ jobs:
       id-token: write
       contents: read
 
-    if: "!startsWith(env.STAGE_NAME, 'skipci-')"
+    if: "!startsWith(github.head_ref || github.ref_name, 'skipci-')"
     steps:
       - name: Validate stage name
         run: |
