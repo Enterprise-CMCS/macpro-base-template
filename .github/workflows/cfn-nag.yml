@@ -3,10 +3,6 @@ name: cfn-nag
 on:
   pull_request:
   workflow_dispatch:
-  push:
-    branches:
-      - "*"
-      - "!skipci*"
 
 jobs:
   cfn-nag:
