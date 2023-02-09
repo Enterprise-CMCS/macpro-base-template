@@ -43,11 +43,7 @@ jobs:
         id: runningStages
         env:
           JIRA_HOST: qmacbis.atlassian.net
-          JIRA_USERNAME: xxx
-          JIRA_TOKEN: xxx
           JIRA_PROJECT: OY2
-          JIRA_CLOSED_STATUSES: "Done"
-          PROJECT: cms-bigmac
-        run: |
-          npm i -g ts-node
-          ts-node src/run-sync.ts
+          JIRA_USERNAME: ${{ secrets.JIRA_USERNAME }}
+          JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
+        run: run securityHubSync

@@ -5,6 +5,7 @@ import * as fs from "fs";
 import { ServerlessStageDestroyer } from "@stratiformdigital/serverless-stage-destroyer";
 import { SechubGithubSync } from "@stratiformdigital/security-hub-sync";
 import { ServerlessRunningStages } from "@enterprise-cmcs/macpro-serverless-running-stages";
+import { SecurityHubJiraSync } from "@enterprise-cmcs/macpro-security-hub-sync";
 
 // load .env
 dotenv.config();
@@ -300,6 +301,20 @@ yargs(process.argv.slice(2))
           await ServerlessRunningStages.getAllStagesForRegion(region!);
         console.log(`runningStages=${runningStages.join(",")}`);
       }
+    }
+  )
+  .command(
+    ["securityHubSync", "secHubSync", "syncSecurityHub"],
+    "Create Jira Issues for Security Hub findings.",
+    {},
+    async () => {
+      await install_deps_for_services();
+      await new SecurityHubJiraSync({
+        customJiraFields: {
+          customfield_14117: [{value: "Platform Team"}],
+          customfield_14151: [{value: "Not Applicable "}],
+        }
+      }).sync();
     }
   )
   .strict() // This errors and prints help if you pass an unknown command
