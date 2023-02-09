@@ -311,9 +311,9 @@ yargs(process.argv.slice(2))
       await install_deps_for_services();
       await new SecurityHubJiraSync({
         customJiraFields: {
-          customfield_14117: [{value: "Platform Team"}],
-          customfield_14151: [{value: "Not Applicable "}],
-        }
+          customfield_14117: [{ value: "Platform Team" }],
+          customfield_14151: [{ value: "Not Applicable " }],
+        },
       }).sync();
     }
   )
