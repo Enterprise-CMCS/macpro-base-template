@@ -15,8 +15,6 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    env:
-      ENABLE_SECURITY_HUB_SYNC: ${{ secrets.ENABLE_SECURITY_HUB_SYNC }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -43,7 +41,7 @@ jobs:
           role-duration-seconds: 10800
 
       - name: Invoke Security Hub Jira Sync
-        if: env.ENABLE_SECURITY_HUB_SYNC == 'true'
+        if: ${{ secrets.ENABLE_SECURITY_HUB_SYNC }} == 'true'
         env:
           JIRA_HOST: qmacbis.atlassian.net
           JIRA_PROJECT: OY2
