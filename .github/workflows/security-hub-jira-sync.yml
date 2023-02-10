@@ -9,11 +9,12 @@ jobs:
   security-hub-jira-sync:
     name: Security Hub Jira Sync
     runs-on: ubuntu-20.04
-
     permissions:
       id-token: write
       contents: read
-
+    env:
+      ENABLE_SECURITY_HUB_SYNC: ${{ secrets.ENABLE_SECURITY_HUB_SYNC }}
+    if: env.ENABLE_SECURITY_HUB_SYNC == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v3
