@@ -17,7 +17,6 @@ jobs:
       contents: read
     env:
       ENABLE_SECURITY_HUB_SYNC: ${{ secrets.ENABLE_SECURITY_HUB_SYNC }}
-    if: env.ENABLE_SECURITY_HUB_SYNC == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -44,7 +43,7 @@ jobs:
           role-duration-seconds: 10800
 
       - name: Invoke Security Hub Jira Sync
-        id: runningStages
+        if: env.ENABLE_SECURITY_HUB_SYNC == 'true'
         env:
           JIRA_HOST: qmacbis.atlassian.net
           JIRA_PROJECT: OY2
