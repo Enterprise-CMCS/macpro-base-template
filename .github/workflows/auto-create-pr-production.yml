@@ -15,4 +15,5 @@ jobs:
         with:
           destination_branch: production
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          pr_title: Release to production
+          pr_body: |
+            :crown: *Release to production*

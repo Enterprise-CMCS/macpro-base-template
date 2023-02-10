@@ -16,3 +16,5 @@ jobs:
           destination_branch: skipci-myfakeprbranch
           github_token: ${{ secrets.GITHUB_TOKEN }}
           pr_title: Release to val
+          pr_body: |
+            :crown: *Release to val*
