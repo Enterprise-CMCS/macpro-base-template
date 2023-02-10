@@ -15,8 +15,14 @@ jobs:
     permissions:
       id-token: write
       contents: read
+    # This workflow should only run from one project per AWS account.
+    # In other words, if you have many repos deploying to the same AWS account,
+    #   only one of those repos should have this workflow activated.
+    # It's not dangerous if more than one have it active, it's just not ideal.
+    # This flag forces a user to explicitly enable it, allowing consumers of this
+    #   template to decide if they should enable it or not.
     env:
-      ENABLE_SECURITY_HUB_SYNC: ${{ secrets.ENABLE_SECURITY_HUB_SYNC }}
+      JIRA_ENABLE_SECURITY_HUB_SYNC: ${{ secrets.JIRA_ENABLE_SECURITY_HUB_SYNC }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -43,7 +49,7 @@ jobs:
           role-duration-seconds: 10800
 
       - name: Invoke Security Hub Jira Sync
-        if: env.ENABLE_SECURITY_HUB_SYNC == 'true'
+        if: env.JIRA_ENABLE_SECURITY_HUB_SYNC == 'true'
         env:
           JIRA_HOST: qmacbis.atlassian.net
           JIRA_PROJECT: OY2
