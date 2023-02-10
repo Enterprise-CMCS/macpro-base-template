@@ -304,7 +304,7 @@ yargs(process.argv.slice(2))
     }
   )
   .command(
-    ["securityHubSync", "secHubSync", "syncSecurityHub"],
+    ["securityHubJiraSync", "securityHubSync", "secHubSync"],
     "Create Jira Issues for Security Hub findings.",
     {},
     async () => {

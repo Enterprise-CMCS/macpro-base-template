@@ -46,4 +46,4 @@ jobs:
           JIRA_PROJECT: OY2
           JIRA_USERNAME: ${{ secrets.JIRA_USERNAME }}
           JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
-        run: run securityHubSync
+        run: run securityHubJiraSync
