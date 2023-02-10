@@ -2,7 +2,7 @@ name: Create Release PR - val
 
 on:
   push:
-    branches: master
+    branches: skipci-assorted
 
 jobs:
   pull-request:
@@ -13,6 +13,6 @@ jobs:
       - name: Create Pull Request
         uses: repo-sync/pull-request@v2
         with:
-          destination_branch: val
+          destination_branch: skipci-myfakeprbranch
           github_token: ${{ secrets.GITHUB_TOKEN }}
           pr_title: Release to val
