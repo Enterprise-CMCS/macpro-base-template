@@ -15,7 +15,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    if: ${{ vars.JIRA_ENABLE_SECURITY_HUB_SYNC }}
+    if: ${{ vars.ENABLE_SECURITY_HUB_SYNC }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
