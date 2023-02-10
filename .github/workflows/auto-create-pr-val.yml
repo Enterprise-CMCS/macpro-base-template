@@ -19,4 +19,4 @@ jobs:
           pr_body: |
             Release to val.
 
-            Please **create a merge commit** upon merge.
+            #### Please **create a merge commit**
