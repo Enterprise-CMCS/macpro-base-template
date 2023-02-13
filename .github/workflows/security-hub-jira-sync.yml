@@ -4,9 +4,6 @@ on:
   schedule:
     - cron: "0 14-23/2 * * *"
   workflow_dispatch:
-  push:
-    branches:
-      - jira
 
 jobs:
   security-hub-jira-sync:
