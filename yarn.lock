@@ -2602,9 +2602,9 @@
     "@jridgewell/trace-mapping" "0.3.9"
 
 "@enterprise-cmcs/macpro-security-hub-sync@^1.0.2":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@enterprise-cmcs/macpro-security-hub-sync/-/macpro-security-hub-sync-1.2.0.tgz#060569fd7ce5390f04d9df07b52fd7cb0d571405"
-  integrity sha512-7o83LR7oh5P/ZU8fFQaLxbClA62iFLqQodUAxfBIagPDOQs2rv3354EtgyE5SPQS7UavipTJeyYl+J9WuhEYEg==
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@enterprise-cmcs/macpro-security-hub-sync/-/macpro-security-hub-sync-1.3.0.tgz#3c0fecb4d7acad953a4bdc30a59fd80f8396a4e5"
+  integrity sha512-HzZghyTktPfnUlDJzU7MIOBiBIr1NdTKz+W+XyfYVi8NSk3IWGb9IwBpucs2k7eQkeVV6GFBZu0hBE+pbru2Rg==
   dependencies:
     "@aws-sdk/client-iam" "^3.266.0"
     "@aws-sdk/client-securityhub" "^3.266.0"
