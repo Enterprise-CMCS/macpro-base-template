@@ -188,27 +188,6 @@ yargs(process.argv.slice(2))
     }
   )
   .command(
-    "syncSecurityHubFindings",
-    "Syncs Sec Hub findings to GitHub Issues... usually only run by the CI system.",
-    {
-      auth: { type: "string", demandOption: true },
-      repository: { type: "string", demandOption: true },
-      accountNickname: { type: "string", demandOption: true },
-    },
-    async (options) => {
-      for (let region of [process.env.REGION_A, process.env.REGION_B]) {
-        var sync = new SechubGithubSync({
-          repository: options.repository,
-          auth: options.auth,
-          region: region,
-          accountNickname: options.accountNickname,
-          severity: ["CRITICAL", "HIGH", "MEDIUM"],
-        });
-        await sync.sync();
-      }
-    }
-  )
-  .command(
     "docs",
     "Starts the Jekyll documentation site in a docker container, available on http://localhost:4000.",
     {
