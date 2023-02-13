@@ -3,7 +3,6 @@ import * as dotenv from "dotenv";
 import LabeledProcessRunner from "./runner.js";
 import * as fs from "fs";
 import { ServerlessStageDestroyer } from "@stratiformdigital/serverless-stage-destroyer";
-import { SechubGithubSync } from "@stratiformdigital/security-hub-sync";
 import { ServerlessRunningStages } from "@enterprise-cmcs/macpro-serverless-running-stages";
 import { SecurityHubJiraSync } from "@enterprise-cmcs/macpro-security-hub-sync";
 
