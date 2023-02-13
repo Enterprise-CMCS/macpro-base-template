@@ -41,6 +41,12 @@ On MACPro, we use a service user; you probably should, too.  If you're on MACPro
 
 In the [workflow definition](../../../.github/workflows/security-hub-jira-sync.yml), there are hardcoded values for JIRA_HOST and JIRA_PROJECT.  These values are what all projects on MACPro should use, so we've kept it simple and put them directly in the file.  If you're not on MACPro or need to change these values, make the appropriate updates to the file.
 
+### Review/Update the custom fields in src/run.ts
+
+Some Jira projects require certain fields to be set for issues to be created.  This is the case with MACPro's Jira installation.  We have two fields that must be set.  These fields are set in the [run script](../../../src/run.ts).  You'll note two lines that begin with 'customfield_'.  Unfortunately, we must set the actual id and value of the custom field as Jira expects it.  These ids will vary from instance to instance, even if the field name is the same.  Despite our best efforts, the complexity and number of options and allowances when setting custom fields makes it incredibly difficult to have a more user friendly experience; you must find the customfield id's for the values you must set.  If you're on MACPro and use our Jira, these are the field values you need, which map to Working Team and Product Supported.  If you're not on MACPro and using a different Jira, trial and error is usually fine; the package will surface the Jira API error as it says 'customfield_1234 is not set, Product Supported is not set'.  In other words, you can look carefully at the fail output to find the id names.  Alternatively, you may also query the Jira API and be more exact about it.
+
+In any event, you probably want to update the Working Team from Platform Team to your team name.
+
 ### YSK the workflow only runs on the default branch
 
 On MACPro, we typically use three separate levels of AWS accounts for each project:
