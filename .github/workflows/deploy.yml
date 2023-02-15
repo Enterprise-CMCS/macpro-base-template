@@ -112,8 +112,8 @@ jobs:
         id: getCfts
         run: |
           mkdir -p cftemplates
-          stacks=$(aws cloudformation list-stacks --stack-status-filter CREATE_IN_PROGRESS UPDATE_IN_PROGRESS UPDATE_COMPLETE_CLEANUP_IN_PROGRESS CREATE_COMPLETE UPDATE_COMPLETE --query "StackSummaries[?contains(StackName, '$STAGE_NAME')].[StackName]" --output text)
-          for stack in $stacks; do
+          stackList=(`aws cloudformation describe-stacks | jq -r ".Stacks[] | select(.Tags[] | select(.Key==\"STAGE\") | select(.Value==\"$STAGE_NAME\")) | select(.Tags[] | select(.Key==\"PROJECT\") | select(.Value==\"$PROJECT\")) | .StackName"`)
+          for stack in "${stackList[@]}"; do
             aws cloudformation get-template --stack-name "$stack" --query TemplateBody > "cftemplates/${stack}.json"
           done
 
