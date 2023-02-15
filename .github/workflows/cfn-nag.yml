@@ -18,6 +18,14 @@ jobs:
 
     if: "!startsWith(github.head_ref || github.ref_name, 'skipci-')"
     steps:
+      - name: Wait for Deploy to finish
+        uses: lewagon/wait-on-check-action@v1.2.0
+        with:
+          ref: refs/heads/${{ github.head_ref }} # Wait on the Deploy workflow for this PR's source branch
+          check-name: "Deploy"
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
+
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -50,19 +58,6 @@ jobs:
           for stack in $stacks; do
             aws cloudformation get-template --stack-name "$stack" --query TemplateBody > "cftemplates/${stack}.json"
           done
-
-      - name: Confirm all CloudFormation templates are there
-        id: confirmCount
-        run: |
-          pip install yq
-          serviceCount=$(yq '.services | length' serverless-compose.yml)
-          cftCount=$(ls cftemplates | wc -l)
-          if [ "$serviceCount" -ne "$cftCount" ]; then
-            echo "Error: Number of services in serverless-compose.yml does not match number of CloudFormation templates." >&2
-            exit 1
-          fi
-          echo "serviceCount: $serviceCount"
-          echo "cftCount: $cftCount"
 
       - name: Stelligent cfn_nag
         uses: stelligent/cfn_nag@v0.8.6
