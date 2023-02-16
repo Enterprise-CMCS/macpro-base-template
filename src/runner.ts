@@ -58,8 +58,18 @@ export default class LabeledProcessRunner {
     prefix: string,
     cmd: string[],
     cwd: string | null,
-    catchAll = false
+    catchAll = false,
+    silenced: {
+      open?: Boolean;
+      stdout?: Boolean;
+      stderr?: Boolean;
+      close?: Boolean;
+    } = {}
   ) {
+    silenced = {
+      ...{ open: false, stdout: false, stderr: false, close: false },
+      ...silenced,
+    };
     const proc_opts: Record<string, any> = {};
 
     if (cwd) {
@@ -70,33 +80,38 @@ export default class LabeledProcessRunner {
 
     const proc = spawn(command, args, proc_opts);
     const startingPrefix = this.formattedPrefix(prefix);
-    process.stdout.write(`${startingPrefix} Running: ${cmd.join(" ")}\n`);
+    if (!silenced.open)
+      process.stdout.write(`${startingPrefix} Running: ${cmd.join(" ")}\n`);
 
     proc.stdout.on("data", (data) => {
       const paddedPrefix = this.formattedPrefix(prefix);
 
-      for (let line of data.toString().split("\n")) {
-        process.stdout.write(`${paddedPrefix} ${line}\n`);
-      }
+      if (!silenced.stdout)
+        for (let line of data.toString().split("\n")) {
+          process.stdout.write(`${paddedPrefix} ${line}\n`);
+        }
     });
 
     proc.stderr.on("data", (data) => {
       const paddedPrefix = this.formattedPrefix(prefix);
-      for (let line of data.toString().split("\n")) {
-        process.stdout.write(`${paddedPrefix} ${line}\n`);
-      }
+      if (!silenced.stderr)
+        for (let line of data.toString().split("\n")) {
+          process.stdout.write(`${paddedPrefix} ${line}\n`);
+        }
     });
 
     return new Promise<void>((resolve, reject) => {
       proc.on("error", (error) => {
         const paddedPrefix = this.formattedPrefix(prefix);
-        process.stdout.write(`${paddedPrefix} A PROCESS ERROR: ${error}\n`);
+        if (!silenced.stderr)
+          process.stdout.write(`${paddedPrefix} A PROCESS ERROR: ${error}\n`);
         reject(error);
       });
 
       proc.on("close", (code) => {
         const paddedPrefix = this.formattedPrefix(prefix);
-        process.stdout.write(`${paddedPrefix} Exit: ${code}\n`);
+        if (!silenced.close)
+          process.stdout.write(`${paddedPrefix} Exit: ${code}\n`);
         // If there's a failure and we haven't asked to catch all...
         if (code != 0 && !catchAll) {
           // This is not my area.
