@@ -245,7 +245,6 @@ yargs(process.argv.slice(2))
         ".",
         true,
         {
-          // stdout: true,
           stderr: true,
           close: true,
         }
