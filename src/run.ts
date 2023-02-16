@@ -231,32 +231,25 @@ yargs(process.argv.slice(2))
     "this will update your code to the latest version of the base template",
     {},
     async () => {
-      const checkForBaseRemoteCommand = ["git", "remote", "show", "base"];
-      const checkForBaseExitCode = await runner.run_command_and_output(
-        "Update from Base | checking for remote",
-        checkForBaseRemoteCommand,
+      const addRemoteCommand = [
+        "git",
+        "remote",
+        "add",
+        "base",
+        "https://github.com/Enterprise-CMCS/macpro-base-template",
+      ];
+
+      await runner.run_command_and_output(
+        "Update from Base | adding remote",
+        addRemoteCommand,
         ".",
         true,
-        { stdout: true, stderr: true, close: true }
+        {
+          // stdout: true,
+          stderr: true,
+          close: true,
+        }
       );
-      const baseRemoteExists = checkForBaseExitCode === 0;
-
-      if (!baseRemoteExists) {
-        const addRemoteCommand = [
-          "git",
-          "remote",
-          "add",
-          "base",
-          "https://github.com/Enterprise-CMCS/macpro-base-template",
-        ];
-
-        await runner.run_command_and_output(
-          "Update from Base | adding remote",
-          addRemoteCommand,
-          ".",
-          true
-        );
-      }
 
       const fetchBaseCommand = ["git", "fetch", "base"];
 
