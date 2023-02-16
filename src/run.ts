@@ -228,28 +228,40 @@ yargs(process.argv.slice(2))
   )
   .command(
     "base-update",
-    "this will upgrade your code to the latest version of the base template",
+    "this will update your code to the latest version of the base template",
     {},
     async () => {
-      const addRemoteCommand = [
-        "git",
-        "remote",
-        "add",
-        "base",
-        "https://github.com/Enterprise-CMCS/macpro-base-template",
-      ];
-
-      await runner.run_command_and_output(
-        "Upgrade from Base | adding remote",
-        addRemoteCommand,
+      const checkForBaseRemoteCommand = ["git", "remote", "show", "base"];
+      const checkForBaseExitCode = await runner.run_command_and_output(
+        "Update from Base | checking for remote",
+        checkForBaseRemoteCommand,
         ".",
-        true
+        true,
+        { stdout: true, stderr: true, close: true }
       );
+      const baseRemoteExists = checkForBaseExitCode === 0;
+
+      if (!baseRemoteExists) {
+        const addRemoteCommand = [
+          "git",
+          "remote",
+          "add",
+          "base",
+          "https://github.com/Enterprise-CMCS/macpro-base-template",
+        ];
+
+        await runner.run_command_and_output(
+          "Update from Base | adding remote",
+          addRemoteCommand,
+          ".",
+          true
+        );
+      }
 
       const fetchBaseCommand = ["git", "fetch", "base"];
 
       await runner.run_command_and_output(
-        "Upgrade from Base | fetching base template",
+        "Update from Base | fetching base template",
         fetchBaseCommand,
         "."
       );
@@ -257,7 +269,7 @@ yargs(process.argv.slice(2))
       const mergeCommand = ["git", "merge", "base/production", "--no-ff"];
 
       await runner.run_command_and_output(
-        "Upgrade from Base | merging code from base template",
+        "Update from Base | merging code from base template",
         mergeCommand,
         ".",
         true
