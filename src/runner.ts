@@ -80,7 +80,7 @@ export default class LabeledProcessRunner {
     if (!silenced.open)
       process.stdout.write(`${paddedPrefix} Running: ${cmd.join(" ")}\n`);
 
-    const handleOutput = (data: Buffer, prefix: string, silenced: Boolean) => {
+    const handleOutput = (data: Buffer, prefix: string, silenced: boolean) => {
       const paddedPrefix = this.formattedPrefix(prefix);
       if (!silenced)
         for (let line of data.toString().split("\n")) {
