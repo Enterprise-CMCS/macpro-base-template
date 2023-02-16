@@ -83,22 +83,20 @@ export default class LabeledProcessRunner {
     if (!silenced.open)
       process.stdout.write(`${startingPrefix} Running: ${cmd.join(" ")}\n`);
 
-    proc.stdout.on("data", (data) => {
+    const handleOutput = (data: Buffer, prefix: string, silenced: Boolean) => {
       const paddedPrefix = this.formattedPrefix(prefix);
-
-      if (!silenced.stdout)
+      if (!silenced)
         for (let line of data.toString().split("\n")) {
           process.stdout.write(`${paddedPrefix} ${line}\n`);
         }
-    });
+    };
 
-    proc.stderr.on("data", (data) => {
-      const paddedPrefix = this.formattedPrefix(prefix);
-      if (!silenced.stderr)
-        for (let line of data.toString().split("\n")) {
-          process.stdout.write(`${paddedPrefix} ${line}\n`);
-        }
-    });
+    proc.stdout.on("data", (data) =>
+      handleOutput(data, prefix, silenced.stdout!)
+    );
+    proc.stderr.on("data", (data) =>
+      handleOutput(data, prefix, silenced.stderr!)
+    );
 
     return new Promise<void>((resolve, reject) => {
       proc.on("error", (error) => {
