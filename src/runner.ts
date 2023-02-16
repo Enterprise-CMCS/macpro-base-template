@@ -100,7 +100,7 @@ export default class LabeledProcessRunner {
         }
     });
 
-    return new Promise<number | void>((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       proc.on("error", (error) => {
         const paddedPrefix = this.formattedPrefix(prefix);
         if (!silenced.stderr)
@@ -117,10 +117,9 @@ export default class LabeledProcessRunner {
           // This is not my area.
           // Deploy failures don't get handled and show up here with non zero exit codes
           // Here we throw an error.  Not sure what's best.
-          reject(new Error(`Exit code: ${code}`));
-        } else {
-          resolve(code ?? undefined);
+          throw `Exit ${code}`;
         }
+        resolve();
       });
     });
   }
