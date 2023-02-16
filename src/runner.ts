@@ -60,28 +60,25 @@ export default class LabeledProcessRunner {
     cwd: string | null,
     catchAll = false,
     silenced: {
-      open?: Boolean;
-      stdout?: Boolean;
-      stderr?: Boolean;
-      close?: Boolean;
+      open?: boolean;
+      stdout?: boolean;
+      stderr?: boolean;
+      close?: boolean;
     } = {}
   ) {
     silenced = {
       ...{ open: false, stdout: false, stderr: false, close: false },
       ...silenced,
     };
-    const proc_opts: Record<string, any> = {};
+    const proc_opts = cwd ? { cwd } : {};
 
-    if (cwd) {
-      proc_opts["cwd"] = cwd;
-    }
     const command = cmd[0];
     const args = cmd.slice(1);
 
     const proc = spawn(command, args, proc_opts);
-    const startingPrefix = this.formattedPrefix(prefix);
+    const paddedPrefix = `[${prefix}]`;
     if (!silenced.open)
-      process.stdout.write(`${startingPrefix} Running: ${cmd.join(" ")}\n`);
+      process.stdout.write(`${paddedPrefix} Running: ${cmd.join(" ")}\n`);
 
     const handleOutput = (data: Buffer, prefix: string, silenced: Boolean) => {
       const paddedPrefix = this.formattedPrefix(prefix);
@@ -100,14 +97,12 @@ export default class LabeledProcessRunner {
 
     return new Promise<void>((resolve, reject) => {
       proc.on("error", (error) => {
-        const paddedPrefix = this.formattedPrefix(prefix);
         if (!silenced.stderr)
           process.stdout.write(`${paddedPrefix} A PROCESS ERROR: ${error}\n`);
         reject(error);
       });
 
       proc.on("close", (code) => {
-        const paddedPrefix = this.formattedPrefix(prefix);
         if (!silenced.close)
           process.stdout.write(`${paddedPrefix} Exit: ${code}\n`);
         // If there's a failure and we haven't asked to catch all...
