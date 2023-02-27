@@ -52,7 +52,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "**/node_modules"
-          key: ${{ github.workflow}}-${{ github.job }}${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ github.workflow}}-${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1-node16
@@ -86,7 +86,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "**/node_modules"
-          key: ${{ github.workflow}}-${{ github.job }}${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ github.workflow}}-${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1-node16
@@ -120,7 +120,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "**/node_modules"
-          key: ${{ github.workflow}}-${{ github.job }}${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ github.workflow}}-${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1-node16
@@ -166,7 +166,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: "**/node_modules"
-          key: ${{ github.workflow}}-${{ github.job }}${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ github.workflow}}-${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
       - name: Release
         run: npx semantic-release
@@ -176,7 +176,7 @@ jobs:
   notify_of_failure:
     runs-on: ubuntu-20.04
     needs:
-      - deploy
+      - release
     environment:
       name: ${{ github.ref_name }}
     if: failure()
