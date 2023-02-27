@@ -50,7 +50,7 @@ jobs:
           role-duration-seconds: 10800
 
       - name: Deploy
-        run: run deploy --stage $STAGE_NAME
+        run: run depfloy --stage $STAGE_NAME
 
   test:
     runs-on: ubuntu-20.04
