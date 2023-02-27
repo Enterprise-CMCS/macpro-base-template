@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - "*"
+      - "!skipci*"
 
 concurrency:
   group: ${{ github.ref_name }}-group
@@ -18,11 +19,10 @@ permissions:
   pull-requests: write
 
 jobs:
-  deploy:
+  init:
     runs-on: ubuntu-20.04
     environment:
       name: ${{ github.ref_name }}
-    if: "!startsWith(github.head_ref || github.ref_name, 'skipci-')"
     steps:
       - name: Validate stage name
         run: |
@@ -30,6 +30,13 @@ jobs:
               echo "ERROR:  Your branch name, $STAGE_NAME, is not a valid Serverless Framework stage name." && exit 1
           fi
 
+  deploy:
+    runs-on: ubuntu-20.04
+    needs:
+      - init
+    environment:
+      name: ${{ github.ref_name }}
+    steps:
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -57,8 +64,70 @@ jobs:
       - name: Deploy
         run: run deploy --stage $STAGE_NAME
 
+  test:
+    runs-on: ubuntu-20.04
+    needs:
+      - deploy
+    environment:
+      name: ${{ github.ref_name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure direnv
+        uses: HatsuneMiku3939/direnv-action@v1
+
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+
+      - name: Node cache
+        uses: actions/cache@v3
+        with:
+          path: "**/node_modules"
+          key: ${{ github.workflow}}-${{ github.job }}${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          role-to-assume: ${{ secrets.AWS_OIDC_ROLE_TO_ASSUME }}
+          aws-region: us-east-1
+          role-duration-seconds: 10800
+
       - name: Test
         run: run test --stage $STAGE_NAME
+
+  cfn-nag:
+    runs-on: ubuntu-20.04
+    needs:
+      - deploy
+    environment:
+      name: ${{ github.ref_name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure direnv
+        uses: HatsuneMiku3939/direnv-action@v1
+
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+
+      - name: Node cache
+        uses: actions/cache@v3
+        with:
+          path: "**/node_modules"
+          key: ${{ github.workflow}}-${{ github.job }}${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1-node16
+        with:
+          role-to-assume: ${{ secrets.AWS_OIDC_ROLE_TO_ASSUME }}
+          aws-region: us-east-1
+          role-duration-seconds: 10800
 
       - name: Get CloudFormation templates
         id: getCfts
@@ -74,10 +143,36 @@ jobs:
         with:
           input_path: cftemplates
 
+  release:
+    runs-on: ubuntu-20.04
+    needs:
+      - test
+      - cfn-nag
+    environment:
+      name: ${{ github.ref_name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure direnv
+        uses: HatsuneMiku3939/direnv-action@v1
+
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+
+      - name: Node cache
+        uses: actions/cache@v3
+        with:
+          path: "**/node_modules"
+          key: ${{ github.workflow}}-${{ github.job }}${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
       - name: Release
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   notify_of_failure:
     runs-on: ubuntu-20.04
     needs:
