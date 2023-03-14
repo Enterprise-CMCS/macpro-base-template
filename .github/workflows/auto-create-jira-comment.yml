@@ -1,0 +1,33 @@
+
+on:
+  pull_request:
+    types: [opened]
+name: hithub to jira2
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Jira Example
+    steps:
+
+    - name: Login
+      uses: atlassian/gajira-login@v3
+      env:
+        JIRA_HOST: qmacbis.atlassian.net
+        JIRA_PROJECT: OY2
+        JIRA_USERNAME: ${{ secrets.JIRA_USERNAME }}
+        JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }} 
+#        JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}        
+#        JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+#        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        
+    - name: get jira ticket
+      run: echo "::set-output name=TICKET_NAME::$(echo ${{ github.event.pull_request.title }} | grep -oE '\b[A-Z]+-[0-9]+\b')"        
+      id: get_t
+    - name: Comment on issue
+      uses: atlassian/gajira-comment@v3
+      env:
+        GH_EVENT: ${{ toJson(github) }}
+      with:
+        issue: ${{ steps.get_t.outputs.TICKET_NAME }}
+        comment: ${{ github.event_name }} ${{ github.event.pull_request._links.html.href }}    
