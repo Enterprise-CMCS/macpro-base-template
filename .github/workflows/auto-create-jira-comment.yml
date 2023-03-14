@@ -22,7 +22,7 @@ jobs:
 #        JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
         
     - name: get jira ticket
-      run: echo "::set-output name=TICKET_NAME::$(echo ${{ github.event.pull_request.title }} | grep -oE '\b[A-Z]+-[0-9]+\b')"        
+      run: echo "::set-output name=TICKET_NAME::$(echo ${{ github.event.pull_request.body }} | grep -oE '\b[0-9A-Z]+-[0-9]+\b')"        
       id: get_t
     - name: Comment on issue
       uses: atlassian/gajira-comment@v3
