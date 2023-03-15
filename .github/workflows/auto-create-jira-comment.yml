@@ -16,7 +16,7 @@ jobs:
           JIRA_USERNAME: ${{ secrets.JIRA_USERNAME }}
           JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
           JIRA_BASE_URL: https://qmacbis.atlassian.net/jira
-          JIRA_USER_EMAIL: ${{ secrets.JIRA_TOKEN }}
+          #JIRA_USER_EMAIL: ${{ secrets.JIRA_TOKEN }}
       - name: get jira ticket
         run: echo "::set-output name=TICKET_NAME::$(echo '${{ github.event.pull_request.body }}' | grep -oE '\b[A-Z]+[0-9]+-[0-9]+\b')"
         id: get_t
