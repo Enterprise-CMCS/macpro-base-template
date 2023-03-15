@@ -27,7 +27,7 @@ jobs:
           for jiraTicket in "${{ steps.get_t.outputs.TICKET_NAME }}"
           do
             curl --request POST \
-              --url "https://${{ env.JIRA_BASE_URL }}/rest/api/2/issue/$jiraTicket/comment" \
+              --url "https://${{ env.JIRA_BASE_URL }}/rest/api/2/issue/${jiraTicket}/comment" \
               --user "${{ env.JIRA_USER_EMAIL }}:${{ env.JIRA_PASSWORD }}" \
               --header "Content-Type: application/json" \
               --data "{\"body\": \"${{ github.event_name }} ${{ github.event.pull_request._links.html.href }}\"}"
