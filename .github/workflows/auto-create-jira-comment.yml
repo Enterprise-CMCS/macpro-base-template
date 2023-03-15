@@ -11,7 +11,9 @@ jobs:
       - name: get jira ticket
         id: get_t
         run: |
-          issues=(`echo ${{ github.event.pull_request.body }} | grep -oe "\b${JIRA_BASE_URL}[^ ]*\b"`)
+          echo ${{ github.event.pull_request.body }} >> .temp.pr.body.txt
+          body=$(cat .temp.pr.body.txt)
+          issues=(`echo $body | grep -oe "\b${JIRA_BASE_URL}[^ ]*\b"`)
           issueString=$(printf ",%s" "${issues[@]}")
           issueString=${issueString:1}
           echo "ISSUESTRING=$issueString" >> $GITHUB_OUTPUT
