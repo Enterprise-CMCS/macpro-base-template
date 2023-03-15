@@ -22,7 +22,10 @@ jobs:
         #uses: atlassian/gajira-comment@v3
         env:
           GH_EVENT: ${{ toJson(github) }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
           JIRA_BASE_URL: https://qmacbis.atlassian.net
+          JIRA_USER_EMAIL: ${{ secrets.JIRA_USERNAME }}
+          JIRA_PASSWORD: ${{ secrets.JIRA_PASSWORD }}
         run: |
           if [ -n ${{ steps.get_t.outputs.TICKET_NAME }} ]; then
           for jiraTicket in "${{ steps.get_t.outputs.TICKET_NAME }}"
