@@ -12,7 +12,7 @@ jobs:
         uses: atlassian/gajira-login@v3
         env:
           JIRA_HOST: qmacbis.atlassian.net
-          JIRA_PROJECT: OY2
+          JIRA_PROJECT: 000_MACPro OY3
           JIRA_USERNAME: ${{ secrets.JIRA_USERNAME }}
           JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
           JIRA_BASE_URL: https://qmacbis.atlassian.net/jira
