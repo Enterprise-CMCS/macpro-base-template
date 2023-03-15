@@ -13,7 +13,7 @@ jobs:
         env:
           JIRA_HOST: qmacbis.atlassian.net
           JIRA_PROJECT: 000_MACPro OY3
-          #JIRA_USERNAME: ${{ secrets.JIRA_USERNAME }}
+          JIRA_USERNAME: ${{ secrets.JIRA_USERNAME }}
           JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
           JIRA_BASE_URL: https://qmacbis.atlassian.net/jira
           JIRA_USER_EMAIL: ${{ secrets.JIRA_TOKEN }}
