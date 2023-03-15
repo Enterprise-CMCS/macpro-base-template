@@ -12,12 +12,13 @@ jobs:
         id: get_t
         run: |
           body=`${{ github.event.pull_request.body }} | tr '\n' ' '`
-          issues=(`echo $body | grep -oe "\b${JIRA_BASE_URL}[^ ]*\b"`)
-          issueString=$(printf ",%s" "${issues[@]}")
-          issueString=${issueString:1}
-          echo "ISSUESTRING=$issueString" >> $GITHUB_OUTPUT
-          echo "DEBUG"
-          cat $GITHUB_OUTPUT
+          echo $body
+          # issues=(`echo $body | grep -oe "\b${JIRA_BASE_URL}[^ ]*\b"`)
+          # issueString=$(printf ",%s" "${issues[@]}")
+          # issueString=${issueString:1}
+          # echo "ISSUESTRING=$issueString" >> $GITHUB_OUTPUT
+          # echo "DEBUG"
+          # cat $GITHUB_OUTPUT
         env:
           JIRA_BASE_URL: https://qmacbis.atlassian.net
       - name: Login
