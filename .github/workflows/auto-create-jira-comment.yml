@@ -8,15 +8,22 @@ jobs:
     runs-on: ubuntu-latest
     name: Jira Example
     steps:
+      - name: get jira ticket
+        run: |
+          echo "MIKE"
+          echo ${{ github.event.pull_request.body }}
+          echo "MIKE"
+          echo "::set-output name=TICKET_NAME::$(echo '${{ github.event.pull_request.body }}' | grep -oE '\b[A-Z]+[0-9]+-[0-9]+\b')"
+        id: get_t
       - name: Login
         uses: atlassian/gajira-login@v3
         env:
           JIRA_BASE_URL: https://qmacbis.atlassian.net
           JIRA_USER_EMAIL: ${{ secrets.JIRA_USERNAME }}
           JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
-      - name: get jira ticket
-        run: echo "::set-output name=TICKET_NAME::$(echo '${{ github.event.pull_request.body }}' | grep -oE '\b[A-Z]+[0-9]+-[0-9]+\b')"
-        id: get_t
+      # - name: get jira ticket
+      #   run: echo "::set-output name=TICKET_NAME::$(echo '${{ github.event.pull_request.body }}' | grep -oE '\b[A-Z]+[0-9]+-[0-9]+\b')"
+      #   id: get_t
       - name: Comment on issue
         uses: atlassian/gajira-comment@v3
         env:
