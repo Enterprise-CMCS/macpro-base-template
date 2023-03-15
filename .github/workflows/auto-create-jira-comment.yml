@@ -22,9 +22,9 @@ jobs:
         uses: atlassian/gajira-comment@v3
         env:
           GH_EVENT: ${{ toJson(github) }}
-         #with:
-           #issue: ${{ steps.get_t.outputs.TICKET_NAME }}
-           #comment: ${{ github.event_name }} ${{ github.event.pull_request._links.html.href }}
+          #with:
+          #issue: ${{ steps.get_t.outputs.TICKET_NAME }}
+          #comment: ${{ github.event_name }} ${{ github.event.pull_request._links.html.href }}
         run: |
           if [ -n ${{ steps.get_t.outputs.TICKET_NAME }} ]; then
           for jiraTicket in "${{ steps.get_t.outputs.TICKET_NAME }}"
