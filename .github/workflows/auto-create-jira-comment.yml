@@ -38,4 +38,3 @@ jobs:
           else
           echo "no ticket found"
           fi
-        
