@@ -4,12 +4,14 @@ on:
 name: Jira Issue Commenter
 
 jobs:
-  build:
+  search:
     runs-on: ubuntu-latest
-    name: Jira Example
+    name: Search PR for mentioned Jira Issues
+    outputs:
+      issues: ${{ steps.search.outputs.issues }}
     steps:
       - name: find issues
-        id: find_issues
+        id: search
         env:
           JIRA_BASE_URL: https://qmacbis.atlassian.net
         run: |
@@ -19,6 +21,16 @@ jobs:
           issueJson=`jq -c -n '$ARGS.positional' --args "${issues[@]}"`
           echo "issueJson=$issueJson" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
+  comment:
+    runs-on: ubuntu-latest
+    name: Comment on Jira Issues
+    strategy:
+      matrix:
+        value: ${{fromJson(needs.search.outputs.issues)}}
+    steps:
+      - name: test
+        run: echo "hello"
+
       # - name: Login
       #   uses: atlassian/gajira-login@v3
       #   if: steps.find_issues.outputs.ISSUESTRING != ''
