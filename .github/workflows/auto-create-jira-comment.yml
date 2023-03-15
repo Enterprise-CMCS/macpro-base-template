@@ -19,7 +19,7 @@ jobs:
           cat <<< "${body@Q}" > .tmp.body.txt
           issues=(`cat .tmp.body.txt | grep -oe "\b${JIRA_BASE_URL}[^ ]*\b" || true`)
           issueJson=`jq -c -n '$ARGS.positional' --args "${issues[@]}"`
-          echo "issueJson=$issueJson" >> $GITHUB_OUTPUT
+          echo "issues=$issueJson" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
   comment:
     runs-on: ubuntu-latest
