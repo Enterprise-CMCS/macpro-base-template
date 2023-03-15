@@ -1,7 +1,7 @@
 on:
   pull_request:
     types: [opened, edited]
-name: hithub to jira2
+name: Jira Issue Commenter
 
 jobs:
   build:
