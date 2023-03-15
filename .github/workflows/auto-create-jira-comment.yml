@@ -15,7 +15,7 @@ jobs:
           body_esc="${body@Q}"
           cat <<< $body_esc > .tmpfileee
           cat .tmpfileee
-          # issues=(`echo $body_esc | grep -oe "\b${JIRA_BASE_URL}[^ ]*\b"`)
+          issues=(`cat .tmpfileee | grep -oe "\b${JIRA_BASE_URL}[^ ]*\b"`)
           # issueString=$(printf ",%s" "${issues[@]}")
           # issueString=${issueString:1}
           # echo "ISSUESTRING=$issueString" >> $GITHUB_OUTPUT
