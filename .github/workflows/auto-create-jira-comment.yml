@@ -24,9 +24,10 @@ jobs:
   comment:
     runs-on: ubuntu-latest
     name: Comment on Jira Issues
+    needs: search
     strategy:
       matrix:
-        value: ${{fromJson(needs.search.outputs.issues)}}
+        value: ${{fromJson(jobs.search.outputs.issues)}}
     steps:
       - name: test
         run: echo "hello"
