@@ -14,7 +14,7 @@ jobs:
           JIRA_HOST: qmacbis.atlassian.net
           JIRA_PROJECT: OY2
           JIRA_USERNAME: ${{ secrets.JIRA_USERNAME }}
-          JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
+          JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
           JIRA_BASE_URL: https://qmacbis.atlassian.net/jira
           JIRA_USER_EMAIL: ${{ secrets.JIRA_TOKEN }}
       - name: get jira ticket
