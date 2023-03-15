@@ -27,7 +27,7 @@ jobs:
     needs: search
     strategy:
       matrix:
-        value: ${{fromJson(jobs.search.outputs.issues)}}
+        value: ${{needs.search.outputs.issues}}
     steps:
       - name: test
         run: echo "hello"
