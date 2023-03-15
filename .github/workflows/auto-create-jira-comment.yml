@@ -14,28 +14,13 @@ jobs:
           JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
           JIRA_BASE_URL: https://qmacbis.atlassian.net
           JIRA_USER_EMAIL: ${{ secrets.JIRA_USERNAME }}
-          JIRA_PASSWORD: ${{ secrets.JIRA_PASSWORD }}
       - name: get jira ticket
         run: echo "::set-output name=TICKET_NAME::$(echo '${{ github.event.pull_request.body }}' | grep -oE '\b[A-Z]+[0-9]+-[0-9]+\b')"
         id: get_t
       - name: Comment on issue
-        #uses: atlassian/gajira-comment@v3
+        uses: atlassian/gajira-comment@v3
         env:
           GH_EVENT: ${{ toJson(github) }}
-          JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
-          JIRA_BASE_URL: https://qmacbis.atlassian.net
-          JIRA_USER_EMAIL: ${{ secrets.JIRA_USERNAME }}
-          JIRA_PASSWORD: ${{ secrets.JIRA_PASSWORD }}
-        run: |
-          if [ -n ${{ steps.get_t.outputs.TICKET_NAME }} ]; then
-          for jiraTicket in "${{ steps.get_t.outputs.TICKET_NAME }}"
-          do
-            curl --request POST \
-              --url "${{ env.JIRA_BASE_URL }}/rest/api/2/issue/${jiraTicket}/comment" \
-              --user "${{ env.JIRA_USER_EMAIL }}:${{ env.JIRA_PASSWORD }}" \
-              --header "Content-Type: application/json" \
-              --data "{\"body\": \"${{ github.event_name }} ${{ github.event.pull_request._links.html.href }}\"}"
-          done
-          else
-          echo "no ticket found"
-          fi
+        with:
+          issue: ${{ steps.get_t.outputs.TICKET_NAME }}
+          comment: ${{ github.event_name }} ${{ github.event.pull_request._links.html.href }}
