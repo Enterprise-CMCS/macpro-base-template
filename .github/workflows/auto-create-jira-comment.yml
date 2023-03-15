@@ -18,8 +18,6 @@ jobs:
           issueString=$(printf ",%s" "${issues[@]}")
           issueString=${issueString:1}
           echo "ISSUESTRING=$issueString" >> $GITHUB_OUTPUT
-          echo "DEBUG"
-          cat $GITHUB_OUTPUT
         env:
           JIRA_BASE_URL: https://qmacbis.atlassian.net
       - name: Login
