@@ -16,21 +16,21 @@ jobs:
           body='${{ github.event.pull_request.body }}'
           cat <<< "${body@Q}" > .tmp.body.txt
           issues=(`cat .tmp.body.txt | grep -oe "\b${JIRA_BASE_URL}[^ ]*\b" || true`)
-          issueString=$(printf ",%s" "${issues[@]}")
-          issueString=${issueString:1}
-          echo "ISSUESTRING=$issueString" >> $GITHUB_OUTPUT
-      - name: Login
-        uses: atlassian/gajira-login@v3
-        if: steps.find_issues.outputs.ISSUESTRING != ''
-        env:
-          JIRA_BASE_URL: https://qmacbis.atlassian.net
-          JIRA_USER_EMAIL: ${{ secrets.JIRA_USERNAME }}
-          JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
-      - name: Comment on issue
-        uses: atlassian/gajira-comment@v3
-        if: steps.find_issues.outputs.ISSUESTRING != ''
-        env:
-          GH_EVENT: ${{ toJson(github) }}
-        with:
-          issue: ${{ steps.get_t.outputs.TICKET_NAME }}
-          comment: ${{ github.event_name }} ${{ github.event.pull_request._links.html.href }}
+          issueJson=`jq -c -n '$ARGS.positional' --args "${issues[@]}"`
+          echo "issueJson=$issueJson" >> $GITHUB_OUTPUT
+          cat $GITHUB_OUTPUT
+      # - name: Login
+      #   uses: atlassian/gajira-login@v3
+      #   if: steps.find_issues.outputs.ISSUESTRING != ''
+      #   env:
+      #     JIRA_BASE_URL: https://qmacbis.atlassian.net
+      #     JIRA_USER_EMAIL: ${{ secrets.JIRA_USERNAME }}
+      #     JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
+      # - name: Comment on issue
+      #   uses: atlassian/gajira-comment@v3
+      #   if: steps.find_issues.outputs.ISSUESTRING != ''
+      #   env:
+      #     GH_EVENT: ${{ toJson(github) }}
+      #   with:
+      #     issue: ${{ steps.get_t.outputs.TICKET_NAME }}
+      #     comment: ${{ github.event_name }} ${{ github.event.pull_request._links.html.href }}
