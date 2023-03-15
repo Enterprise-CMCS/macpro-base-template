@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     name: Jira Example
     steps:
-      - name: get jira ticket
-        id: get_t
+      - name: find issues
+        id: find_issues
         run: |
           body='${{ github.event.pull_request.body }}'
           body_esc="${body@Q}"
@@ -22,6 +22,8 @@ jobs:
           JIRA_BASE_URL: https://qmacbis.atlassian.net
       - name: Login
         uses: atlassian/gajira-login@v3
+        if: steps.find_issues.outputs.ISSUESTRING != ''
+        # add a conditional to not run if issuestring is blank
         env:
           JIRA_BASE_URL: https://qmacbis.atlassian.net
           JIRA_USER_EMAIL: ${{ secrets.JIRA_USERNAME }}
@@ -31,6 +33,7 @@ jobs:
       #   id: get_t
       - name: Comment on issue
         uses: atlassian/gajira-comment@v3
+        if: steps.find_issues.outputs.ISSUESTRING != ''
         env:
           GH_EVENT: ${{ toJson(github) }}
         with:
