@@ -10,27 +10,22 @@ jobs:
     steps:
       - name: find issues
         id: find_issues
+        env:
+          JIRA_BASE_URL: https://qmacbis.atlassian.net
         run: |
           body='${{ github.event.pull_request.body }}'
-          body_esc="${body@Q}"
-          cat <<< $body_esc > .tmp.body.txt
+          cat <<< "${body@Q}" > .tmp.body.txt
           issues=(`cat .tmp.body.txt | grep -oe "\b${JIRA_BASE_URL}[^ ]*\b" || true`)
           issueString=$(printf ",%s" "${issues[@]}")
           issueString=${issueString:1}
           echo "ISSUESTRING=$issueString" >> $GITHUB_OUTPUT
-        env:
-          JIRA_BASE_URL: https://qmacbis.atlassian.net
       - name: Login
         uses: atlassian/gajira-login@v3
         if: steps.find_issues.outputs.ISSUESTRING != ''
-        # add a conditional to not run if issuestring is blank
         env:
           JIRA_BASE_URL: https://qmacbis.atlassian.net
           JIRA_USER_EMAIL: ${{ secrets.JIRA_USERNAME }}
           JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
-      # - name: get jira ticket
-      #   run: echo "::set-output name=TICKET_NAME::$(echo '${{ github.event.pull_request.body }}' | grep -oE '\b[A-Z]+[0-9]+-[0-9]+\b')"
-      #   id: get_t
       - name: Comment on issue
         uses: atlassian/gajira-comment@v3
         if: steps.find_issues.outputs.ISSUESTRING != ''
