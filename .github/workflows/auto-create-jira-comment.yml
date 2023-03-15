@@ -12,8 +12,7 @@ jobs:
         id: get_t
         run: |
           echo ${{ github.event.pull_request.body }} >> .temp.pr.body.txt
-          body=$(cat .temp.pr.body.txt)
-          issues=(`echo $body | grep -oe "\b${JIRA_BASE_URL}[^ ]*\b"`)
+          issues=(`grep -oe "\b${JIRA_BASE_URL}[^ ]*\b" .temp.pr.body.txt`)
           issueString=$(printf ",%s" "${issues[@]}")
           issueString=${issueString:1}
           echo "ISSUESTRING=$issueString" >> $GITHUB_OUTPUT
