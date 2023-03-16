@@ -15,11 +15,8 @@ jobs:
         env:
           JIRA_BASE_URL: https://qmacbis.atlassian.net
         run: |
-          body='${{ github.event.pull_request.body }}'
-          cat <<< "${body@Q}" > .tmp.body.txt
-          issues=(`cat .tmp.body.txt | grep -oe "\b${JIRA_BASE_URL}[^ ]*\b" || true`)
-          issueJson=`jq -c -n '$ARGS.positional' --args "${issues[@]}"`
-          echo "issues=$issueJson" >> $GITHUB_OUTPUT
+          echo "::set-output name=TICKET_NAMES::$(echo '${{ github.event.pull_request.body }}' | grep -o '\b[A-Z]+[0-9]+-[0-9]+\b')"
+          echo "issues=$TICKET_NAMES" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
   comment:
     runs-on: ubuntu-latest
