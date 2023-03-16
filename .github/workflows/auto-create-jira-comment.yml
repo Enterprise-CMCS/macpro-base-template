@@ -15,10 +15,11 @@ jobs:
         env:
           JIRA_BASE_URL: https://qmacbis.atlassian.net
         run: |
-          echo "issues=$(echo '${{ github.event.pull_request.body }}' | grep -oE '\b[A-Z]+[0-9]+-[0-9]+\b' || true)"
+          body='${{ github.event.pull_request.body }}'
+          cat <<< "${body@Q}" > .tmp.body.txt
+          issues=(`cat .tmp.body.txt | grep -oE '\b[A-Z]+[0-9]+-[0-9]+\b' || true`)
           issueJson=`jq -c -n '$ARGS.positional' --args "${issues[@]}"`
-          readarray -t issuesArray <<< "$issues"
-          echo "issues=$issuesArray" >> $GITHUB_OUTPUT
+          echo "issues=$issueJson" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
 
   comment:
