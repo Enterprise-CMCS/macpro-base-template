@@ -1,12 +1,34 @@
 on:
   pull_request:
     types: [opened, edited]
-name: hithub to jira2
+name: Jira Issue Commenter
 
 jobs:
-  build:
+  search:
     runs-on: ubuntu-latest
-    name: Jira Example
+    name: Search PR for mentioned Jira Issues
+    outputs:
+      issues: ${{ steps.search.outputs.issues }}
+    steps:
+      - name: find issues
+        id: search
+        env:
+          JIRA_BASE_URL: https://qmacbis.atlassian.net
+        run: |
+          body='${{ github.event.pull_request.body }}'
+          cat <<< "${body@Q}" > .tmp.body.txt
+          issues=(`cat .tmp.body.txt | grep -oe "\b${JIRA_BASE_URL}[^ ]*\b" || true`)
+          issueJson=`jq -c -n '$ARGS.positional' --args "${issues[@]}"`
+          echo "issues=$issueJson" >> $GITHUB_OUTPUT
+          cat $GITHUB_OUTPUT
+  comment:
+    runs-on: ubuntu-latest
+    name: Comment on Jira Issues
+    needs: search
+    if: needs.search.outputs.issues != '[]'
+    strategy:
+      matrix:
+        value: ${{fromJson(needs.search.outputs.issues)}}
     steps:
       - name: Login
         uses: atlassian/gajira-login@v3
@@ -14,13 +36,9 @@ jobs:
           JIRA_API_TOKEN: ${{ secrets.JIRA_TOKEN }}
           JIRA_BASE_URL: https://qmacbis.atlassian.net
           JIRA_USER_EMAIL: ${{ secrets.JIRA_USERNAME }}
-      - name: get jira ticket
-        run: echo "::set-output name=TICKET_NAME::$(echo '${{ github.event.pull_request.body }}' | grep -oE '\b[A-Z]+[0-9]+-[0-9]+\b')"
-        id: get_t
       - name: Comment on issue
         uses: atlassian/gajira-comment@v3
-        env:
-          GH_EVENT: ${{ toJson(github) }}
         with:
-          issue: ${{ steps.get_t.outputs.TICKET_NAME }}
+          issue: ${{ matrix.value }}
           comment: ${{ github.event_name }} ${{ github.event.pull_request._links.html.href }}
+ 
