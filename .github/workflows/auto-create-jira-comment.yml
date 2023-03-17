@@ -7,7 +7,6 @@ jobs:
   search:
     runs-on: ubuntu-latest
     name: Search PR for mentioned Jira Issues
-    if: secrets.JIRA_TOKEN != ''
     outputs:
       issues: ${{ steps.search.outputs.issues }}
     steps:
@@ -16,12 +15,16 @@ jobs:
         env:
           JIRA_BASE_URL: https://qmacbis.atlassian.net/browse/
         run: |
-          body='${{ github.event.pull_request.body }}'
-          cat <<< "${body@Q}" > .tmp.body.txt
-          issues=(`cat .tmp.body.txt | grep -oP "(?<=${JIRA_BASE_URL})[A-Z]+\d+-\d+" || true`)
-          issueJson=`jq -c -n '$ARGS.positional' --args "${issues[@]}"`
-          echo "issues=$issueJson" >> $GITHUB_OUTPUT
-          cat $GITHUB_OUTPUT
+          if [ ${{ secrets.JIRA_TOKEN }} != '' ]; then
+            body='${{ github.event.pull_request.body }}'
+            cat <<< "${body@Q}" > .tmp.body.txt
+            issues=(`cat .tmp.body.txt | grep -oP "(?<=${JIRA_BASE_URL})[A-Z]+\d+-\d+" || true`)
+            issueJson=`jq -c -n '$ARGS.positional' --args "${issues[@]}"`
+            echo "issues=$issueJson" >> $GITHUB_OUTPUT
+            cat $GITHUB_OUTPUT
+          else
+            echo "no secret found"
+          fi
 
   comment:
     runs-on: ubuntu-latest
