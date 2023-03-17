@@ -15,7 +15,7 @@ jobs:
         env:
           JIRA_BASE_URL: https://qmacbis.atlassian.net/browse/
         run: |
-          if [ ${{ secrets.JIRA_TOKEN }} != '' ]; then
+          if [ "${{ secrets.JIRA_TOKEN }}" != '' ]; then
             body='${{ github.event.pull_request.body }}'
             cat <<< "${body@Q}" > .tmp.body.txt
             issues=(`cat .tmp.body.txt | grep -oP "(?<=${JIRA_BASE_URL})[A-Z]+\d+-\d+" || true`)
