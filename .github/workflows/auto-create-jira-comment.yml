@@ -7,7 +7,7 @@ jobs:
   search:
     runs-on: ubuntu-latest
     name: Search PR for mentioned Jira Issues
-    if: secrets.JIRA_TOKEN
+    if: ${{ secrets.JIRA_TOKEN != '' }}
     outputs:
       issues: ${{ steps.search.outputs.issues }}
     steps:
