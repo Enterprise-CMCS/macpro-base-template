@@ -17,7 +17,7 @@ jobs:
         run: |
           body='${{ github.event.pull_request.body }}'
           cat <<< "${body@Q}" > .tmp.body.txt
-          issues=(`cat .tmp.body.txt | grep -oP '(?<=${JIRA_BASE_URL})[A-Z]+\d+-\d+'`)
+          issues=(`cat .tmp.body.txt | grep -oP "(?<=${JIRA_BASE_URL})[A-Z]+\d+-\d+" || true`)
           issueJson=`jq -c -n '$ARGS.positional' --args "${issues[@]}"`
           echo "issues=$issueJson" >> $GITHUB_OUTPUT
           cat $GITHUB_OUTPUT
