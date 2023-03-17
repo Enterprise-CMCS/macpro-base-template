@@ -2,7 +2,10 @@ name: Running Stage Notifier
 
 on:
   schedule:
-    - cron: "30 21 * * 1-5"
+    # EST: November - March (4:30 PM) *5:30 PM from November 1st to DST end
+    - cron: "30 21 * 11-12,1-2 1-5"
+    # EDT: March - November (4:30 PM) *3:30 PM from March 1st to DST start
+    - cron: "30 20 * 3-10 1-5"
   workflow_dispatch:
 
 jobs:
