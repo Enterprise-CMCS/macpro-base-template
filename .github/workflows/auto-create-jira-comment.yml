@@ -14,17 +14,15 @@ jobs:
         id: search
         env:
           JIRA_BASE_URL: https://qmacbis.atlassian.net/browse/
+          JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
+        if: env.JIRA_TOKEN != ''
         run: |
-          if [ "${{ secrets.JIRA_TOKEN }}" != '' ]; then
-            body='${{ github.event.pull_request.body }}'
-            cat <<< "${body@Q}" > .tmp.body.txt
-            issues=(`cat .tmp.body.txt | grep -oP "(?<=${JIRA_BASE_URL})[A-Z]+\d+-\d+" || true`)
-            issueJson=`jq -c -n '$ARGS.positional' --args "${issues[@]}"`
-            echo "issues=$issueJson" >> $GITHUB_OUTPUT
-            cat $GITHUB_OUTPUT
-          else
-            echo "no secret found"
-          fi
+          body='${{ github.event.pull_request.body }}'
+          cat <<< "${body@Q}" > .tmp.body.txt
+          issues=(`cat .tmp.body.txt | grep -oP "(?<=${JIRA_BASE_URL})[A-Z]+\d+-\d+" || true`)
+          issueJson=`jq -c -n '$ARGS.positional' --args "${issues[@]}"`
+          echo "issues=$issueJson" >> $GITHUB_OUTPUT
+          cat $GITHUB_OUTPUT
 
   comment:
     runs-on: ubuntu-latest
