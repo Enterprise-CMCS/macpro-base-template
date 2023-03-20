@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     name: Comment on Jira Issues
     needs: search
-    if: needs.search.outputs.issues != undefined && needs.search.outputs.issues != '[]'
+    if: needs.search.outputs.issues && needs.search.outputs.issues != '[]'
     strategy:
       matrix:
         value: ${{fromJson(needs.search.outputs.issues)}}
