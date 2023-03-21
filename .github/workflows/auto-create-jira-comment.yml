@@ -17,7 +17,7 @@ jobs:
           JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
         if: env.JIRA_TOKEN != ''
         run: |
-          body='${{ github.event.pull_request.body }}'
+          body='''${{ github.event.pull_request.body }}'''
           printf "$body" > .tmp.body.txt
           cat .tmp.body.txt
           issues=(`cat .tmp.body.txt | grep -oP "(?<=${JIRA_BASE_URL})[A-Z]+\d+-\d+" || true`)
