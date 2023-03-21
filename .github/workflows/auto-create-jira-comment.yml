@@ -18,12 +18,9 @@ jobs:
         if: env.JIRA_TOKEN != ''
         run: |
           echo -e "${{ github.event.pull_request.body }}" > .tmp.body.txt
-          cat .tmp.body.txt
-          issues=(`cat .tmp.body.txt | grep -oP "(?<=${JIRA_BASE_URL})[A-Z]+\d+-\d+" || true`)
+          issues=(`grep -oP "(?<=${JIRA_BASE_URL})[A-Z]+\d+-\d+" .tmp.body.txt || true`)
           issueJson=`jq -c -n '$ARGS.positional' --args "${issues[@]}"`
           echo "issues=$issueJson" >> $GITHUB_OUTPUT
-          cat $GITHUB_OUTPUT
-
   comment:
     runs-on: ubuntu-latest
     name: Comment on Jira Issues
