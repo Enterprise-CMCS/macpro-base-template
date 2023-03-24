@@ -17,7 +17,9 @@ jobs:
           JIRA_TOKEN: ${{ secrets.JIRA_TOKEN }}
         if: env.JIRA_TOKEN != ''
         run: |
-          export body="${{ github.event.pull_request.body }}"
+          body="${{ github.event.pull_request.body }}"
+          echo "THROUGH"
+          escaped="${body//</ }" 
           printenv body > .tmp.body.txt
           issues=(`grep -oP "(?<=${JIRA_BASE_URL})[A-Z]+\d+-\d+" .tmp.body.txt || true`)
           issueJson=`jq -c -n '$ARGS.positional' --args "${issues[@]}"`
