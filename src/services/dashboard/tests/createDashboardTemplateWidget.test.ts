@@ -8,8 +8,6 @@ import type {
   Context,
 } from "aws-lambda";
 
-const cloudWatchClientMock = mockClient(new CloudWatch({}));
-
 describe("templatize cloudwatch dashboard", () => {
   beforeEach(() => {
     process.env.lambdaArnToCall = "test-arn";
