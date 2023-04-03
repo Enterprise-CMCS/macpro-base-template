@@ -9,6 +9,7 @@
     "test": "tests"
   },
   "scripts": {
+    "coverage": "vitest --coverage",
     "test": "vitest --config ./src/tests/vitest.config.ts",
     "test-ci": "vitest run --config ./src/tests/vitest.config.ts",
     "test-gui": "vitest --ui",

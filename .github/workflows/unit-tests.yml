@@ -24,9 +24,9 @@ jobs:
       - name: install
         run: |
           if [ ! -d "node_modules" ]; then # If we don't have any node_modules (CircleCI cache miss scenario), run yarn install --frozen-lockfile.  Otherwise, we're all set, do nothing.
-            npm ci
+            yarn install --frozen-lockfile
           fi
-      - run: npm run coverage
+      - run: yarn run coverage
       - name: publish test coverage to code climate
         if: always() && env.CC_TEST_REPORTER_ID != ''
         uses: paambaati/codeclimate-action@v2.7.5
