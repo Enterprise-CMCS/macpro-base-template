@@ -1,41 +1,37 @@
-import { it, describe, expect, beforeEach, afterEach } from "vitest";
-import { CloudWatch, GetDashboardCommand } from "@aws-sdk/client-cloudwatch";
-import { mockClient } from "aws-sdk-client-mock";
+import { it, describe, expect, beforeEach, afterEach, vi } from "vitest";
+import { CloudWatch } from "@aws-sdk/client-cloudwatch";
 import { handler } from "../handlers/templatizeCloudWatchDashboard";
 import type {
   APIGatewayEvent,
   APIGatewayProxyCallback,
   Context,
 } from "aws-lambda";
-const CloudWatchInstance = new CloudWatch({});
-// const dashboard = CloudWatchInstance.getDashboard({
-//   DashboardName: "test-service-test-stage",
-// });
 
-const cloudWatchClientMock = mockClient(CloudWatchInstance);
+vi.mock("@aws-sdk/client-cloudwatch", () => ({
+  CloudWatch: vi.fn(() => ({
+    getDashboard: vi.fn(() => ({
+      DashboardBody: "mocked dashboard body",
+    })),
+  })),
+}));
 
 describe("templatize cloudwatch dashboard", () => {
-  beforeEach(() => {
-    process.env.region = "test-region";
-    process.env.stage = "test-stage";
-    process.env.accountId = "ac-test-0123";
-    process.env.service = "test-service";
-  });
-
   afterEach(() => {
-    cloudWatchClientMock.reset();
+    vi.clearAllMocks();
   });
 
   it("should return successful metric response", async () => {
-    const metricResponse = {
-      $metadata: {
-        httpStatusCode: 200,
-        requestId: "d8680883-37ca-49e4-8619-e43d1e3a391b",
-        attempts: 1,
-        totalRetryDelay: 0,
-      },
-    };
-    cloudWatchClientMock.on(GetDashboardCommand).resolves(metricResponse);
+    const expectedTemplateJson = "mocked dashboard body";
+    process.env.region = "us-east-1";
+    process.env.stage = "test-stage";
+    process.env.accountId = "ac-test-0123";
+    process.env.service = "test-service";
+
+    expectedTemplateJson
+      .replaceAll("ac-test-0123", "${aws:accountId}")
+      .replaceAll("test-stage", "${sls:stage}")
+      .replaceAll("us-east-1", "${env:REGION_A}")
+      .replaceAll("test-service", "${self:service}");
 
     const result = await handler(
       {} as APIGatewayEvent,
@@ -43,6 +39,8 @@ describe("templatize cloudwatch dashboard", () => {
       {} as APIGatewayProxyCallback
     );
 
-    expect(result).toEqual(metricResponse);
+    expect(CloudWatch).toHaveBeenCalledWith({});
+
+    expect(result).toEqual(expectedTemplateJson);
   });
 });
