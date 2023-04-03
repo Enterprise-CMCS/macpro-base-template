@@ -1,6 +1,4 @@
 import { it, describe, expect, beforeEach, afterEach } from "vitest";
-import { CloudWatch } from "@aws-sdk/client-cloudwatch";
-import { mockClient } from "aws-sdk-client-mock";
 import { handler } from "../handlers/createDashboardTemplateWidget";
 import type {
   APIGatewayEvent,
