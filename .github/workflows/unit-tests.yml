@@ -13,7 +13,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/setup
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: actions/cache@v2
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-modules-test-coverage-${{ hashFiles('package-lock.json') }}
+      - name: install
+        run: |
+          if [ ! -d "node_modules" ]; then # If we don't have any node_modules (CircleCI cache miss scenario), run yarn install --frozen-lockfile.  Otherwise, we're all set, do nothing.
+            yarn install --frozen-lockfile
+          fi
       - run: yarn run coverage
       - name: publish test coverage to code climate
         if: always() && env.CC_TEST_REPORTER_ID != ''
