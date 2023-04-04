@@ -1,4 +1,4 @@
-import { it, describe, expect, beforeEach, afterEach } from "vitest";
+import { it, describe, expect, beforeEach } from "vitest";
 import { handler } from "../handlers/createDashboardTemplateWidget";
 import type {
   APIGatewayEvent,
