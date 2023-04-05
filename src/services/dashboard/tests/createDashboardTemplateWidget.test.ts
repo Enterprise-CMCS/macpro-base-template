@@ -49,7 +49,7 @@ describe("templatize cloudwatch dashboard", () => {
     expect(result).not.toEqual(html);
   });
 
-  it("should return an error message when there is an error", async () => {
+  it("should return an error message when there is an error with the lambda arn", async () => {
     process.env = {};
 
     const result = await handler(
