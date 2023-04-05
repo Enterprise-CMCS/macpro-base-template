@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - master
-      - code-climate
   pull_request:
     branches:
       - master
