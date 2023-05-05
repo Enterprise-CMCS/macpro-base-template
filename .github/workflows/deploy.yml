@@ -139,7 +139,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: stage-resources
-          path: resources/aws_resources.json
+          path: "resources/aws_resources_${STAGE_NAME}.json"
 
   release:
     runs-on: ubuntu-20.04
