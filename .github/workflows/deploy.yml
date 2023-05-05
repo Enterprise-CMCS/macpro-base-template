@@ -134,7 +134,7 @@ jobs:
             resourceData+=( $(echo "$resources" | jq -c --arg stack_name "$stack" '.[] + { StackName: $stack_name }') )
           done
           join_by() { local IFS="$1"; shift; echo "$*"; }
-          echo "["$(join_by "," "${resourceData[@]}")"]" > "resources/aws_resources.json"
+          echo "["$(join_by "," "${resourceData[@]}")"]" > "resources/aws_resources_${STAGE_NAME}.json"
       - name: Archive stage resources
         uses: actions/upload-artifact@v3
         with:
