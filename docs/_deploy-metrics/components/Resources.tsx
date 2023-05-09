@@ -1,5 +1,5 @@
 import * as UI from "@chakra-ui/react";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import { Resource } from "../lib/getAwsResources";
 import { getStackOptions, getTypeOptions } from "../lib/getFilterOptions";
 import { CheckboxFilterPopover } from "./CheckboxFilterPopover";
@@ -9,26 +9,16 @@ import CsvDownloadButton from "react-json-to-csv";
 export const Resources = ({
   data,
   downloadFileName,
-  typeFilter,
-  setTypeFilter,
-  stackFilter,
-  setStackFilter,
 }: {
   data: Resource[];
   downloadFileName: string;
-  typeFilter: { options: string[] };
-  setTypeFilter: Dispatch<
-    SetStateAction<{
-      options: string[];
-    }>
-  >;
-  stackFilter: { options: string[] };
-  setStackFilter: Dispatch<
-    SetStateAction<{
-      options: string[];
-    }>
-  >;
 }) => {
+  const [typeFilter, setTypeFilter] = useState<{
+    options: string[];
+  }>({ options: [] });
+  const [stackFilter, setStackFilter] = useState<{
+    options: string[];
+  }>({ options: [] });
   let filteredData = [...data];
 
   if (stackFilter.options.length > 0) {

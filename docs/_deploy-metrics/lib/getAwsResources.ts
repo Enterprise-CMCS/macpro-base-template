@@ -34,7 +34,7 @@ export const getAwsResources = async (branch: string) => {
   // sort them by most recent
   artifacts.sort((a, b) => {
     const dateA = new Date(a.created_at as string);
-    const dateB = new Date(b.created_at  as string);
+    const dateB = new Date(b.created_at as string);
     return dateB.getTime() - dateA.getTime();
   });
 

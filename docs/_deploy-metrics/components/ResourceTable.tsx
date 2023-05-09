@@ -3,7 +3,7 @@ import { formatDistance } from "date-fns";
 import { Resource } from "../lib/getAwsResources";
 
 export const ResourceTable = ({ data }: { data: Resource[] }) => (
-  <UI.Table>
+  <UI.Table size="sm">
     <UI.Thead>
       <UI.Tr>
         <UI.Th>
