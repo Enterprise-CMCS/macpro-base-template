@@ -36,6 +36,12 @@ const Aws = ({
   branches,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [selectedBranch, setSelectedBranch] = useState<string>(branches![0]);
+  const [typeFilter, setTypeFilter] = useState<{
+    options: string[];
+  }>({ options: [] });
+  const [stackFilter, setStackFilter] = useState<{
+    options: string[];
+  }>({ options: [] });
 
   const { resources } = branchData[selectedBranch];
 
@@ -61,9 +67,11 @@ const Aws = ({
           <UI.Select
             w="max-content"
             value={selectedBranch}
-            onChange={(newValue) =>
-              setSelectedBranch(newValue.currentTarget.value)
-            }
+            onChange={(newValue) => {
+              setTypeFilter({ options: [] });
+              setStackFilter({ options: [] });
+              setSelectedBranch(newValue.currentTarget.value);
+            }}
           >
             {branches?.map((branch, index) => (
               <option key={index} value={branch}>
@@ -74,7 +82,16 @@ const Aws = ({
         </UI.HStack>
       </UI.Stack>
       <UI.Divider my={5} />
-      {resources && <Resources data={resources} />}
+      {resources && (
+        <Resources
+          typeFilter={typeFilter}
+          setTypeFilter={setTypeFilter}
+          stackFilter={stackFilter}
+          setStackFilter={setStackFilter}
+          data={resources}
+          downloadFileName={`${repoName}-${selectedBranch}-aws-resources.csv`}
+        />
+      )}
     </UI.Container>
   );
 };

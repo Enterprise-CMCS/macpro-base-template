@@ -1,18 +1,34 @@
 import * as UI from "@chakra-ui/react";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Resource } from "../lib/getAwsResources";
 import { getStackOptions, getTypeOptions } from "../lib/getFilterOptions";
 import { CheckboxFilterPopover } from "./CheckboxFilterPopover";
 import { ResourceTable } from "./ResourceTable";
+import CsvDownloadButton from "react-json-to-csv";
 
-export const Resources = ({ data }: { data: Resource[] }) => {
-  const [typeFilter, setTypeFilter] = useState<{
-    options: string[];
-  }>({ options: [] });
-  const [stackFilter, setStackFilter] = useState<{
-    options: string[];
-  }>({ options: [] });
-
+export const Resources = ({
+  data,
+  downloadFileName,
+  typeFilter,
+  setTypeFilter,
+  stackFilter,
+  setStackFilter,
+}: {
+  data: Resource[];
+  downloadFileName: string;
+  typeFilter: { options: string[] };
+  setTypeFilter: Dispatch<
+    SetStateAction<{
+      options: string[];
+    }>
+  >;
+  stackFilter: { options: string[] };
+  setStackFilter: Dispatch<
+    SetStateAction<{
+      options: string[];
+    }>
+  >;
+}) => {
   let filteredData = [...data];
 
   if (stackFilter.options.length > 0) {
@@ -64,6 +80,22 @@ export const Resources = ({ data }: { data: Resource[] }) => {
                   )}
                   onSubmit={(options) => setStackFilter({ options })}
                 />
+                <CsvDownloadButton
+                  data={data}
+                  filename={downloadFileName}
+                  style={{
+                    borderRadius: ".5rem",
+                    border: "1px solid #e2e8f0",
+                    display: "inline-block",
+                    cursor: "pointer",
+                    color: "inherit",
+                    fontSize: ".875rem",
+                    padding: "6px 16px",
+                    fontWeight: 500,
+                  }}
+                >
+                  Download Data
+                </CsvDownloadButton>
               </UI.Stack>
             </UI.Stack>
           </UI.Box>
