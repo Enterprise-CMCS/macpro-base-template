@@ -45,7 +45,7 @@ const Aws = ({
         w="100%"
         direction={{ base: "column", md: "row" }}
         justify="space-between"
-        p="8"
+        p="10"
         pb="4"
       >
         <div>

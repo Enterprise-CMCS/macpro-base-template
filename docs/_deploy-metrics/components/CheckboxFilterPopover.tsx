@@ -13,20 +13,32 @@ interface CheckboxFilterPopoverProps {
   label: string;
   onSubmit: ((value: never[]) => void) | undefined;
   options: FilterOption[];
+  filtersApplied: number;
 }
 
 export const CheckboxFilterPopover = ({
   label,
   onSubmit,
   options,
+  filtersApplied,
 }: CheckboxFilterPopoverProps) => {
   const state = useFilterState({
     defaultValue: [],
     onSubmit,
   });
+
   return (
     <UI.Popover placement="bottom-end">
-      <FilterPopoverButton label={label} />
+      <FilterPopoverButton
+        label={label}
+        icon={() =>
+          filtersApplied ? (
+            <UI.Badge colorScheme="purple" variant="outline">
+              {filtersApplied}
+            </UI.Badge>
+          ) : null
+        }
+      />
       <FilterPopoverContent
         isCancelDisabled={!state.canCancel}
         onClickApply={state.onSubmit}

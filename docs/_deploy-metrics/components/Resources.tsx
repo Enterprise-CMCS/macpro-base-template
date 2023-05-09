@@ -6,10 +6,30 @@ import { CheckboxFilterPopover } from "./CheckboxFilterPopover";
 import { ResourceTable } from "./ResourceTable";
 
 export const Resources = ({ data }: { data: Resource[] }) => {
-  const [typeFilter, setTypeFilter] = useState({ options: [] });
-  const [stackFilter, setStackFilter] = useState({ options: [] });
+  const [typeFilter, setTypeFilter] = useState<{
+    options: string[];
+  }>({ options: [] });
+  const [stackFilter, setStackFilter] = useState<{
+    options: string[];
+  }>({ options: [] });
 
-  console.log({ data });
+  let filteredData = [...data];
+
+  if (stackFilter.options.length > 0) {
+    filteredData = data.filter((item) =>
+      stackFilter.options.includes(item.StackName)
+    );
+  }
+  if (typeFilter.options.length > 0) {
+    filteredData = filteredData.filter((obj) => {
+      for (const type of typeFilter.options) {
+        if (obj.ResourceType.includes(type)) {
+          return true;
+        }
+      }
+      return false;
+    });
+  }
 
   return (
     <UI.Container maxW="8xl">
@@ -30,19 +50,25 @@ export const Resources = ({ data }: { data: Resource[] }) => {
               <UI.Stack direction="row" justify="space-between">
                 <CheckboxFilterPopover
                   label="Type"
-                  options={getTypeOptions(data)}
+                  filtersApplied={typeFilter.options.length}
+                  options={getTypeOptions(
+                    stackFilter.options.length > 0 ? filteredData : data
+                  )}
                   onSubmit={(options) => setTypeFilter({ options })}
                 />
                 <CheckboxFilterPopover
                   label="Stack"
-                  options={getStackOptions(data)}
+                  filtersApplied={stackFilter.options.length}
+                  options={getStackOptions(
+                    typeFilter.options.length > 0 ? filteredData : data
+                  )}
                   onSubmit={(options) => setStackFilter({ options })}
                 />
               </UI.Stack>
             </UI.Stack>
           </UI.Box>
           <UI.Box overflowX="auto">
-            <ResourceTable data={data} />
+            <ResourceTable data={filteredData} />
           </UI.Box>
         </UI.Stack>
       </UI.Box>

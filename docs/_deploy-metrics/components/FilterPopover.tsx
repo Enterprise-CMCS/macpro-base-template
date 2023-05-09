@@ -68,15 +68,13 @@ type FilterPopoverContentProps = FilterActionButtonsProps & {
 };
 
 export const FilterPopoverContent = (props: FilterPopoverContentProps) => {
-  const { header, children, onClickCancel, onClickApply, isCancelDisabled } =
-    props;
+  const { children, onClickCancel, onClickApply, isCancelDisabled } = props;
   const { onClose } = UI.usePopoverContext();
   return (
     <UI.PopoverContent
       _focus={{ shadow: "none", outline: 0 }}
       _focusVisible={{ shadow: "outline" }}
     >
-      {header && <UI.PopoverHeader srOnly>{header}</UI.PopoverHeader>}
       <UI.PopoverBody padding="6">{children}</UI.PopoverBody>
       <UI.PopoverFooter>
         <FilterActionButtons
