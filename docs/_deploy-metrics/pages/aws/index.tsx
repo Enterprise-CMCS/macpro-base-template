@@ -1,14 +1,7 @@
 import type { InferGetStaticPropsType } from "next";
 import { getAwsResources } from "../../lib/getAwsResources";
-import {
-  Divider,
-  Container,
-  Heading,
-  Text,
-  Select,
-  HStack,
-} from "@chakra-ui/react";
-import { Resources } from '../../components/Resources'
+import * as UI from "@chakra-ui/react";
+import { Resources } from "../../components/Resources";
 import { octokitBranchesToUse } from "../../lib/octokit";
 import { useState } from "react";
 import packageJson from "../../../../package.json";
@@ -21,10 +14,10 @@ export const getStaticProps = async () => {
   } = {};
 
   for (const branch of octokitBranchesToUse!) {
-    const resources = await getAwsResources(branch)
+    const resources = await getAwsResources(branch);
 
     branchData[branch] = {
-        resources
+      resources,
     };
   }
 
@@ -44,31 +37,45 @@ const Aws = ({
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const [selectedBranch, setSelectedBranch] = useState<string>(branches![0]);
 
-  const {resources} = branchData[selectedBranch];
+  const { resources } = branchData[selectedBranch];
 
   return (
-    <Container centerContent maxW='8xl'>
-      <Heading as="h1">AWS Resources</Heading>
-      <Heading as="h2">{repoName}</Heading>
-      <HStack pt={"4"}>
-        <Text flex={2}>Currently viewing data for</Text>
-        <Select
-          flex={1}
-          value={selectedBranch}
-          onChange={(newValue) =>
-            setSelectedBranch(newValue.currentTarget.value)
-          }
-        >
-          {branches?.map((branch, index) => (
-            <option key={index} value={branch}>
-              {branch.toUpperCase()}
-            </option>
-          ))}
-        </Select>
-      </HStack>
-      <Divider my={5} />
-      {resources && <Resources data={resources}/>}
-    </Container>
+    <UI.Container centerContent maxW="8xl" pb="24">
+      <UI.Stack
+        w="100%"
+        direction={{ base: "column", md: "row" }}
+        justify="space-between"
+        p="8"
+        pb="4"
+      >
+        <div>
+          <UI.Heading as="h1" size={"lg"}>
+            AWS Resources
+          </UI.Heading>
+          <UI.Heading as="h2" size={"md"}>
+            {repoName}
+          </UI.Heading>
+        </div>
+        <UI.HStack>
+          <UI.Text flex={2}>Currently viewing data for</UI.Text>
+          <UI.Select
+            w="max-content"
+            value={selectedBranch}
+            onChange={(newValue) =>
+              setSelectedBranch(newValue.currentTarget.value)
+            }
+          >
+            {branches?.map((branch, index) => (
+              <option key={index} value={branch}>
+                {branch.toUpperCase()}
+              </option>
+            ))}
+          </UI.Select>
+        </UI.HStack>
+      </UI.Stack>
+      <UI.Divider my={5} />
+      {resources && <Resources data={resources} />}
+    </UI.Container>
   );
 };
 
