@@ -25,4 +25,4 @@ Linked below is Development Metrics dashboard in question. But in essence it col
 
 A link to the dora page will need to be pasted here. View this page in the code to see the format.
 
-[View Development Metrics]({{ site.url }}/{{ site.repo.name }}/metrics/dora)
+[View Development Metrics]({{ site.url }}{{ site.repo.name }}/metrics/dora)
