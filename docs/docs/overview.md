@@ -31,4 +31,4 @@ A diagram is often the best way to communicate the architecture:
 
 ## Development Metrics (DORA)
 
-We programmatically publish a set of Development metrics that align to the DevOps Research and Assesment (DORA) standards.  Those metrics can be viewed [here]({{ site.url }}/dora).
+We programmatically publish a set of Development metrics that align to the DevOps Research and Assesment (DORA) standards.  Those metrics can be viewed [here]({{ site.url }}/metrics/dora).
