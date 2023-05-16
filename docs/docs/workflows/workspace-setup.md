@@ -13,7 +13,7 @@ Reflect our active Security Hub findings in Jira.
 ---
 
 ## Summary
-- 
+- This GitHub Actions workflow automates the setup of a test environment, and provides notifications in case of failure. 
 
 ## How it Works
 - The workflow is triggered either manually through the workflow dispatch event or on a scheduled basis every Sunday at 10:00 AM. This flexibility allows developers to execute the workflow when needed or automatically at a specific time.
