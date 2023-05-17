@@ -16,3 +16,7 @@ runs:
       with:
         path: "**/node_modules"
         key: ${{ github.workflow}}-${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock', '.nvmrc') }}
+
+    - name: Echo org Name to JSON file
+      run: echo "{\"org_name\":\"${{ github.repository_owner }}\"}" > org_name.json && cat org_name.json
+      shell: bash
