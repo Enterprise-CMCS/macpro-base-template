@@ -1,12 +1,13 @@
 import { octokit } from "./octokit";
 import differenceInHours from "date-fns/differenceInHours";
 import { getRepoName } from "./getRepoName";
+import { getOrgName } from "./getOrgName";
 
 export const getMeanTimeToRecover = async (branch: string) => {
   const response = await octokit.paginate(
     "GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs",
     {
-      owner: "Enterprise-CMCS",
+      owner: getOrgName,
       repo: getRepoName,
       workflow_id: "deploy.yml",
       branch,

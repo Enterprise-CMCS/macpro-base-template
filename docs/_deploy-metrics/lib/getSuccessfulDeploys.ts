@@ -1,11 +1,12 @@
 import { getRepoName } from "./getRepoName";
 import { octokit } from "./octokit";
+import { getOrgName } from "./getOrgName";
 
 export const getSuccessfulDeploys = async (branch: string) => {
   const data = await octokit.paginate(
     "GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs",
     {
-      owner: "Enterprise-CMCS",
+      owner: getOrgName,
       repo: getRepoName,
       workflow_id: "deploy.yml",
       branch,

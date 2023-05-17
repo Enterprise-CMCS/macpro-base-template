@@ -1,6 +1,7 @@
 import { octokit } from "./octokit";
 import { getRepoName } from "./getRepoName";
 import JSZip from 'jszip';
+import { getOrgName } from "./getOrgName";
 
 export interface Resource   {
   PhysicalResourceId: string
@@ -23,7 +24,7 @@ export const getAwsResources = async (branch: string) => {
   const artifacts = await octokit.paginate(
     "GET /repos/{owner}/{repo}/actions/artifacts",
     {
-      owner: "Enterprise-CMCS",
+      owner: getOrgName,
       repo: getRepoName,
       per_page: 100,
       name: 'aws-resources-' + branch
@@ -46,7 +47,7 @@ export const getAwsResources = async (branch: string) => {
   const response = await octokit.request(
     `GET /repos/{owner}/{repo}/actions/artifacts/${artifacts[0].id}/zip`,
     {
-      owner: "Enterprise-CMCS",
+      owner: getOrgName,
       repo: getRepoName,
     }
   );

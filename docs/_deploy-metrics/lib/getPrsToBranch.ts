@@ -1,12 +1,13 @@
 import { octokit } from "./octokit";
 import differenceInHours from "date-fns/differenceInHours";
 import { getRepoName } from "./getRepoName";
+import { getOrgName } from "./getOrgName";
 
 export const getPrsToBranch = async (branch: string) => {
   const data = await octokit.paginate(
     "GET /repos/{owner}/{repo}/pulls",
     {
-      owner: "Enterprise-CMCS",
+      owner: getOrgName,
       repo: getRepoName,
       state: "closed",
       per_page: 100,
