@@ -238,7 +238,7 @@ yargs(process.argv.slice(2))
         "."
       );
 
-      const mergeCommand = ["git", "merge", "base/production", "--no-ff"];
+      const mergeCommand = ["git", "merge", "base/production", "--no-ff", "--no-commit"];
 
       await runner.run_command_and_output(
         "Update from Base | merging code from base template",
