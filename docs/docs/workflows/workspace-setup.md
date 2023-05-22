@@ -8,7 +8,7 @@ nav_order: 8
 # Workspace Setup 
 {: .no_toc }
 
-Reflect our active Security Hub findings in Jira.
+Automates the setup of a test environment.
 {: .fs-6 .fw-300 }
 ---
 
