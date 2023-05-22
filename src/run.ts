@@ -238,7 +238,30 @@ yargs(process.argv.slice(2))
         "."
       );
 
-      const mergeCommand = ["git", "merge", "base/production", "--no-ff"];
+      const mergeCommand = [
+        "git",
+        "merge",
+        "base/production",
+        "--no-ff",
+        "--no-commit",
+      ];
+
+      if (mergeCommand.includes("--no-commit")) {
+        const FONT_COLOR_RED = "\x1b[31m"; // Red color
+        const RESET_FORMATTING = "\x1b[0m"; // Reset formatting
+        const warningMessage = `
+        ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+        ╔═══╗╔═══╗╔╗ ╔╗╔════╗╔══╗╔═══╗╔═╗ ╔╗
+        ║╔═╗║║╔═╗║║║ ║║║╔╗╔╗║╚╣╠╝║╔═╗║║║╚╗║║
+        ║║ ╚╝║║ ║║║║ ║║╚╝║║╚╝ ║║ ║║ ║║║╔╗╚╝║
+        ║║ ╔╗║╚═╝║║║ ║║  ║║   ║║ ║║ ║║║║╚╗║║
+        ║╚═╝║║╔═╗║║╚═╝║ ╔╝╚╗ ╔╣╠╗║╚═╝║║║ ║║║
+        ╚═══╝╚╝ ╚╝╚═══╝ ╚══╝ ╚══╝╚═══╝╚╝ ╚═╝   
+  
+  ${FONT_COLOR_RED}Attention!!!: You are performing a merge. Be sure to create a merge commit; do NOT squash.${RESET_FORMATTING}
+  `;
+        console.log(warningMessage);
+      }
 
       await runner.run_command_and_output(
         "Update from Base | merging code from base template",
@@ -248,7 +271,7 @@ yargs(process.argv.slice(2))
       );
 
       console.log(
-        "Merge command was performed. You may have conflicts. This is normal behaivor. To complete the update process fix any conflicts, commit, push, and open a PR."
+        "Merge command was performed. You may have conflicts. This is normal behavior. To complete the update process, fix any conflicts, commit, push, and open a PR."
       );
     }
   )
