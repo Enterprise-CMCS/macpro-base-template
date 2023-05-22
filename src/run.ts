@@ -218,7 +218,7 @@ yargs(process.argv.slice(2))
         "base",
         "https://github.com/Enterprise-CMCS/macpro-base-template",
       ];
-  
+
       await runner.run_command_and_output(
         "Update from Base | adding remote",
         addRemoteCommand,
@@ -229,20 +229,26 @@ yargs(process.argv.slice(2))
           close: true,
         }
       );
-  
+
       const fetchBaseCommand = ["git", "fetch", "base"];
-  
+
       await runner.run_command_and_output(
         "Update from Base | fetching base template",
         fetchBaseCommand,
         "."
       );
-  
-      const mergeCommand = ["git", "merge", "base/production", "--no-ff", "--no-commit"];
-  
+
+      const mergeCommand = [
+        "git",
+        "merge",
+        "base/production",
+        "--no-ff",
+        "--no-commit",
+      ];
+
       if (mergeCommand.includes("--no-commit")) {
-        const FONT_COLOR_RED = "\x1b[31m";  // Red color
-        const RESET_FORMATTING = "\x1b[0m";  // Reset formatting
+        const FONT_COLOR_RED = "\x1b[31m"; // Red color
+        const RESET_FORMATTING = "\x1b[0m"; // Reset formatting
         const warningMessage = `
         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
         ╔═══╗╔═══╗╔╗ ╔╗╔════╗╔══╗╔═══╗╔═╗ ╔╗
@@ -256,14 +262,14 @@ yargs(process.argv.slice(2))
   `;
         console.log(warningMessage);
       }
-  
+
       await runner.run_command_and_output(
         "Update from Base | merging code from base template",
         mergeCommand,
         ".",
         true
       );
-  
+
       console.log(
         "Merge command was performed. You may have conflicts. This is normal behavior. To complete the update process, fix any conflicts, commit, push, and open a PR."
       );
