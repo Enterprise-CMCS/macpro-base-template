@@ -208,7 +208,7 @@ yargs(process.argv.slice(2))
   )
   .command(
     "base-update",
-    "This will update your code to the latest version of the base template",
+    "this will update your code to the latest version of the base template",
     {},
     async () => {
       const addRemoteCommand = [
