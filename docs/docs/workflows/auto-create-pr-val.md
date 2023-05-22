@@ -1,19 +1,19 @@
 ---
 layout: default
-title: Create Val Pull Request
+title: Auto Create PR 
 parent: GitHub Workflows
-nav_order: 9
+nav_order: 17
 ---
 
-# Create Val Pull Request
+# Auto Create PR 
 {: .no_toc }
 
-Generate automated creation of a pull request.
+Auto Create PR for Val.
 {: .fs-6 .fw-300 }
 ---
 
 ## Summary
-In summary, this workflow enables the automated creation of a pull request to release code changes from the "master" branch to the "Val" branch, providing a standardized process for promoting code updates to a production environment.
+- The workflow is triggered by a push to the master branch. It then checks out the repository's code and creates a pull request targeting the "val" branch, with specific title and body instructions for merging.
 
 ## How it Works 
 - The workflow is triggered when a push event occurs on the "master" branch. The first step of the job checks out the repository's code using the actions/checkout action, and the next step utilizes the repo-sync/pull-request action to create a pull request.

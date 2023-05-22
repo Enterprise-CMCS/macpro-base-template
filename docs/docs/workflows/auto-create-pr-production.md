@@ -1,19 +1,19 @@
 ---
 layout: default
-title: Create Production Pull Request
+title: Auto Create PR 
 parent: GitHub Workflows
-nav_order: 9
+nav_order: 16
 ---
 
-# Create Production Pull Request
+# Auto Create PR 
 {: .no_toc }
 
-Generate automated creation of a pull request
+Auto Create PR for Production.
 {: .fs-6 .fw-300 }
 ---
 
 ## Summary
-In summary, this workflow enables the automated creation of a pull request to release code changes from the "val" branch to the "production" branch, providing a standardized process for promoting code updates to a production environment.
+- This workflow enables the automated creation of a pull request to release code changes from the "val" branch to the "production" branch, providing a standardized process for promoting code updates to a production environment.
 
 ## How it Works 
 - The workflow is triggered when a push event occurs on the "val" branch. The first step of the job checks out the repository's code using the actions/checkout action, and the next step utilizes the repo-sync/pull-request action to create a pull request.

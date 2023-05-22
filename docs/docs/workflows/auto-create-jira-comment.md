@@ -2,7 +2,7 @@
 layout: default
 title: Jira Issue Commenter
 parent: GitHub Workflows
-nav_order: 6
+nav_order: 2
 ---
 
 # Jira Issue Commenter
@@ -13,7 +13,6 @@ Automatically links Pull Requests to Jira Issues mentioned in the PR body.
 ---
 
 ## Summary
-
 The {{ site.repo.name }} project uses GitHub Pull Requests to review and merge and code change.  A GitHub pull request is a feature that allows developers to propose changes to a project's codebase. When a developer wants to suggest changes to a project, they create a pull request which includes the code changes they've made. The pull request then allows other developers to review the proposed changes, discuss any potential issues, and ultimately merge the changes into the main codebase.
 
 The {{ site.repo.name }} project uses Jira to plan, schedule, and track development work items.
