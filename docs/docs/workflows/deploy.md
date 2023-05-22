@@ -8,7 +8,7 @@ nav_order: 17
 # Code Deploy
 {: .no_toc }
 
-Analyze code for security vulnerabilities
+Automates the deployment process
 {: .fs-6 .fw-300 }
 ---
 
