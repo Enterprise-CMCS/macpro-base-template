@@ -1,56 +1,25 @@
 ---
 layout: default
 title: List Running Stages
-parent: Development Workflows
-nav_order: 9
+parent: GitHub Workflows
+nav_order: 14
 ---
 
 # List Running Stages
 {: .no_toc }
 
-How to get a list of currently running stages for this project in the current AWS account.
+Retrieving and reporting currently running stages.
 {: .fs-6 .fw-300 }
-
-## Table of contents
-{: .no_toc .text-delta }
-
-- TOC
-{:toc}
-
 ---
 
-### List Running Stages
+## Summary
+The "Running Stage Notifier" workflow automates the process of retrieving and reporting currently running stages in a project or pipeline, ensuring better visibility and communication through Slack notifications.
 
-#### Summary
-This returns a list of currently running stages for this project in the current AWS account.
+## How it Works
 
-#### Prerequisites:
-- Completed all [onboarding]({{ site.baseurl }}{% link docs/onboarding/onboarding.md %})
+- The workflow has the necessary permissions to read repository contents and obtain an ID token. It begins by checking out the repository and setting up any required configuration. It then configures AWS credentials to assume a specified role in the AWS account.
 
-#### Procedure
-- [Obtain and set AWS CLI credentials]({{ site.baseurl }}{%link docs/developer-guide/aws-auth.md %})
-- Use the run script:
-  ```bash
-    nvm use
-    run listRunningStages
-  ```
+- The main step of the workflow is to retrieve a list of running stages using the command run listRunningStages. The output of this command is stored in the $runningStages variable. If the Slack webhook is provided and there are running stages, a Slack notification is sent with the list of running stages, providing visibility into the currently active stages.
 
-#### Notes
-- None
+- There is also a conditional step to send a Slack notification in case of a failure while retrieving the running stages. This step executes if the Slack webhook is provided and the workflow fails, ensuring that any issues with retrieving the running stages are promptly reported.
 
-### Run Report using GitHub Actions
-
-#### Summary
-This project uses [GitHub Actions](https://github.com/features/actions) as its CI/CD tool.
-
-Each of our repositories has a GitHub Actions workflow added to run this list running stages command and report the results to slack on a schedule.  This workflow may also be manually invoked.
-
-#### Prerequisites:
-- Git repo access; complete the Git access request portion of [onboarding]({{ site.baseurl }}{% link docs/onboarding/onboarding.md %})
-- Access to CMS slack to see the generated report.
-
-#### Procedure
-- Browse to the actions page of the repository in GitHub, select the "Running Stage Notifier" workflow and press run workflow.
-
-#### Notes
-- None

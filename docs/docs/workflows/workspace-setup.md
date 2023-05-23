@@ -8,7 +8,7 @@ nav_order: 8
 # Workspace Setup 
 {: .no_toc }
 
-Automates the setup of a test environment.
+Tests our workspace setup script on a schedule.
 {: .fs-6 .fw-300 }
 ---
 
