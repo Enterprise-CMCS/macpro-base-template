@@ -4,7 +4,7 @@ name: GitHub Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["ishmetrics-2"]
+    branches: ["master"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
