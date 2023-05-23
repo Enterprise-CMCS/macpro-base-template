@@ -48,8 +48,8 @@ export const getAwsResources = async (branch: string) => {
   const response = await octokit.request(
     `GET /repos/{owner}/{repo}/actions/artifacts/${artifacts[0].id}/zip`,
     {
-      owner: "Enterprise-CMCS",
-      repo: getRepoName,
+      owner,
+      repo,
     }
   );
 
