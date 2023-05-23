@@ -17,7 +17,7 @@ const unzip = async (blob: string) => {
 }
 
 export const getAwsResources = async (branch: string) => {
-  const repoInfo = process.env.GITHUB_REPOSITORY || "";
+  const repoInfo = process.env.GITHUB_REPOSITORY || "orgNotSpecified/repoNotSpecified";
   const [owner, repo] = repoInfo.split("/");
 
   // get a list of the artifacts created by the deploy step

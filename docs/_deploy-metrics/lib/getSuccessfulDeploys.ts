@@ -1,7 +1,7 @@
 import { octokit } from "./octokit";
 
 export const getSuccessfulDeploys = async (branch: string) => {
-  const repoInfo = process.env.GITHUB_REPOSITORY || "";
+  const repoInfo = process.env.GITHUB_REPOSITORY || "orgNotSpecified/repoNotSpecified";
   const [owner, repo] = repoInfo.split("/");
 
   const data = await octokit.paginate(
