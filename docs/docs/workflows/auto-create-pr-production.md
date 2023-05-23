@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Create Production Pull Request
+title: Auto Create PR Production
 parent: GitHub Workflows
 nav_order: 9
 ---
 
-# Create Production Pull Request
+# Auto Create PR Production
 {: .no_toc }
 
-Reflect our active Security Hub findings in Jira.
+Automated creation of a pull request.
 {: .fs-6 .fw-300 }
 ---
 
