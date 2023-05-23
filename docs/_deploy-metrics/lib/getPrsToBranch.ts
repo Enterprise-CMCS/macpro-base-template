@@ -1,11 +1,10 @@
 import { octokit } from "./octokit";
 import differenceInHours from "date-fns/differenceInHours";
-//import { getRepoName } from "./getRepoName";
 
 export const getPrsToBranch = async (branch: string) => {
   const repoInfo = process.env.GITHUB_REPOSITORY || "";
   const [owner, repo] = repoInfo.split("/");
-  
+
   const data = await octokit.paginate(
     "GET /repos/{owner}/{repo}/pulls",
     {

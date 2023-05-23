@@ -1,4 +1,3 @@
-//import { getRepoName } from "./getRepoName";
 import { octokit } from "./octokit";
 
 export const getSuccessfulDeploys = async (branch: string) => {

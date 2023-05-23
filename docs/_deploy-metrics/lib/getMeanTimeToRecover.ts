@@ -1,6 +1,5 @@
 import { octokit } from "./octokit";
 import differenceInHours from "date-fns/differenceInHours";
-//import { getRepoName } from "./getRepoName";
 
 export const getMeanTimeToRecover = async (branch: string) => {
   const repoInfo = process.env.GITHUB_REPOSITORY || "";

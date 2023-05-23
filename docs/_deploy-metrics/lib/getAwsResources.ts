@@ -1,5 +1,4 @@
 import { octokit } from "./octokit";
-//import { getRepoName } from "./getRepoName";
 import JSZip from 'jszip';
 
 export interface Resource   {
