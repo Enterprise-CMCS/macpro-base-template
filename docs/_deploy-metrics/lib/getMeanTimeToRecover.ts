@@ -1,19 +1,23 @@
 import { octokit } from "./octokit";
 import differenceInHours from "date-fns/differenceInHours";
-import { getRepoName } from "./getRepoName";
 
 export const getMeanTimeToRecover = async (branch: string) => {
+  const repoInfo = process.env.GITHUB_REPOSITORY || "orgNotSpecified/repoNotSpecified";
+  console.log(repoInfo)
+  const [owner, repo] = repoInfo.split("/");
+
   const response = await octokit.paginate(
     "GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs",
     {
-      owner: "Enterprise-CMCS",
-      repo: getRepoName,
+      owner,
+      repo,
       workflow_id: "deploy.yml",
       branch,
       per_page: 100,
     },
     (response) => response.data.flat()
   );
+
 
   const getTimes = (jobs: typeof response) => {
     const result = [];

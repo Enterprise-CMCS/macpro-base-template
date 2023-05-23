@@ -1,13 +1,15 @@
 import { octokit } from "./octokit";
 import differenceInHours from "date-fns/differenceInHours";
-import { getRepoName } from "./getRepoName";
 
 export const getPrsToBranch = async (branch: string) => {
+  const repoInfo = process.env.GITHUB_REPOSITORY || "orgNotSpecified/repoNotSpecified";
+  const [owner, repo] = repoInfo.split("/");
+
   const data = await octokit.paginate(
     "GET /repos/{owner}/{repo}/pulls",
     {
-      owner: "Enterprise-CMCS",
-      repo: getRepoName,
+      owner,
+      repo,
       state: "closed",
       per_page: 100,
       base: branch,

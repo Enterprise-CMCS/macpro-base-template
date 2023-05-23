@@ -1,12 +1,14 @@
-import { getRepoName } from "./getRepoName";
 import { octokit } from "./octokit";
 
 export const getSuccessfulDeploys = async (branch: string) => {
+  const repoInfo = process.env.GITHUB_REPOSITORY || "orgNotSpecified/repoNotSpecified";
+  const [owner, repo] = repoInfo.split("/");
+
   const data = await octokit.paginate(
     "GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs",
     {
-      owner: "Enterprise-CMCS",
-      repo: getRepoName,
+      owner,
+      repo,
       workflow_id: "deploy.yml",
       branch,
       per_page: 100,

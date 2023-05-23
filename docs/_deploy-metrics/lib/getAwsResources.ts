@@ -1,5 +1,4 @@
 import { octokit } from "./octokit";
-import { getRepoName } from "./getRepoName";
 import JSZip from 'jszip';
 
 export interface Resource   {
@@ -18,13 +17,15 @@ const unzip = async (blob: string) => {
 }
 
 export const getAwsResources = async (branch: string) => {
+  const repoInfo = process.env.GITHUB_REPOSITORY || "orgNotSpecified/repoNotSpecified";
+  const [owner, repo] = repoInfo.split("/");
 
   // get a list of the artifacts created by the deploy step
   const artifacts = await octokit.paginate(
     "GET /repos/{owner}/{repo}/actions/artifacts",
     {
-      owner: "Enterprise-CMCS",
-      repo: getRepoName,
+      owner,
+      repo,
       per_page: 100,
       name: 'aws-resources-' + branch
     },
@@ -46,8 +47,8 @@ export const getAwsResources = async (branch: string) => {
   const response = await octokit.request(
     `GET /repos/{owner}/{repo}/actions/artifacts/${artifacts[0].id}/zip`,
     {
-      owner: "Enterprise-CMCS",
-      repo: getRepoName,
+      owner,
+      repo,
     }
   );
 
