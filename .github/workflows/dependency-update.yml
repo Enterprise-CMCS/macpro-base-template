@@ -8,7 +8,7 @@ concurrency:
 
 jobs:
   upgrade-dependencies:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
       deps_branch_name: dep-update
     steps:
