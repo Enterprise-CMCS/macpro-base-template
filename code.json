@@ -1,0 +1,72 @@
+{
+  "name": "macpro-base-template",
+  "description": "A serverless monorepo accelerator template that provides a foundation for building CMS applications with full CI/CD, security scanning, and infrastructure automation.",
+  "longDescription": "The macpro-base-template is a comprehensive serverless monorepo accelerator designed specifically for Centers for Medicare & Medicaid Services (CMS) projects. This template serves as a starting point for new projects, providing a 'hello world' application with enterprise-grade repository configuration and support infrastructure. The project includes two key services: an alerts service that integrates SNS topics with EventBridge for monitoring and notifications, and a dashboard service that provides CloudWatch dashboard templates for monitoring application health and performance. Built on the Serverless Framework with TypeScript, the template features full CI/CD support through GitHub Actions, automated security scanning with CodeQL and dependency reviews, documentation hosting via GitHub Pages, comprehensive PR/Issue templates, and infrastructure as code deployment workflows. The template is designed to accelerate project development by providing pre-configured AWS integration patterns, monitoring capabilities, and development best practices. It supports DORA metrics tracking, automated dependency updates, and includes integration with CMS development tools like Jira and Slack. This template is ideal for teams starting new serverless applications within the CMS ecosystem who need a production-ready foundation with security, monitoring, and deployment automation built-in from day one.",
+  "status": "Production",
+  "permissions": {
+    "licenses": [
+      {
+        "name": "CC0-1.0",
+        "URL": "https://creativecommons.org/publicdomain/zero/1.0/legalcode"
+      }
+    ],
+    "usageType": "openSource",
+    "exemptionText": ""
+  },
+  "organization": "Centers for Medicare & Medicaid Services",
+  "repositoryURL": "https://github.com/Enterprise-CMCS/macpro-base-template",
+  "projectURL": "https://enterprise-cmcs.github.io/macpro-base-template/",
+  "repositoryHost": "github.com/Enterprise-CMCS",
+  "repositoryVisibility": "public",
+  "vcs": "git",
+  "laborHours": 4017,
+  "reuseFrequency": {
+    "forks": 0,
+    "clones": 0
+  },
+  "platforms": ["web", "linux", "other"],
+  "categories": ["it-development", "software-development", "devops"],
+  "softwareType": "standalone/backend",
+  "languages": ["TypeScript", "Shell"],
+  "maintenance": "contract",
+  "contractNumber": "GS-35F-115GA:75FCMC22F0093",
+  "date": {
+    "created": "2022-11-14T19:15:29Z",
+    "lastModified": "2025-06-22T04:41:26Z",
+    "metaDataLastUpdated": "2025-07-22T16:00:26.468Z"
+  },
+  "tags": [
+    "serverless",
+    "aws",
+    "template",
+    "monorepo",
+    "cms",
+    "macpro",
+    "infrastructure",
+    "devops"
+  ],
+  "contact": {
+    "email": "bpaige@gswell.com",
+    "name": "Benjamin Paige"
+  },
+  "feedbackMechanisms": [
+    "https://github.com/Enterprise-CMCS/macpro-base-template/issues"
+  ],
+  "localisation": false,
+  "repositoryType": "tools",
+  "userInput": false,
+  "fismaLevel": "Moderate",
+  "group": "CMS/CMCS/DSG/DIS",
+  "projects": ["MACPRO"],
+  "systems": [
+    "AWS Lambda",
+    "AWS SNS",
+    "AWS EventBridge",
+    "AWS CloudWatch",
+    "GitHub Actions"
+  ],
+  "upstream": "",
+  "subsetInHealthcare": ["Policy", "Operational", "Medicare", "Medicaid"],
+  "userType": ["Government"],
+  "maturityModelTier": 3
+}
